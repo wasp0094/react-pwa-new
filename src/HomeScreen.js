@@ -36,11 +36,12 @@ export default function HomeScreen() {
             alignItems: 'center',
           }}
             >
-                <Button
+              <Button
               type="submit"
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
+              href="/signin"
             >
               Sign In
             </Button>
@@ -49,6 +50,7 @@ export default function HomeScreen() {
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
+              href="/signup"
             >
               Sign Up
             </Button>

@@ -12,9 +12,9 @@ import RouterTest from "./RouterTest";
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
+    {/* <BrowserRouter> */}
       <RouterTest />
-    </BrowserRouter>
+    {/* </BrowserRouter> */}
   </React.StrictMode>,
   document.getElementById("root")
 );
