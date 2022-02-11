@@ -1,25 +1,26 @@
 import * as React from 'react';
 import Button from '@mui/material/Button';
-import Link from '@mui/material/Link';
-import Grid from '@mui/material/Grid';
+//import { Link as Li } from '@mui/material/Link';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import CssBaseline from '@mui/material/CssBaseline';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { Link } from "react-router-dom";
+import "./HomeScreen.css";
 
-function Copyright(props) {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
+// function Copyright(props) {
+//   return (
+//     <Typography variant="body2" color="text.secondary" align="center" {...props}>
+//       {'Copyright © '}
+//       <Li color="inherit" href="https://mui.com/">
+//         Your Website
+//       </Li>{' '}
+//       {new Date().getFullYear()}
+//       {'.'}
+//     </Typography>
+//   );
+// }
 
 const theme = createTheme();
 
@@ -30,13 +31,15 @@ export default function HomeScreen() {
         <CssBaseline />
         <Box
           sx={{
-            marginTop: 8,
+            marginTop: 10,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
           }}
-            >
-                <Button
+          >
+            <div>physiotherapy app</div>
+            <Link to="signup">
+              <Button
               type="submit"
               fullWidth
               variant="contained"
@@ -44,6 +47,7 @@ export default function HomeScreen() {
             >
               Sign In
             </Button>
+            </Link>
             <Button
               type="submit"
               fullWidth
@@ -53,7 +57,7 @@ export default function HomeScreen() {
               Sign Up
             </Button>
             </Box>
-            <Copyright sx={{ mt: 8, mb: 4 }} />
+            {/* <Copyright sx={{ mt: 8, mb: 4 }} /> */}
       </Container>
     </ThemeProvider>
   );
