@@ -1,11 +1,11 @@
 {
   "name": "pwa",
   "version": "0.1.0",
-  "homepage": "https://wasp0094.github.io/react-pwa-new",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
+    "@mui/icons-material": "^5.4.1",
     "@mui/material": "^5.4.1",
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^11.2.7",
