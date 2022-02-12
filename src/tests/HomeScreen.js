@@ -36,13 +36,9 @@ export default function HomeScreen() {
             flexDirection: 'column',
             alignItems: 'center',
           }}
-<<<<<<< HEAD:src/HomeScreen.js
-            >
-=======
           >
             <div>physiotherapy app</div>
             <Link to="signup">
->>>>>>> 6701ed256e29f7e6715114a8081843aad323f4cb:src/tests/HomeScreen.js
               <Button
               type="submit"
               fullWidth

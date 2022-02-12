@@ -9,15 +9,9 @@ import Home from "./mobile/Home";
 
 ReactDOM.render(
   <React.StrictMode>
-<<<<<<< HEAD
-    {/* <BrowserRouter> */}
-      <RouterTest />
-    {/* </BrowserRouter> */}
-=======
     
       <CreateAccount />
     
->>>>>>> 6701ed256e29f7e6715114a8081843aad323f4cb
   </React.StrictMode>,
   document.getElementById("root")
 );
