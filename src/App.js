@@ -21,10 +21,10 @@ function App() {
           <TextField required id="standard-basic" label="Password" variant="standard" />
           <p>Forgot Password?</p>
           <br />
-          <Button variant="contained">Login</Button>
+          <Button variant="contained"><Link to ="home">Login</Link></Button>
         </Stack>
       </Box>
-      <p>Don't have an account? <Link to ="signup">Sign up</Link></p>
+      <p>Don't have an account? <Link to ="/signup">Sign up</Link></p>
       </div>
     </>
   );
