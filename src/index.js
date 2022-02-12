@@ -6,15 +6,19 @@ import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import reportWebVitals from "./reportWebVitals";
 import App from "./App";
 import CreateAccount from "./CreateAccount";
+import Profile from "./mobile/Profile";
+import BottomNav from "./mobile/BottomNav";
 import Home from "./mobile/Home";
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
       <Routes>
-      <Route exact path="/" element={<App />} />
-      <Route path="signup" element={<CreateAccount />} />
-      <Route path="home" element={<Home />} />
+        <Route exact path="/" element={<App />} />
+        <Route path="/signup" element={<CreateAccount />} />
+        <Route path="/home" element={<BottomNav />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/homescreen" element={<Home />} />
       </Routes>
     </Router>
   </React.StrictMode>,
