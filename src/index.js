@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import "./index.css";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import reportWebVitals from "./reportWebVitals";
@@ -9,9 +10,13 @@ import Home from "./mobile/Home";
 
 ReactDOM.render(
   <React.StrictMode>
-    
-      <CreateAccount />
-    
+    <Router>
+      <Routes>
+      <Route exact path="/" element={<App />} />
+      <Route path="signup" element={<CreateAccount />} />
+      <Route path="home" element={<Home />} />
+      </Routes>
+    </Router>
   </React.StrictMode>,
   document.getElementById("root")
 );
