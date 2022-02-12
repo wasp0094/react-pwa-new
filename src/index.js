@@ -1,20 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter} from 'react-router-dom';
 import "./index.css";
-import App from "./App";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import reportWebVitals from "./reportWebVitals";
-import SignIn from "./SignIn";
-import SignUp from "./SignUp";
-import HomeScreen from "./HomeScreen";
-import RouterTest from "./RouterTest";
+import App from "./App";
+import CreateAccount from "./CreateAccount";
+import Home from "./mobile/Home";
 
 ReactDOM.render(
   <React.StrictMode>
-    {/* <BrowserRouter> */}
-      <RouterTest />
-    {/* </BrowserRouter> */}
+    
+      <CreateAccount />
+    
   </React.StrictMode>,
   document.getElementById("root")
 );
