@@ -1,13 +1,28 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import "./index.css";
-import App from "./App";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import reportWebVitals from "./reportWebVitals";
+import App from "./App";
+import CreateAccount from "./CreateAccount";
+import Profile from "./mobile/Profile";
+import BottomNav from "./mobile/BottomNav";
+import Home from "./mobile/Home";
+import Explore from "./mobile/Explore";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Router>
+      <Routes>
+        <Route exact path="/" element={<App />} />
+        <Route path="/signup" element={<CreateAccount />} />
+        <Route path="/home" element={<BottomNav />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/homescreen" element={<Home />} />
+        <Route path="/explore" element={<Explore />} />
+      </Routes>
+    </Router>
   </React.StrictMode>,
   document.getElementById("root")
 );
