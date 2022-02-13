@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/react-pwa-new/static/css/main.0b077d98.css",
-    "main.js": "/react-pwa-new/static/js/main.c43ecca7.js",
-    "static/js/377.c823e11a.chunk.js": "/react-pwa-new/static/js/377.c823e11a.chunk.js",
-    "service-worker.js": "/react-pwa-new/service-worker.js",
-    "static/media/Workout-bro.svg": "/react-pwa-new/static/media/Workout-bro.a7e0fcbd82231a4f07b8ca72c5e47504.svg",
-    "index.html": "/react-pwa-new/index.html",
-    "main.0b077d98.css.map": "/react-pwa-new/static/css/main.0b077d98.css.map",
-    "main.c43ecca7.js.map": "/react-pwa-new/static/js/main.c43ecca7.js.map",
-    "377.c823e11a.chunk.js.map": "/react-pwa-new/static/js/377.c823e11a.chunk.js.map"
+    "main.css": "./static/css/main.0b077d98.css",
+    "main.js": "./static/js/main.4ef13045.js",
+    "static/js/377.c823e11a.chunk.js": "./static/js/377.c823e11a.chunk.js",
+    "service-worker.js": "./service-worker.js",
+    "static/media/Workout-bro.svg": "./static/media/Workout-bro.a7e0fcbd82231a4f07b8ca72c5e47504.svg",
+    "index.html": "./index.html",
+    "main.0b077d98.css.map": "./static/css/main.0b077d98.css.map",
+    "main.4ef13045.js.map": "./static/js/main.4ef13045.js.map",
+    "377.c823e11a.chunk.js.map": "./static/js/377.c823e11a.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.0b077d98.css",
-    "static/js/main.c43ecca7.js"
+    "static/js/main.4ef13045.js"
   ]
 }
