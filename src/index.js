@@ -13,7 +13,7 @@ import Explore from "./mobile/Explore";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router>
+    <Router basename='/react-pwa-new'>
       <Routes>
         <Route exact path="/" element={<App />} />
         <Route path="/signup" element={<CreateAccount />} />
