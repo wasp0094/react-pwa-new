@@ -11,19 +11,19 @@ function CreateAccount() {
   return (
     <>
       <div className="App">
-      <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <h2>Create Account</h2>
-        <p>Create a new account</p>
-        <Stack spacing={2}>
-          <TextField required id="standard-basic" label="Full Name" variant="standard" />
-          <TextField required id="standard-basic" label="Email" variant="standard" />
-          <TextField required id="standard-basic" label="Password" variant="standard" />
-          <TextField required id="standard-basic" label="Confirm Password" variant="standard" />
-          <br />
-          <Button variant="contained">Create Account</Button>
-        </Stack>
-      </Box>
-      <p>Already have an account? <Link to ="/">Login</Link></p>
+        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          <h2>Create Account</h2>
+          <p>Create a new account</p>
+          <Stack spacing={2}>
+            <TextField required id="standard-basic" label="Full Name" variant="standard" />
+            <TextField required id="standard-basic" label="Email" variant="standard" />
+            <TextField required id="standard-basic" label="Password" variant="standard" />
+            <TextField required id="standard-basic" label="Confirm Password" variant="standard" />
+            <br />
+            <Button variant="contained">Create Account</Button>
+          </Stack>
+          <p>Already have an account? <Link to="/">Login</Link></p>
+        </Box>
       </div>
     </>
   );

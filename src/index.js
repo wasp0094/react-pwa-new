@@ -9,6 +9,7 @@ import CreateAccount from "./CreateAccount";
 import Profile from "./mobile/Profile";
 import BottomNav from "./mobile/BottomNav";
 import Home from "./mobile/Home";
+import Explore from "./mobile/Explore";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -19,6 +20,7 @@ ReactDOM.render(
         <Route path="/home" element={<BottomNav />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/homescreen" element={<Home />} />
+        <Route path="/explore" element={<Explore />} />
       </Routes>
     </Router>
   </React.StrictMode>,
