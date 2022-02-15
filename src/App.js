@@ -19,7 +19,7 @@ function App() {
             <TextField required id="standard-basic" label="Password" variant="standard" />
             <p>Forgot Password?</p>
             <br />
-            <Button variant="contained"><Link to="/homescreen">Login</Link></Button>
+            <Button variant="contained" component={Link} to='/home'>Login</Button>
           </Stack>
           <p>Don't have an account? <Link to="/signup">Sign up</Link></p>
         </Box>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import Avatar from '@mui/material/Avatar';
@@ -8,7 +9,6 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import Button from '@mui/material/Button';
-import Link from '@mui/material/Link';
 import BottomNav from './BottomNav';
 
 function Profile() {
@@ -39,7 +39,7 @@ function Profile() {
       </Box>
       <Box sx={{ justifyContent: 'center', alignItems: 'center', marginBottom: '5rem' }}>
         <Stack direction="row" sx={{ marginLeft: '7rem' }}>
-          <Button variant="outlined" color="error"> Log Out </Button>
+          <Button variant="outlined" color="error" component={Link} to='/'> Log Out </Button>
           {/* <Button variant="outlined" color="error"> <Link to='home'> Log Out </Link></Button> */}
           {/* above link not working */}
         </Stack>

@@ -22,10 +22,10 @@ function BottomNav() {
       <Box sx={{ width: 500 }}>
         <Paper sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }} elevation={3}>
           <BottomNavigation showLabels value={value} onChange={onChange}>
-            <BottomNavigationAction label="Home" icon={<HomeIcon />} component={Link} to='/homescreen' value={'/homescreen'} />
-            <BottomNavigationAction label="Explore" icon={<ExploreIcon />} component={Link} to='/explore' value={'/explore'} />
+            <BottomNavigationAction label="Home" icon={<HomeIcon />} component={Link} to='/home' value={'/react-pwa-new/home'} />
+            <BottomNavigationAction label="Explore" icon={<ExploreIcon />} component={Link} to='/explore' value={'/react-pwa-new/explore'} />
             <BottomNavigationAction label="Routine" icon={<FavoriteIcon />} />
-            <BottomNavigationAction label="Profile" icon={<PersonIcon />} component={Link} to={'/profile'} value={'/profile'} />
+            <BottomNavigationAction label="Profile" icon={<PersonIcon />} component={Link} to={'/profile'} value={'/react-pwa-new/profile'} />
             {/* <Link to='/profile'><BottomNavigationAction label="Profile" icon={<LocationOnIcon />} /></Link> */}
           </BottomNavigation>
         </Paper>
