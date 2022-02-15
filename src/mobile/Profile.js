@@ -37,14 +37,15 @@ function Profile() {
           <ListItem> <ListItemText primary="Password: ******"></ListItemText><ListItemText secondary="CHANGE"></ListItemText> </ListItem>
         </List>
       </Box>
-      <Box sx={{ justifyContent: 'center', alignItems: 'center', marginBottom: '5rem' }}>
-        <Stack direction="row" sx={{ marginLeft: '7rem' }}>
+      <Box sx={{ justifyContent: 'center', alignItems: 'center' }}>
+        <Stack direction="row">
           <Button variant="outlined" color="error"> Log Out </Button>
           {/* <Button variant="outlined" color="error"> <Link to='home'> Log Out </Link></Button> */}
           {/* above link not working */}
         </Stack>
+        <BottomNav />
       </Box>
-      <BottomNav />
+
     </div>
   )
 }

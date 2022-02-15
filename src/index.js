@@ -9,7 +9,9 @@ import CreateAccount from "./CreateAccount";
 import Profile from "./mobile/Profile";
 import BottomNav from "./mobile/BottomNav";
 import Home from "./mobile/Home";
-import Explore from "./mobile/Explore";
+import Explore from "./mobile/ExploreCard";
+import PhysioCard from "./mobile/PhysioCard";
+import ExploreCard from "./mobile/ExploreCard";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -21,6 +23,8 @@ ReactDOM.render(
         <Route path="/profile" element={<Profile />} />
         <Route path="/homescreen" element={<Home />} />
         <Route path="/explore" element={<Explore />} />
+        <Route path="/explorecard" element={<ExploreCard />} />
+        <Route path="/card" element={<PhysioCard />} />
       </Routes>
     </Router>
   </React.StrictMode>,
