@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Box from '@mui/material/Box';
 import { TextField } from '@mui/material';
