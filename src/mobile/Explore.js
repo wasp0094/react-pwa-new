@@ -30,7 +30,7 @@ function Explore() {
                                 <h6>Lorem ipsum dolor sit amet, view description</h6>
                             </div>
                             <div className='card-image'>
-                                <img class='img' src={Workout} alt='image' />
+                                <img className='img' src={Workout} alt='image' />
                             </div>
                         </AccordionSummary>
                         <AccordionDetails>
@@ -54,7 +54,7 @@ function Explore() {
                                 <h6>Lorem ipsum dolor sit amet, view description</h6>
                             </div>
                             <div className='card-image'>
-                                <img class='img' src={Workout} alt='image' />
+                                <img className='img' src={Workout} alt='image' />
                             </div>
                         </AccordionSummary>
                         <AccordionDetails>

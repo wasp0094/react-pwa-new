@@ -36,3 +36,7 @@
     width: 120px;
     height: 100%;
 }
+
+.MuiTabs-flexContainer {
+    justify-content: space-evenly;
+}
