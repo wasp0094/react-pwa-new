@@ -24,9 +24,8 @@ function BottomNav() {
           <BottomNavigation showLabels value={value} onChange={onChange}>
             <BottomNavigationAction label="Home" icon={<HomeIcon />} component={Link} to='/home' value={'/react-pwa-new/home'} />
             <BottomNavigationAction label="Explore" icon={<ExploreIcon />} component={Link} to='/explore' value={'/react-pwa-new/explore'} />
-            <BottomNavigationAction label="Routine" icon={<FavoriteIcon />} />
+            <BottomNavigationAction label="Routine" icon={<FavoriteIcon />} component={Link} to='/routine' value={'/react-pwa-new/routine'} />
             <BottomNavigationAction label="Profile" icon={<PersonIcon />} component={Link} to={'/profile'} value={'/react-pwa-new/profile'} />
-            {/* <Link to='/profile'><BottomNavigationAction label="Profile" icon={<LocationOnIcon />} /></Link> */}
           </BottomNavigation>
         </Paper>
       </Box>

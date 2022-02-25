@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import Avatar from '@mui/material/Avatar';
@@ -11,7 +11,18 @@ import ListItemText from '@mui/material/ListItemText';
 import Button from '@mui/material/Button';
 import BottomNav from './BottomNav';
 
+import { useUserAuth } from '../context/UserAuthContext';
+
 function Profile() {
+  const { user, logOut } = useUserAuth();
+  console.log(user);
+  const handleLogOut = async () => {
+    try {
+      await logOut();
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div>
       {/* <h3>Profile</h3> */}
@@ -19,6 +30,7 @@ function Profile() {
         <Avatar src="https://material-ui.com/static/images/avatar/1.jpg" sx={{ width: 56, height: 56 }} />
         <Stack sx={{ display: 'flex', flexDirection: 'column', margin: '1rem', padding: '0 1rem' }}>
           <p>full name
+            <br />
             username</p>
         </Stack>
         <IconButton><EditIcon fontSize='small' color="action" /></IconButton>
@@ -31,7 +43,7 @@ function Profile() {
           <ListItem> <ListItemText primary="Assigned Doctor:"></ListItemText> </ListItem> */}
           {/* <ListItem divider> </ListItem>
           <ListItem> <ListItemText secondary="private information"></ListItemText> </ListItem> */}
-          <ListItem> <ListItemText primary="Email:"></ListItemText> </ListItem>
+          <ListItem> <ListItemText primary={user && user.email}></ListItemText> </ListItem>
           <ListItem> <ListItemText primary="Phone:"></ListItemText> </ListItem>
           <ListItem> <ListItemText primary="Date of Birth:"></ListItemText> </ListItem>
           <ListItem> <ListItemText primary="Password: ******"></ListItemText><ListItemText secondary="CHANGE"></ListItemText> </ListItem>
@@ -39,7 +51,7 @@ function Profile() {
       </Box>
       <Box sx={{ justifyContent: 'center', alignItems: 'center', marginBottom: '5rem' }}>
         <Stack direction="row" sx={{ marginLeft: '7rem' }}>
-          <Button variant="outlined" color="error" component={Link} to='/'> Log Out </Button>
+          <Button variant="outlined" color="error" onClick={handleLogOut}> Log Out </Button>
           {/* <Button variant="outlined" color="error"> <Link to='home'> Log Out </Link></Button> */}
           {/* above link not working */}
         </Stack>

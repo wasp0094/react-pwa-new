@@ -1,7 +1,8 @@
 import React from 'react';
 import Workout from './Workout-bro.svg';
 import './Explore.css';
-
+import { IconButton } from '@mui/material';
+import SortIcon from '@mui/icons-material/Sort';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
@@ -13,6 +14,10 @@ function Explore() {
     return (
         <>
             <main>
+                <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-evenly' }}>
+                    <h3>Explore</h3>
+                    <IconButton><SortIcon fontSize='small' color="action" /></IconButton>
+                </div>
                 <div className='card'>
                     <Accordion sx={{ background: '#FFEBB5' }}>
                         <AccordionSummary
@@ -25,7 +30,7 @@ function Explore() {
                                 <h6>Lorem ipsum dolor sit amet, view description</h6>
                             </div>
                             <div className='card-image'>
-                                <img src={Workout} alt='image' />
+                                <img class='img' src={Workout} alt='image' />
                             </div>
                         </AccordionSummary>
                         <AccordionDetails>
@@ -49,7 +54,7 @@ function Explore() {
                                 <h6>Lorem ipsum dolor sit amet, view description</h6>
                             </div>
                             <div className='card-image'>
-                                <img src={Workout} alt='image' />
+                                <img class='img' src={Workout} alt='image' />
                             </div>
                         </AccordionSummary>
                         <AccordionDetails>
