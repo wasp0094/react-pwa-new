@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import Avatar from '@mui/material/Avatar';
@@ -30,6 +30,7 @@ function Profile() {
         <Avatar src="https://material-ui.com/static/images/avatar/1.jpg" sx={{ width: 56, height: 56 }} />
         <Stack sx={{ display: 'flex', flexDirection: 'column', margin: '1rem', padding: '0 1rem' }}>
           <p>full name
+            <br />
             username</p>
         </Stack>
         <IconButton><EditIcon fontSize='small' color="action" /></IconButton>

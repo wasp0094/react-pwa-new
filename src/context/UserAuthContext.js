@@ -28,15 +28,15 @@ export function UserAuthContextProvider({ children }) {
         const googleAuthProvider = new GoogleAuthProvider();
         return signInWithPopup(auth, googleAuthProvider);
     }
-    // useEffect(() => {
-    //     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-    //         setUser(currentUser);
-    //     });
-    //     return unsubscribe;
-    // }, []);
-    onAuthStateChanged(auth, (currentUser) => {
-        setUser(currentUser);
-    });
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+            setUser(currentUser);
+        });
+        return unsubscribe;
+    }, []);
+    // onAuthStateChanged(auth, (currentUser) => {
+    //     setUser(currentUser);
+    // });
     return <userAuthContext.Provider value={{ user, signUp, logIn, logOut, signInWithGoogle }} > {children}</userAuthContext.Provider>;
 }
 export function useUserAuth() {

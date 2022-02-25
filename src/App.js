@@ -7,6 +7,7 @@ import Profile from "./mobile/Profile";
 import Home from "./mobile/Home";
 import Explore from "./mobile/Explore";
 import Login from './Login';
+import Routine from './mobile/Routine';
 
 // login page, (home screen for mobile)
 
@@ -21,6 +22,7 @@ function App() {
             <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
             <Route path="/home" element={<Home />} />
             <Route path="/explore" element={<Explore />} />
+            <Route path="/routine" element={<Routine />} />
           </Routes>
         </Router>
       </UserAuthContextProvider>
