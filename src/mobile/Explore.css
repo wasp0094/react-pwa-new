@@ -58,12 +58,8 @@
     justify-content: space-evenly;
 }
 
-.MuiPaper-root-MuiCard-root {
-    background-color: #d7e3fc;
-}
-
-.MuiCardContent-root {
-    padding: 6px 15px;
+.MuiCard-root {
+    margin-bottom: 10px;
 }
 
 .MuiCardActions-root {

@@ -56,8 +56,8 @@ function Routine() {
                 <h1>routine</h1>
             </div> */}
             <Box sx={{ width: '100%' }}>
-                <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                    <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" >
+                <Box sx={{ borderBottom: 1, borderColor: 'divider' }} style={{ position: "sticky", top: "0", width: "100%" }}>
+                    <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" style={{ background: '#fff' }}>
                         <Tab label="Item One" {...a11yProps(0)} />
                         <Tab label="Item Two" {...a11yProps(1)} />
                     </Tabs>
