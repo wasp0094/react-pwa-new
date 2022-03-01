@@ -9,8 +9,8 @@ function Home() {
             <img src={banner} alt='banner' style={{ width: "100vw" }} />
             <hr />
             <Box style={{ marginTop: '3vh' }}>
-                <h3>Daily Tasks</h3>
-                <p>you dont have any daily tasks yet</p>
+                <h3>Scan Prescription</h3>
+                <p>Lorem30</p>
             </Box>
             <hr />
             <Box style={{ marginTop: '5vh' }}>
