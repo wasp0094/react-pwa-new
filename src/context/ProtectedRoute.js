@@ -4,8 +4,6 @@ import { useUserAuth } from "./UserAuthContext";
 
 function ProtectedRoute({ children }) {
   let { user } = useUserAuth();
-  console.trace();
-  // console.log()
   if (!user) {
     return <Navigate to="/" noThrow />;
   }

@@ -7,7 +7,7 @@ import {
   signInWithPopup,
   onAuthStateChanged,
 } from "firebase/auth";
-import { auth } from "../firebase";
+import { auth } from "../firebase/firebase";
 import { useNavigate } from "react-router-dom";
 
 const userAuthContext = createContext();
@@ -36,7 +36,7 @@ export function UserAuthContextProvider({ children }) {
       if (currentUser) navigate("/profile");
     });
     return unsubscribe;
-  }, [user]);
+  }, [user, navigate]);
   return (
     <userAuthContext.Provider
       value={{ user, signUp, logIn, logOut, signInWithGoogle }}

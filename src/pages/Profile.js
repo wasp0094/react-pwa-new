@@ -9,7 +9,7 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import Button from "@mui/material/Button";
-import BottomNav from "./BottomNav";
+import BottomNav from "../components/mobile/BottomNav";
 
 import { useUserAuth } from "../context/UserAuthContext";
 
