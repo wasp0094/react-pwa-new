@@ -1,4 +1,17 @@
-export default function leftArmAbduction(obj12, obj14) {
+let counter = 0;
+let set_counter = 0;
+let up = false,
+  down = false;
+let maxAngle = 10;
+let maxAngleSum = 0;
+let dayRange = 0;
+
+export default function leftArmAbduction(
+  obj12,
+  obj14,
+  camera,
+  { requiredSets, requiredReps }
+) {
   const vector1 = [obj12.x - obj14.x, obj12.y - obj14.y];
   const vector2 = [obj12.x - obj12.x, obj12.y - obj12.y - 0.3];
 
@@ -19,26 +32,23 @@ export default function leftArmAbduction(obj12, obj14) {
     up = false;
     down = false;
     if (counter % 2 === 0) {
-      // reps.innerHTML = '#reps = ' + counter/2;
-      console.log("#reps = " + counter / 2);
-      console.log(maxAngle);
-      dayRange += maxAngle;
+      maxAngleSum += maxAngle;
+      dayRange = (
+        (maxAngleSum / Math.ceil(counter / 2)) *
+        (set_counter ? set_counter : 1)
+      ).toFixed(2);
       maxAngle = 10;
     }
   }
 
-  if (counter / 2 === 5) {
-    counter = 0;
-    //   reps.innerHTML = '#reps = ' + Math.trunc(counter);
-    console.log("#reps = " + Math.trunc(counter));
+  if (counter / 2 === requiredReps) {
     set_counter += 1;
-    //   sets.innerHTML = "#sets " + set_counter;
-    console.log("#sets " + set_counter);
+    if (set_counter === requiredSets) {
+      camera.stop();
+      console.log({ counter: Math.ceil(counter / 2), set_counter, dayRange });
+      return { counter: Math.ceil(counter / 2), set_counter, dayRange };
+    }
+    counter = 0;
   }
-
-  if (set_counter === 3) {
-    return (dayRange / (5 * 3)).toFixed(2);
-  }
-
-  return 0;
+  return { counter: Math.ceil(counter / 2), set_counter, dayRange };
 }

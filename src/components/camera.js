@@ -13,12 +13,8 @@ function Camera() {
   const connect = window.drawConnectors;
   const landMarks = window.drawLandmarks;
   var camera = null;
-  let counter = 0;
-  let set_counter = 0;
-  let up = false,
-    down = false;
-  let maxAngle = 10;
-  let dayRange = 0;
+  var PosE = null;
+  let [excerciseVars, setExcerciseVars] = useState(null);
 
   const [instructImg, setInsImg] = useState({
     position: "absolute",
@@ -41,18 +37,36 @@ function Camera() {
   });
 
   function fadeInstruction() {
-    let newInsImg = { ...instructImg };
-    let newBtnStyle = { ...btnStyle };
-    newInsImg.display = "none";
-    newBtnStyle.display = "none";
+    let newInsImg = { ...instructImg, display: "none" };
+    let newBtnStyle = { ...btnStyle, display: "none" };
     setInsImg(newInsImg);
     setBtnStyle(newBtnStyle);
+    if (
+      typeof webcamRef.current !== "undefined" &&
+      webcamRef.current !== null
+    ) {
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      camera = new cam.Camera(webcamRef.current.video, {
+        onFrame: async () => {
+          await PosE.send({ image: webcamRef.current.video });
+        },
+        width: 640,
+        height: 480,
+      });
+      camera.start();
+    }
   }
-
+  const excerciseParams = { requiredSets: 1, requiredReps: 5 };
   function onResults(results) {
     if (!results.poseLandmarks) return;
-    leftArmAbduction(results.poseLandmarks[12], results.poseLandmarks[14]);
-    // console.log(results);
+    setExcerciseVars(
+      leftArmAbduction(
+        results.poseLandmarks[12],
+        results.poseLandmarks[14],
+        camera,
+        excerciseParams
+      )
+    );
     // let rangeAchieved = angleAgainstWall(results.poseLandmarks[12], results.poseLandmarks[14]);
     // console.log("Report Card for the day = " + rangeAchieved);
     const videoWidth = webcamRef.current.video.videoWidth;
@@ -100,7 +114,7 @@ function Camera() {
   }
 
   useEffect(() => {
-    const PosE = new Pose({
+    PosE = new Pose({
       locateFile: (file) => {
         return `https://cdn.jsdelivr.net/npm/@mediapipe/pose/${file}`;
       },
@@ -117,22 +131,8 @@ function Camera() {
     });
 
     PosE.onResults(onResults);
-
-    if (
-      typeof webcamRef.current !== "undefined" &&
-      webcamRef.current !== null
-    ) {
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-      camera = new cam.Camera(webcamRef.current.video, {
-        onFrame: async () => {
-          await PosE.send({ image: webcamRef.current.video });
-        },
-        width: 640,
-        height: 480,
-      });
-      camera.start();
-    }
   });
+
   return (
     <Container>
       <header className="App-header position-relative">
@@ -181,6 +181,7 @@ function Camera() {
       >
         Start
       </Button>
+      <p>{excerciseVars ? excerciseVars.dayRange : null}</p>
     </Container>
   );
 }
