@@ -20,8 +20,8 @@ function Camera() {
     position: "absolute",
     marginLeft: "auto",
     marginRight: "auto",
+    top: 0,
     left: 0,
-    right: 0,
     textAlign: "center",
     zindex: 9,
     width: "80vw",
@@ -134,7 +134,7 @@ function Camera() {
   });
 
   return (
-    <Container>
+    <Container style={{ position: "relative" }}>
       <header className="App-header position-relative">
         <Webcam
           hidden
@@ -170,7 +170,7 @@ function Camera() {
       <img
         src={instruction}
         alt="instruction"
-        className="img-fluid position-absolute"
+        className="img-fluid"
         style={instructImg}
       />
       <Button

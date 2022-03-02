@@ -8,12 +8,13 @@ import {
   onAuthStateChanged,
 } from "firebase/auth";
 import { auth } from "../firebase/firebase";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const userAuthContext = createContext();
 export function UserAuthContextProvider({ children }) {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState({ email: "erfgf" });
   const navigate = useNavigate();
+  const location = useLocation();
   function signUp(email, password) {
     return createUserWithEmailAndPassword(auth, email, password);
   }
@@ -33,7 +34,9 @@ export function UserAuthContextProvider({ children }) {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      if (currentUser) navigate("/home");
+      if (currentUser) {
+        navigate(location.pathname);
+      }
     });
     return unsubscribe;
     // eslint-disable-next-line
