@@ -36,7 +36,8 @@ export function UserAuthContextProvider({ children }) {
       if (currentUser) navigate("/profile");
     });
     return unsubscribe;
-  }, [user, navigate]);
+    // eslint-disable-next-line
+  }, [user]);
   return (
     <userAuthContext.Provider
       value={{ user, signUp, logIn, logOut, signInWithGoogle }}
