@@ -1,17 +1,15 @@
 import { Pose } from "@mediapipe/pose";
-import * as pose from "@mediapipe/pose";
 import React, { useRef, useEffect, useState } from "react";
 import * as cam from "@mediapipe/camera_utils";
 import Webcam from "react-webcam";
 import { Container, Button } from "react-bootstrap";
 import instruction from "../assets/banner1.jpg";
 import leftArmAbduction from "../excercises/leftArmAbduction";
+import drawCanvas from "../utilities/draw-canvas";
 
 function Camera() {
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
-  const connect = window.drawConnectors;
-  const landMarks = window.drawLandmarks;
   var camera = null;
   var PosE = null;
   let [excerciseVars, setExcerciseVars] = useState(null);
@@ -67,53 +65,11 @@ function Camera() {
         excerciseParams
       )
     );
-    // let rangeAchieved = angleAgainstWall(results.poseLandmarks[12], results.poseLandmarks[14]);
-    // console.log("Report Card for the day = " + rangeAchieved);
-    const videoWidth = webcamRef.current.video.videoWidth;
-    const videoHeight = webcamRef.current.video.videoHeight;
-
-    // Set canvas width
-    canvasRef.current.width = videoWidth;
-    canvasRef.current.height = videoHeight;
-    const canvasElement = canvasRef.current;
-    const canvasCtx = canvasElement.getContext("2d");
-    canvasCtx.save();
-    canvasCtx.clearRect(0, 0, canvasElement.width, canvasElement.height);
-    canvasCtx.drawImage(
-      results.segmentationMask,
-      0,
-      0,
-      canvasElement.width,
-      canvasElement.height
-    );
-
-    // Only overwrite existing pixels.
-    canvasCtx.globalCompositeOperation = "source-in";
-    canvasCtx.fillStyle = "#00000000";
-    canvasCtx.fillRect(0, 0, canvasElement.width, canvasElement.height);
-
-    // Only overwrite missing pixels.
-    canvasCtx.globalCompositeOperation = "destination-atop";
-    canvasCtx.drawImage(
-      results.image,
-      0,
-      0,
-      canvasElement.width,
-      canvasElement.height
-    );
-    canvasCtx.globalCompositeOperation = "source-over";
-    connect(canvasCtx, results.poseLandmarks, pose.POSE_CONNECTIONS, {
-      color: "#00FF00",
-      lineWidth: 4,
-    });
-    landMarks(canvasCtx, results.poseLandmarks, {
-      color: "#FF0000",
-      lineWidth: 2,
-    });
-    canvasCtx.restore();
+    drawCanvas(webcamRef, canvasRef, results);
   }
 
   useEffect(() => {
+    //eslint-disable-next-line
     PosE = new Pose({
       locateFile: (file) => {
         return `https://cdn.jsdelivr.net/npm/@mediapipe/pose/${file}`;
@@ -131,7 +87,7 @@ function Camera() {
     });
 
     PosE.onResults(onResults);
-  });
+  }, []);
 
   return (
     <Container style={{ position: "relative" }}>
