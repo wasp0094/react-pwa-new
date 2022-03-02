@@ -1,5 +1,4 @@
 import React from "react";
-//import BottomNav from '../BottomNav';
 
 function Dashboard() {
   return (
@@ -7,7 +6,6 @@ function Dashboard() {
       <div>
         <h1>Dashboard</h1>
       </div>
-      {/* <BottomNav /> */}
     </>
   );
 }

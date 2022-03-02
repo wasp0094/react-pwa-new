@@ -2,8 +2,6 @@ import React from "react";
 import BottomNav from "../components/mobile/BottomNav";
 import DailyTask from "../components/mobile/DailyTask";
 import Dashboard from "../components/mobile/Dashboard";
-
-import PropTypes from "prop-types";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
@@ -29,12 +27,6 @@ function TabPanel(props) {
   );
 }
 
-TabPanel.propTypes = {
-  children: PropTypes.node,
-  index: PropTypes.number.isRequired,
-  value: PropTypes.number.isRequired,
-};
-
 function a11yProps(index) {
   return {
     id: `simple-tab-${index}`,
@@ -50,13 +42,10 @@ function Routine() {
   };
   return (
     <>
-      {/* <div>
-                <h1>routine</h1>
-            </div> */}
       <Box sx={{ width: "100%" }}>
         <Box
           sx={{ borderBottom: 1, borderColor: "divider" }}
-          style={{ position: "sticky", top: "0", width: "100%" }}
+          style={{ position: "sticky", top: "0", width: "100%", zIndex: "30" }}
         >
           <Tabs
             value={value}
