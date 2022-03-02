@@ -33,7 +33,7 @@ export function UserAuthContextProvider({ children }) {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      if (currentUser) navigate("/profile");
+      if (currentUser) navigate("/home");
     });
     return unsubscribe;
     // eslint-disable-next-line

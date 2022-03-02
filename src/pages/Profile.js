@@ -61,11 +61,6 @@ function Profile() {
             {" "}
             <ListItemText secondary="profile information"></ListItemText>{" "}
           </ListItem>
-          {/* <ListItem> <ListItemText primary="Weight:"></ListItemText> </ListItem>
-          <ListItem> <ListItemText primary="Blood Group:"></ListItemText> </ListItem>
-          <ListItem> <ListItemText primary="Assigned Doctor:"></ListItemText> </ListItem> */}
-          {/* <ListItem divider> </ListItem>
-          <ListItem> <ListItemText secondary="private information"></ListItemText> </ListItem> */}
           <ListItem>
             {" "}
             <ListItemText primary={user && user.email}></ListItemText>{" "}
