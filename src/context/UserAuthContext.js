@@ -49,6 +49,7 @@ export function UserAuthContextProvider({ children }) {
     </userAuthContext.Provider>
   );
 }
+
 export function useUserAuth() {
   return useContext(userAuthContext);
 }

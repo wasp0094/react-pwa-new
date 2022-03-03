@@ -1,5 +1,5 @@
-let counter = 0;
-let set_counter = 0;
+let repsCompleted = 0;
+let setsCompleted = 0;
 let up = false,
   down = false;
 let maxAngle = 10;
@@ -9,8 +9,8 @@ let dayRange = 0;
 export default function leftArmAbduction(
   obj12,
   obj14,
-  camera,
-  { requiredSets, requiredReps }
+  { requiredReps },
+  setExcerciseVars
 ) {
   const vector1 = [obj12.x - obj14.x, obj12.y - obj14.y];
   const vector2 = [obj12.x - obj12.x, obj12.y - obj12.y - 0.3];
@@ -28,27 +28,31 @@ export default function leftArmAbduction(
     up = true;
   }
   if (up === true && down === true) {
-    counter += 1;
+    repsCompleted += 1;
     up = false;
     down = false;
-    if (counter % 2 === 0) {
+    if (repsCompleted % 2 === 0) {
       maxAngleSum += maxAngle;
       dayRange = (
-        (maxAngleSum / Math.ceil(counter / 2)) *
-        (set_counter ? set_counter : 1)
+        maxAngleSum /
+        (repsCompleted / 2 + setsCompleted * requiredReps)
       ).toFixed(2);
       maxAngle = 10;
+      setExcerciseVars({
+        repsCompleted: Math.ceil(repsCompleted / 2),
+        dayRange,
+        setsCompleted,
+      });
     }
   }
 
-  if (counter / 2 === requiredReps) {
-    set_counter += 1;
-    if (set_counter === requiredSets) {
-      camera.stop();
-      console.log({ counter: Math.ceil(counter / 2), set_counter, dayRange });
-      return { counter: Math.ceil(counter / 2), set_counter, dayRange };
-    }
-    counter = 0;
+  if (repsCompleted / 2 === requiredReps) {
+    setsCompleted += 1;
+    repsCompleted = 0;
+    setExcerciseVars({
+      repsCompleted: Math.ceil(repsCompleted / 2),
+      setsCompleted,
+      dayRange,
+    });
   }
-  return { counter: Math.ceil(counter / 2), set_counter, dayRange };
 }

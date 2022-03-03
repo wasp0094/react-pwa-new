@@ -8,8 +8,10 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import { IconButton } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 function DailyTask() {
+  const navigate = useNavigate();
   return (
     <>
       <div>
@@ -28,7 +30,9 @@ function DailyTask() {
                     </Typography> */}
         </CardContent>
         <CardActions sx={{ padding: "4px 15px" }}>
-          <Button size="small">Start Now</Button>
+          <Button size="small" onClick={() => navigate("/excercise")}>
+            Start Now
+          </Button>
           <IconButton>
             <CheckCircleOutlineIcon fontSize="small" color="action" />
           </IconButton>
@@ -101,9 +105,6 @@ function DailyTask() {
           <Typography variant="h6" component="div">
             Exercise Name/Title
           </Typography>
-          {/* <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                        adjective
-                    </Typography> */}
         </CardContent>
         <CardActions sx={{ padding: "4px 15px" }}>
           <Button size="small">Start Now</Button>
