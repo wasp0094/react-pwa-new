@@ -9,7 +9,7 @@ import { UserAuthContextProvider } from "./context/UserAuthContext";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router>
+    <Router basename="/react-pwa-new">
       <UserAuthContextProvider>
         <App />
       </UserAuthContextProvider>
