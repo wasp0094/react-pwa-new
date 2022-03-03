@@ -1,8 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap');
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    overflow: hidden;
 }
 
 .account-button {
@@ -10,7 +11,7 @@
 }
 
 body {
-    background-color: hsl(36, 100%, 94%);
+    background-color: #fcf4f0;
     color: rgb(36, 36, 36);
 }
 
@@ -24,7 +25,11 @@ body {
 }
 
 .css-1480iag-MuiInputBase-root-MuiInput-root {
-    font-family: "Fedora One";
+    font-family: "Ubuntu";
+}
+
+.details {
+    margin-top: 2rem;
 }
 
 .else {
@@ -48,7 +53,7 @@ body {
 
 .forgot {
     color: #fa7d34;
-    font-family: "Fredoka One";
+    font-family: "Ubuntu";
 }
 
 .google {
@@ -85,7 +90,7 @@ hr {
 
 .login-content h2 {
     font-size: 2rem;
-    padding-bottom: 1rem;
+    padding-bottom: 0.8rem;
     letter-spacing: -1px;
     margin: 0;
 }
@@ -98,7 +103,7 @@ hr {
 
 .text1,
 .sign-up .link {
-    font-family: "Fredoka One";
+    font-family: "Ubuntu";
     color: #fa7d34;
 }
 

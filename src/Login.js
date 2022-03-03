@@ -13,7 +13,6 @@ import { FaFacebook } from 'react-icons/fa';
 import { FaGooglePlus } from 'react-icons/fa';
 import { AiFillTwitterCircle } from "react-icons/ai";
 
-// import { AiFillTwitterCircle } from 'react-icons/fa';
 //import GoogleButton from 'react-google-button';
 
 function Login() {
@@ -64,7 +63,7 @@ function Login() {
                             </Box>
                             </div>
                                 <div className = 'error-msg' style={{marginTop: '0.5rem', marginLeft: '0.5rem'}}>
-                                    {error && <p className='error-text text1' style={{color: 'red', fontSize: '0.8rem'}}> {error}</p>}
+                                    {error && <p className='error-text' style={{color: 'red', fontSize: '0.8rem', fontWeight:'600'}}> {error}</p>}
                                 </div>
                                 <Button variant="contained" type='Submit' className = "account-button login-btn" style={{marginTop: "0.6rem", borderRadius: "30px"}}>Sign In</Button>
                                 <div className = "else">
@@ -77,7 +76,7 @@ function Login() {
                                     <FaGooglePlus className = 'google' onClick={handleGoogleSignIn}/>
                                     <AiFillTwitterCircle className = 'twitter'/>
                                 </div>
-                                <p className = "sign-up" style={{margin: "5rem auto 0", textAlign: 'center', fontSize: '0.9rem', fontFamily: "Fredoka One", color:' #fa7d34'}}>Don't have an account? <Link className = "link" to="/signup">Sign up</Link></p>
+                                <p className = "sign-up" style={{margin: "5rem auto 0", textAlign: 'center', fontSize: '0.9rem', fontFamily: "Ubuntu", color:' #fa7d34'}}>Don't have an account? <Link className = "link" to="/signup">Sign up</Link></p>
                             </Stack>
                         </div>
                     </Box>
