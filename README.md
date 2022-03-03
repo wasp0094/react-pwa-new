@@ -1,1 +1,1 @@
-# react-pwa-new
+# react-pwa-new -- Conflict branch
