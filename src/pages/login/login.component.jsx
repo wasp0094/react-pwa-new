@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { useUserAuth } from "../context/UserAuthContext";
+import { useUserAuth } from "../../context/UserAuthContext";
 import Box from "@mui/material/Box";
 import { Button } from "@mui/material";
 import { Stack } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
-import blob from "../assets/blob1.svg";
-import "./login.css";
+import blob from "../../assets/blob1.svg";
+import "./login.styles.css";
 import TextField from "@mui/material/TextField";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";

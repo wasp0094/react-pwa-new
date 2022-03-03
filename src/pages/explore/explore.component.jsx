@@ -1,6 +1,6 @@
 import React from "react";
-import Workout from "../assets/Workout-bro.svg";
-import "./Explore.css";
+import Workout from "../../assets/Workout-bro.svg";
+import "./explore.styles.css";
 import { IconButton } from "@mui/material";
 import SortIcon from "@mui/icons-material/Sort";
 import Accordion from "@mui/material/Accordion";
@@ -8,7 +8,6 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import BottomNav from "../components/mobile/BottomNav";
 
 function Explore() {
   return (
@@ -77,7 +76,6 @@ function Explore() {
             </AccordionDetails>
           </Accordion>
         </div>
-        <BottomNav />
       </main>
     </>
   );

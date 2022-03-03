@@ -1,7 +1,6 @@
 import React from "react";
-import BottomNav from "../components/mobile/BottomNav";
-import DailyTask from "../components/mobile/DailyTask";
-import Dashboard from "../components/mobile/Dashboard";
+import DailyTask from "../../components/mobile/daily-task.component";
+import Dashboard from "../../components/mobile/dashboard.component";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
@@ -64,7 +63,6 @@ function Routine() {
           <Dashboard />
         </TabPanel>
       </Box>
-      <BottomNav />
     </>
   );
 }

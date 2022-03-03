@@ -9,11 +9,6 @@
   background-image: linear-gradient(#f89b67, #f68341);
 }
 
-body {
-  background-color: hsl(36, 100%, 94%);
-  color: rgb(36, 36, 36);
-}
-
 .blob-box {
   min-width: 100vw;
 }
