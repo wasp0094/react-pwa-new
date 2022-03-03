@@ -1,17 +1,19 @@
 {
   "files": {
-    "main.css": "/react-pwa-new/static/css/main.0b077d98.css",
-    "main.js": "/react-pwa-new/static/js/main.6e946594.js",
+    "main.css": "/react-pwa-new/static/css/main.39d28829.css",
+    "main.js": "/react-pwa-new/static/js/main.7dd869d9.js",
     "static/js/377.c823e11a.chunk.js": "/react-pwa-new/static/js/377.c823e11a.chunk.js",
+    "static/media/PROCTIFY.ME.png": "/react-pwa-new/static/media/PROCTIFY.ME.c0039d6e37626c85b648.png",
     "service-worker.js": "/react-pwa-new/service-worker.js",
     "static/media/Workout-bro.svg": "/react-pwa-new/static/media/Workout-bro.a7e0fcbd82231a4f07b8ca72c5e47504.svg",
+    "static/media/blob1.svg": "/react-pwa-new/static/media/blob1.0d5369bb791d8dc7b25410a5fe553ece.svg",
     "index.html": "/react-pwa-new/index.html",
-    "main.0b077d98.css.map": "/react-pwa-new/static/css/main.0b077d98.css.map",
-    "main.6e946594.js.map": "/react-pwa-new/static/js/main.6e946594.js.map",
+    "main.39d28829.css.map": "/react-pwa-new/static/css/main.39d28829.css.map",
+    "main.7dd869d9.js.map": "/react-pwa-new/static/js/main.7dd869d9.js.map",
     "377.c823e11a.chunk.js.map": "/react-pwa-new/static/js/377.c823e11a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.0b077d98.css",
-    "static/js/main.6e946594.js"
+    "static/css/main.39d28829.css",
+    "static/js/main.7dd869d9.js"
   ]
 }
