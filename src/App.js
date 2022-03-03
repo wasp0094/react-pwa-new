@@ -14,15 +14,19 @@ import Loading from "./components/loading/loading.component";
 
 // login page, (home screen for mobile)
 
+function LoginLoader({ user }) {
+  return user ? <Navigate to="/home" /> : <Login />;
+}
 function App() {
   const { user, loadingUser } = useUserAuth();
-  function LoginLoader() {
-    return user ? <Navigate to="/home" /> : <Login />;
-  }
   return (
     <>
       <Routes>
-        <Route exact path="/" element={Loading(LoginLoader)(loadingUser)} />
+        <Route
+          exact
+          path="/"
+          element={Loading(LoginLoader)({ isLoading: loadingUser, user })}
+        />
         <Route path="/signup" element={<CreateAccount />} />
         <Route
           path="/profile"

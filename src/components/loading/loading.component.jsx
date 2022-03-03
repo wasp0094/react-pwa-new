@@ -1,7 +1,8 @@
 import React from "react";
 import AppStart from "../app-start/app-start.component";
+import "./loading.styles.css";
 function Loading(WrappedComponent) {
-  return function (isLoading) {
+  return function ({ isLoading, ...otherProps }) {
     return (
       <>
         {isLoading ? (
@@ -9,7 +10,7 @@ function Loading(WrappedComponent) {
             <AppStart />
           </div>
         ) : (
-          <WrappedComponent />
+          <WrappedComponent {...otherProps} />
         )}
       </>
     );

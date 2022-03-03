@@ -1,5 +1,5 @@
 import { Pose } from "@mediapipe/pose";
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import * as cam from "@mediapipe/camera_utils";
 import "./camera.style.css";
 import Webcam from "react-webcam";
@@ -8,6 +8,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import excercises from "../../excercises/excercises";
 import drawCanvas from "../../utilities/draw-canvas";
 import { useExcerciseData } from "../../context/ExcerciseDataContext";
+import Loading from "../loading/loading.component";
 
 let camera = null;
 function Camera(props) {
@@ -33,8 +34,9 @@ function Camera(props) {
       return camera.stop;
     }
   }
-
+  const [loadingCam, setLoadingCam] = useState(true);
   function onResults(results) {
+    if (loadingCam) setLoadingCam(false);
     if (!results.poseLandmarks) return;
     excercises[excercise].calculate(
       results.poseLandmarks[12],
@@ -70,7 +72,7 @@ function Camera(props) {
     });
 
     PosE.onResults(onResults);
-    startCamera();
+    return startCamera();
   }
 
   useEffect(PoseSetup, []);
@@ -78,11 +80,22 @@ function Camera(props) {
   return (
     <Container>
       <Webcam hidden ref={webcamRef} className="camera-webcam" />
-      <canvas ref={canvasRef} className="output_canvas camera-canvas"></canvas>
+      <canvas
+        ref={canvasRef}
+        className={`output_canvas camera-canvas ${!loadingCam && "block"}`}
+      ></canvas>
+      {Loading(ResultContainer)({ isLoading: loadingCam, excerciseVars })}
+    </Container>
+  );
+}
+
+function ResultContainer({ excerciseVars }) {
+  return (
+    <div className="result-container">
       <p>Day range :: {excerciseVars.dayRange}</p>
       <p>Reps :: {excerciseVars.repsCompleted}</p>
       <p>Sets :: {excerciseVars.setsCompleted}</p>
-    </Container>
+    </div>
   );
 }
 

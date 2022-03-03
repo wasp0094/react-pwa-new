@@ -17,10 +17,12 @@ export function UserAuthContextProvider({ children }) {
   const navigate = useNavigate();
   const location = useLocation();
   function signUp(email, password) {
+    setLoadingUser(true);
     return createUserWithEmailAndPassword(auth, email, password);
   }
 
   function logIn(email, password) {
+    setLoadingUser(true);
     return signInWithEmailAndPassword(auth, email, password);
   }
 
@@ -29,6 +31,7 @@ export function UserAuthContextProvider({ children }) {
   }
 
   function signInWithGoogle() {
+    setLoadingUser(true);
     const googleAuthProvider = new GoogleAuthProvider();
     return signInWithPopup(auth, googleAuthProvider);
   }
@@ -45,7 +48,15 @@ export function UserAuthContextProvider({ children }) {
   }, []);
   return (
     <userAuthContext.Provider
-      value={{ loadingUser, user, signUp, logIn, logOut, signInWithGoogle }}
+      value={{
+        loadingUser,
+        user,
+        signUp,
+        logIn,
+        logOut,
+        signInWithGoogle,
+        setLoadingUser,
+      }}
     >
       {children}
     </userAuthContext.Provider>
