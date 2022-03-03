@@ -12,7 +12,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 const userAuthContext = createContext();
 export function UserAuthContextProvider({ children }) {
-  const [user, setUser] = useState({ email: "erfgf" });
+  const [user, setUser] = useState(null);
+  const [loadingUser, setLoadingUser] = useState(true);
   const navigate = useNavigate();
   const location = useLocation();
   function signUp(email, password) {
@@ -34,16 +35,17 @@ export function UserAuthContextProvider({ children }) {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
+      setLoadingUser(false);
       if (currentUser) {
         navigate(location.pathname);
       }
     });
     return unsubscribe;
     // eslint-disable-next-line
-  }, [user]);
+  }, []);
   return (
     <userAuthContext.Provider
-      value={{ user, signUp, logIn, logOut, signInWithGoogle }}
+      value={{ loadingUser, user, signUp, logIn, logOut, signInWithGoogle }}
     >
       {children}
     </userAuthContext.Provider>

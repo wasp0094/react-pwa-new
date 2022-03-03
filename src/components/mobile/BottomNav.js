@@ -30,28 +30,28 @@ function BottomNav() {
               icon={<HomeIcon />}
               component={Link}
               to="/home"
-              value={"/react-pwa-new/home"}
+              value={"/home"}
             />
             <BottomNavigationAction
               label="Explore"
               icon={<ExploreIcon />}
               component={Link}
               to="/explore"
-              value={"/react-pwa-new/explore"}
+              value={"/explore"}
             />
             <BottomNavigationAction
               label="Routine"
               icon={<FavoriteIcon />}
               component={Link}
               to="/routine"
-              value={"/react-pwa-new/routine"}
+              value={"/routine"}
             />
             <BottomNavigationAction
               label="Profile"
               icon={<PersonIcon />}
               component={Link}
               to={"/profile"}
-              value={"/react-pwa-new/profile"}
+              value={"/profile"}
             />
           </BottomNavigation>
         </Paper>
