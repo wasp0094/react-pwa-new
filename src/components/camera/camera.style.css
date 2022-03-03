@@ -1,0 +1,10 @@
+.camera-canvas,
+.camera-webcam {
+  display: none;
+  width: 100%;
+  height: 15em;
+}
+
+.block {
+  display: block;
+}

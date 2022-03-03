@@ -1,0 +1,107 @@
+@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.account-button {
+  background-image: linear-gradient(#f89b67, #f68341);
+}
+
+.blob-box {
+  min-width: 100vw;
+}
+
+.content-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.css-1480iag-MuiInputBase-root-MuiInput-root {
+  font-family: "Fedora One";
+}
+
+.else {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+
+.error-msg {
+  height: 1.5rem;
+  margin-left: 0.4rem;
+}
+
+.facebook {
+  font-size: 1.85rem;
+  margin-right: 0.8rem;
+  color: rgb(57, 57, 180);
+}
+
+.forgot {
+  color: #fa7d34;
+  font-family: "Fredoka One";
+}
+
+.google {
+  margin-right: 0.8rem;
+  font-size: 1.95rem;
+  color: Red;
+}
+
+hr {
+  width: 20%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
+}
+
+.input-detail {
+  padding: 0.5rem 0rem 0.2rem 0rem;
+}
+
+.input-details {
+  padding-top: 2rem;
+}
+
+.login-btn {
+  text-align: center;
+}
+
+.login-content {
+  align-items: center;
+  padding: 0 3rem;
+}
+
+.login-content h2 {
+  font-size: 2rem;
+  padding-bottom: 1rem;
+  letter-spacing: -1px;
+  margin: 0;
+}
+
+.social-accounts {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.text1,
+.sign-up .link {
+  font-family: "Fredoka One";
+  color: #fa7d34;
+}
+
+.top-blob {
+  float: right;
+}
+
+.twitter {
+  font-size: 2.2rem;
+  color: rgb(4, 100, 226);
+}
