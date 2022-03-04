@@ -8,7 +8,7 @@ function Explore() {
   return (
     <main className="explore">
       <div className="explore-header">
-        <span className="explore-heading">Explore</span>
+        <h3 className="explore-heading">Explore</h3>
         <IconButton>
           <SortIcon fontSize="small" color="action" />
         </IconButton>
