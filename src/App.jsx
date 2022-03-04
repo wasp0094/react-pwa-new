@@ -8,7 +8,7 @@ import Home from "./pages/home/home.component";
 import Explore from "./pages/explore/explore.component";
 import Login from "./pages/login/login.component";
 import Routine from "./pages/routine/routine.component";
-import BottomNav from "./components/mobile/bottom-nav.component";
+import BottomNav from "./components/bottom-nav/bottom-nav.component";
 import Excercise from "./components/start-excercise/excercise.component";
 import Loading from "./components/loading/loading.component";
 
