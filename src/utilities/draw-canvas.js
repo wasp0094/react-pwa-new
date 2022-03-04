@@ -7,8 +7,8 @@ export default function drawCanvas(webcamRef, canvasRef, results) {
   const videoHeight = webcamRef.current.video.videoHeight;
 
   // Set canvas width
-  canvasRef.current.width = 320;
-  canvasRef.current.height = 240;
+  canvasRef.current.width = videoWidth;
+  canvasRef.current.height = videoHeight;
   const canvasElement = canvasRef.current;
   const canvasCtx = canvasElement.getContext("2d");
   canvasCtx.save();

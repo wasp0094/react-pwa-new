@@ -6,6 +6,9 @@ import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import "./routine.styles.css";
+import { Routes, Route, Navigate } from "react-router-dom";
+import Excercise from "../../components/start-excercise/excercise.component";
+import { useExcerciseData } from "../../context/ExcerciseDataContext";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -34,36 +37,51 @@ function a11yProps(index) {
   };
 }
 
-function Routine() {
+function RoutinePage() {
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
   return (
-    <>
-      <Box sx={{ width: "100%" }}>
-        <Box
-          className="routine-tabs-container"
-          sx={{ borderBottom: 1, borderColor: "divider" }}
+    <Box sx={{ width: "100%" }}>
+      <Box
+        className="routine-tabs-container"
+        sx={{ borderBottom: 1, borderColor: "divider" }}
+      >
+        <Tabs
+          value={value}
+          onChange={handleChange}
+          aria-label="basic tabs example"
+          className="routine-tabs"
         >
-          <Tabs
-            value={value}
-            onChange={handleChange}
-            aria-label="basic tabs example"
-            className="routine-tabs"
-          >
-            <Tab label="Daily Tasks" {...a11yProps(0)} />
-            <Tab label="Dashboard" {...a11yProps(1)} />
-          </Tabs>
-        </Box>
-        <TabPanel value={value} index={0}>
-          <DailyTask />
-        </TabPanel>
-        <TabPanel value={value} index={1}>
-          <Dashboard />
-        </TabPanel>
+          <Tab label="Daily Tasks" {...a11yProps(0)} />
+          <Tab label="Dashboard" {...a11yProps(1)} />
+        </Tabs>
       </Box>
+      <TabPanel value={value} index={0}>
+        <DailyTask />
+      </TabPanel>
+      <TabPanel value={value} index={1}>
+        <Dashboard />
+      </TabPanel>
+    </Box>
+  );
+}
+
+function Routine() {
+  const { excerciseVars } = useExcerciseData();
+  return (
+    <>
+      <Routes>
+        <Route path="/" element={<RoutinePage />} />
+        <Route
+          path="/excercise"
+          element={
+            excerciseVars.type ? <Excercise /> : <Navigate to="/routine" />
+          }
+        />
+      </Routes>
     </>
   );
 }

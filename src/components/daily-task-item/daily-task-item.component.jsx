@@ -6,9 +6,13 @@ import Typography from "@mui/material/Typography";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import { IconButton } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { useExcerciseData } from "../../context/ExcerciseDataContext";
+import excercises from "../../excercises/excercises";
 
-function DailyTaskItem() {
+function DailyTaskItem({ task }) {
   const navigate = useNavigate();
+  const { excerciseVars, setExcerciseVars } = useExcerciseData();
+  const { name } = excercises[task];
   return (
     <div className="daily-task-item">
       <Card sx={{ minWidth: 275, background: "#d7e3fc", borderRadius: "13px" }}>
@@ -17,11 +21,17 @@ function DailyTaskItem() {
             Exercise tag
           </Typography>
           <Typography variant="h6" component="div">
-            Exercise Name/Title
+            {name}
           </Typography>
         </CardContent>
         <CardActions sx={{ padding: "4px 15px" }}>
-          <Button size="small" onClick={() => navigate("/excercise")}>
+          <Button
+            size="small"
+            onClick={() => {
+              setExcerciseVars({ ...excerciseVars, type: task });
+              navigate("excercise", { replace: true });
+            }}
+          >
             Start Now
           </Button>
           <IconButton>

@@ -16,10 +16,10 @@ import { AiFillTwitterCircle } from "react-icons/ai";
 
 function Login() {
   const [email, setEmail] = useState("");
-  const [error, setError] = useState("");
   const [password, setPassword] = useState("");
   const { logIn, signInWithGoogle, setLoadingUser } = useUserAuth();
   const navigate = useNavigate();
+  const error = null;
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {

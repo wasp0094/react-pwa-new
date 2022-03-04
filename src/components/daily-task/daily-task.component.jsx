@@ -1,12 +1,14 @@
 import DailyTaskItem from "../daily-task-item/daily-task-item.component";
+import excercises from "../../excercises/excercises";
 
 function DailyTask() {
+  const tasks = Object.keys(excercises);
   return (
-    <>
-      <DailyTaskItem />
-      <DailyTaskItem />
-      <DailyTaskItem />
-    </>
+    <div className="daily-task">
+      {tasks.map((task) => (
+        <DailyTaskItem task={task} />
+      ))}
+    </div>
   );
 }
 

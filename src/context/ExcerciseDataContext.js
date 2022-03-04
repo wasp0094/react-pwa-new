@@ -4,6 +4,7 @@ const excerciseDataContext = createContext();
 
 export default function ExcerciseDataContextProvider({ children }) {
   let [excerciseVars, setExcerciseVars] = useState({
+    type: "",
     setsCompleted: 0,
     repsCompleted: 0,
     dayRange: 0,

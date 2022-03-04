@@ -11,10 +11,9 @@ import { useExcerciseData } from "../../context/ExcerciseDataContext";
 import Loading from "../loading/loading.component";
 
 let camera = null;
-function Camera(props) {
+function Camera({ excercise, handleEndExcercise }) {
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
-  const { excercise, handleEndExcercise } = props;
   var PosE = null;
   let { excerciseVars, setExcerciseVars } = useExcerciseData();
   const excerciseParams = { requiredSets: 1, requiredReps: 1 };
@@ -51,9 +50,12 @@ function Camera(props) {
     if (excerciseVars.setsCompleted === excerciseParams.requiredSets) {
       handleEndExcercise(2);
     }
+    //eslint-disable-next-line
   }, [excerciseVars]);
 
   function PoseSetup() {
+    // console.log(excercise);
+
     //eslint-disable-next-line
     PosE = new Pose({
       locateFile: (file) => {
@@ -72,7 +74,7 @@ function Camera(props) {
     });
 
     PosE.onResults(onResults);
-    return startCamera();
+    startCamera();
   }
 
   useEffect(PoseSetup, []);

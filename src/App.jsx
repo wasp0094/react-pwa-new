@@ -1,7 +1,10 @@
 import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
+
 import { useUserAuth } from "./context/UserAuthContext";
 import ProtectedRoute from "./context/ProtectedRoute";
+import ExcerciseDataContextProvider from "./context/ExcerciseDataContext";
+
 import CreateAccount from "./pages/create-account/create-account.component";
 import Profile from "./pages/profile/profile.component";
 import Home from "./pages/home/home.component";
@@ -9,14 +12,12 @@ import Explore from "./pages/explore/explore.component";
 import Login from "./pages/login/login.component";
 import Routine from "./pages/routine/routine.component";
 import BottomNav from "./components/bottom-nav/bottom-nav.component";
-import Excercise from "./components/start-excercise/excercise.component";
 import Loading from "./components/loading/loading.component";
 
-// login page, (home screen for mobile)
-
 function LoginLoader({ user }) {
-  return user ? <Navigate to="/home" /> : <Login />;
+  return user ? <Navigate to="/home" replace /> : <Login />;
 }
+
 function App() {
   const { user, loadingUser } = useUserAuth();
   return (
@@ -37,14 +38,6 @@ function App() {
           }
         />
         <Route
-          path="/excercise"
-          element={
-            <ProtectedRoute>
-              <Excercise />
-            </ProtectedRoute>
-          }
-        />
-        <Route
           path="/home"
           element={
             <ProtectedRoute>
@@ -61,10 +54,12 @@ function App() {
           }
         />
         <Route
-          path="/routine"
+          path="/routine/*"
           element={
             <ProtectedRoute>
-              <Routine />
+              <ExcerciseDataContextProvider>
+                <Routine />
+              </ExcerciseDataContextProvider>
             </ProtectedRoute>
           }
         />

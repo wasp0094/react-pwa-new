@@ -9,7 +9,7 @@ function ProtectedRoute({ children }) {
     return <AppStart />;
   }
   if (!user && !loadingUser) {
-    return <Navigate to="/" />;
+    return <Navigate to="/" replace />;
   }
   return children;
 }

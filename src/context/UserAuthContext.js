@@ -40,7 +40,7 @@ export function UserAuthContextProvider({ children }) {
       setUser(currentUser);
       setLoadingUser(false);
       if (currentUser) {
-        navigate(location.pathname);
+        navigate(location.pathname, { replace: true });
       }
     });
     return unsubscribe;
