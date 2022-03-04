@@ -18,9 +18,9 @@
   margin: 0.5rem 1rem;
   padding: 0.5rem;
   font-size: 10px;
-  /* border-radius: 10px;
-    background-color: rgb(228, 189, 189);
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); */
+  border-radius: 10px;
+  background-color: rgb(228, 189, 189);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 
 .card-content p {

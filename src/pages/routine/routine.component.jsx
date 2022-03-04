@@ -1,10 +1,11 @@
 import React from "react";
-import DailyTask from "../../components/mobile/daily-task.component";
-import Dashboard from "../../components/mobile/dashboard.component";
+import DailyTask from "../../components/daily-task/daily-task.component";
+import Dashboard from "../../components/dashboard/dashboard.component";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
+import "./routine.styles.css";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -43,14 +44,14 @@ function Routine() {
     <>
       <Box sx={{ width: "100%" }}>
         <Box
+          className="routine-tabs-container"
           sx={{ borderBottom: 1, borderColor: "divider" }}
-          style={{ position: "sticky", top: "0", width: "100%", zIndex: "30" }}
         >
           <Tabs
             value={value}
             onChange={handleChange}
             aria-label="basic tabs example"
-            style={{ background: "#fff" }}
+            className="routine-tabs"
           >
             <Tab label="Daily Tasks" {...a11yProps(0)} />
             <Tab label="Dashboard" {...a11yProps(1)} />
