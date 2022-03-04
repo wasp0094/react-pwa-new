@@ -1,0 +1,18 @@
+.instruction-image {
+  margin-left: auto;
+  margin-right: auto;
+  top: 0;
+  left: 0;
+  text-align: center;
+  z-index: 9;
+  width: 60%;
+  height: 60%;
+  display: block;
+}
+
+.start-button {
+  position: absolute;
+  bottom: 20vh;
+  right: 20vw;
+  display: block;
+}

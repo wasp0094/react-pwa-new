@@ -1,13 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import reportWebVitals from "./reportWebVitals";
 import App from "./App";
+import { BrowserRouter as Router } from "react-router-dom";
+import { UserAuthContextProvider } from "./context/UserAuthContext";
+import "./index.css";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Router basename="/react-pwa-new">
+      <UserAuthContextProvider>
+        <App />
+      </UserAuthContextProvider>
+    </Router>
   </React.StrictMode>,
   document.getElementById("root")
 );
