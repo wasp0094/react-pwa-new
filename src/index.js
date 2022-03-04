@@ -9,7 +9,7 @@ import "./index.css";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router basename="/react-pwa-new">
+    <Router>
       <UserAuthContextProvider>
         <App />
       </UserAuthContextProvider>
