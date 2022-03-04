@@ -3,7 +3,6 @@ import DailyTask from "../../components/daily-task/daily-task.component";
 import Dashboard from "../../components/dashboard/dashboard.component";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
-import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import "./routine.styles.css";
 import { Routes, Route, Navigate } from "react-router-dom";
@@ -21,11 +20,7 @@ function TabPanel(props) {
       aria-labelledby={`simple-tab-${index}`}
       {...other}
     >
-      {value === index && (
-        <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
+      {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
     </div>
   );
 }

@@ -1,3 +1,7 @@
+.camera {
+  padding: 0;
+  padding-bottom: 56px;
+}
 .camera-canvas,
 .camera-webcam {
   display: none;

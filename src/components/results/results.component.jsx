@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useExcerciseData } from "../../context/ExcerciseDataContext";
+import { INITIAL_DATA } from "../../context/ExcerciseDataContext";
 
 function Results() {
-  const { excerciseVars } = useExcerciseData();
+  const { excerciseVars, setExcerciseVars } = useExcerciseData();
+  useEffect(() => {
+    return function cleanup() {
+      setExcerciseVars(INITIAL_DATA);
+    };
+  });
   return (
     <div className="results">
       Results <br />

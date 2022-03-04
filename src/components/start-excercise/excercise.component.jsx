@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Camera from "../camera/camera.component";
 import "./excercise.styles.css";
 import Instructions from "../instructions/instructions.component";
@@ -8,9 +8,6 @@ import Results from "../results/results.component";
 function Excercise() {
   const [started, setStarted] = useState(0);
   const { excerciseVars } = useExcerciseData();
-  useEffect(() => {
-    console.log(excerciseVars);
-  }, []);
   return (
     <div className="start-excercise">
       {started === 0 && <Instructions handleExcerciseStart={setStarted} />}

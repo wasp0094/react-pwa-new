@@ -1,4 +1,5 @@
 import leftArmAbduction from "./leftArmAbduction";
+import rightArmAbduction from "./rightArmAbduction";
 
 const excercises = {
   left_arm_abduction: {
@@ -7,7 +8,7 @@ const excercises = {
   },
   right_arm_abduction: {
     name: "Right Arm Abduction",
-    calculate: leftArmAbduction,
+    calculate: rightArmAbduction,
   },
 };
 
