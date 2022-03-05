@@ -13,7 +13,8 @@ function Excercise() {
       {started === 0 && <Instructions handleExcerciseStart={setStarted} />}
       {started === 1 && (
         <Camera
-          excercise={excerciseVars.type}
+          excercise={excerciseVars.task}
+          type={excerciseVars.type}
           handleEndExcercise={setStarted}
         />
       )}

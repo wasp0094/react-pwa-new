@@ -6,7 +6,7 @@ let maxAngle = 10;
 let maxAngleSum = 0;
 let dayRange = 0;
 
-export default function leftArmAbduction(
+export default function leftShoulderAbduction(
   points,
   excerciseVars,
   setExcerciseVars

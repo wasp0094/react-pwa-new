@@ -2,6 +2,7 @@ import { createContext, useState, useContext } from "react";
 
 const excerciseDataContext = createContext();
 export const INITIAL_DATA = {
+  task: "",
   type: "",
   setsCompleted: 0,
   repsCompleted: 0,

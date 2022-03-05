@@ -4,19 +4,19 @@ import * as cam from "@mediapipe/camera_utils";
 import Webcam from "react-webcam";
 import { Container } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import excercises from "../../excercises/excercises";
+import excercises, { calculate } from "../../excercises/excercises";
 import drawCanvas from "../../utilities/draw-canvas";
 import { useExcerciseData } from "../../context/ExcerciseDataContext";
 import Loading from "../loading/loading.component";
 import "./camera.style.css";
 
-function Camera({ excercise, handleEndExcercise }) {
+function Camera({ excercise, handleEndExcercise, type }) {
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
   var PosE = null;
   let { excerciseVars, setExcerciseVars } = useExcerciseData();
   const [loadingCam, setLoadingCam] = useState(true);
-  const excerciseObj = excercises[excercise];
+  const excercise_id = excercises[excercise][type].id;
 
   function startCamera() {
     if (
@@ -35,7 +35,7 @@ function Camera({ excercise, handleEndExcercise }) {
   function onResults(results) {
     if (loadingCam) setLoadingCam(false);
     if (!results.poseLandmarks) return;
-    excerciseObj.calculate(
+    calculate(excercise_id)(
       results.poseLandmarks,
       excerciseVars,
       setExcerciseVars

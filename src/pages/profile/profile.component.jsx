@@ -1,5 +1,4 @@
 import React from "react";
-//import { Link } from 'react-router-dom';
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import Avatar from "@mui/material/Avatar";
@@ -9,7 +8,6 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import Button from "@mui/material/Button";
-
 import { useUserAuth } from "../../context/UserAuthContext";
 
 function Profile() {
