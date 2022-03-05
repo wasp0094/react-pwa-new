@@ -1,7 +1,6 @@
 {
   "name": "pwa",
   "version": "0.1.0",
-  "homepage": ".",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.7.1",
