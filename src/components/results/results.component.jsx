@@ -12,7 +12,9 @@ function Results() {
   return (
     <div className="results">
       Results <br />
-      {excerciseVars.setsCompleted} :: {excerciseVars.dayRange}
+      <p>Day range :: {excerciseVars.dayRange}</p>
+      <p>Reps :: {excerciseVars.repsCompleted}</p>
+      <p>Sets :: {excerciseVars.setsCompleted}</p>
     </div>
   );
 }

@@ -15,8 +15,6 @@ function Explore() {
       </div>
       <ExploreItem color="#FFEBB5" />
       <ExploreItem color="#FFD0CF" />
-      <ExploreItem color="#FFEBB5" />
-      <ExploreItem color="#FFEBB5" />
     </main>
   );
 }

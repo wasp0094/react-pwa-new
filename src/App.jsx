@@ -18,6 +18,10 @@ function LoginLoader({ user }) {
   return user ? <Navigate to="/home" replace /> : <Login />;
 }
 
+function CreateAccountLoader({ user }) {
+  return user ? <Navigate to="/home" replace /> : <CreateAccount />;
+}
+
 function App() {
   const { user, loadingUser } = useUserAuth();
   return (
@@ -26,9 +30,18 @@ function App() {
         <Route
           exact
           path="/"
-          element={Loading(LoginLoader)({ isLoading: loadingUser, user })}
+          element={Loading(LoginLoader)({
+            isLoading: loadingUser,
+            user,
+          })}
         />
-        <Route path="/signup" element={<CreateAccount />} />
+        <Route
+          path="/signup"
+          element={Loading(CreateAccountLoader)({
+            isLoading: loadingUser,
+            user,
+          })}
+        />
         <Route
           path="/profile"
           element={

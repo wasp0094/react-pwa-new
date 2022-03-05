@@ -58,9 +58,6 @@ export function UserAuthContextProvider({ children }) {
     return unsubscribe;
     // eslint-disable-next-line
   }, []);
-  useEffect(() => {
-    console.log(user);
-  }, [user]);
   return (
     <userAuthContext.Provider
       value={{

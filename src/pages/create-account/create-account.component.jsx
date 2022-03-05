@@ -10,8 +10,6 @@ import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import FaceIcon from "@mui/icons-material/Face";
 
-// create account page, (for mobile)
-
 function CreateAccount() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
@@ -21,7 +19,6 @@ function CreateAccount() {
   const { signUp, setLoadingUser } = useUserAuth();
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoadingUser(true);
     try {
       await signUp(email, password, { displayName });
       navigate("/profile");
