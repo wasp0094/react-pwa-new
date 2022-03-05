@@ -80,6 +80,20 @@ const knee_extension = {
 const shoulder_elevation = {
   id: "shoulder_elevation",
   name: "Shoulder Elevation",
+  tags: ["elbow", "elevation"],
+  color: "#afc3ff",
+  short_description:
+    "Stiffness and hindered motion of shoulder after elbow fracture.",
+  description:
+    "This exercise helps in improving the shoulder joint motion which gets hindered due to prolonged fracture plaster. Simply grasp your hand and elevate it to the maximum point where you can take it to. Yes! it's that simple.",
+  left: {
+    id: "left-shoulder-elevation",
+    name: "Left Shoulder Elevation",
+  },
+  right: {
+    id: "right-shoulder-elevation",
+    name: "Right Shoulder Elevation",
+  },
 };
 
 const excercises = {
@@ -87,6 +101,7 @@ const excercises = {
   shoulder_flexion,
   knee_extension,
   elbow_flexion,
+  shoulder_elevation,
 };
 
 export const calculate = (excercis_id) => {
