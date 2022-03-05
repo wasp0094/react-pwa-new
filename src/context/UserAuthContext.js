@@ -7,8 +7,9 @@ import {
   signInWithPopup,
   onAuthStateChanged,
 } from "firebase/auth";
-import { auth } from "../firebase/firebase";
+import { auth, createUserObject } from "../firebase/firebase";
 import { useLocation, useNavigate } from "react-router-dom";
+import { onSnapshot } from "firebase/firestore";
 
 const userAuthContext = createContext();
 export function UserAuthContextProvider({ children }) {
@@ -16,9 +17,14 @@ export function UserAuthContextProvider({ children }) {
   const [loadingUser, setLoadingUser] = useState(true);
   const navigate = useNavigate();
   const location = useLocation();
-  function signUp(email, password) {
+  async function signUp(email, password, data) {
     setLoadingUser(true);
-    return createUserWithEmailAndPassword(auth, email, password);
+    const { user } = await createUserWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+    await createUserObject(user, data);
   }
 
   function logIn(email, password) {
@@ -36,16 +42,25 @@ export function UserAuthContextProvider({ children }) {
     return signInWithPopup(auth, googleAuthProvider);
   }
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-      setLoadingUser(false);
+    const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       if (currentUser) {
-        navigate(location.pathname, { replace: true });
+        const userRef = await createUserObject(currentUser);
+        onSnapshot(userRef, (snapshot) => {
+          setLoadingUser(false);
+          setUser({ id: snapshot.id, ...snapshot.data() });
+          navigate(location.pathname, { replace: true });
+        });
+      } else {
+        setLoadingUser(false);
+        setUser(null);
       }
     });
     return unsubscribe;
     // eslint-disable-next-line
   }, []);
+  useEffect(() => {
+    console.log(user);
+  }, [user]);
   return (
     <userAuthContext.Provider
       value={{

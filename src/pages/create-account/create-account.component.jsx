@@ -4,7 +4,7 @@ import Box from "@mui/material/Box";
 import { TextField } from "@mui/material";
 import { Button } from "@mui/material";
 import { Stack } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import blob from "../../assets/blob1.svg";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
@@ -13,14 +13,18 @@ import FaceIcon from "@mui/icons-material/Face";
 // create account page, (for mobile)
 
 function CreateAccount() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [displayName, setDisplayName] = useState("");
   const [error, setError] = useState("");
   const { signUp, setLoadingUser } = useUserAuth();
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoadingUser(true);
     try {
-      await signUp(email, password);
+      await signUp(email, password, { displayName });
+      navigate("/profile");
     } catch (error) {
       setLoadingUser(false);
       setError(error.message);
@@ -56,6 +60,7 @@ function CreateAccount() {
                     label="Full Name"
                     variant="standard"
                     type="text"
+                    onChange={(e) => setDisplayName(e.target.value)}
                     style={{ width: "15rem" }}
                   />
                 </Box>

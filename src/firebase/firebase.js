@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
+import { doc, getDoc, getFirestore, setDoc } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -12,5 +13,23 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
+export const firestore = getFirestore();
+
+export async function createUserObject(userAuth, data) {
+  if (!userAuth) return;
+  const userRef = doc(firestore, `users/${userAuth.uid}`);
+  const userSnapshot = await getDoc(userRef);
+  if (!userSnapshot.exists()) {
+    const { email, displayName } = userAuth;
+    const createdAt = new Date();
+    try {
+      setDoc(userRef, { displayName, email, createdAt, ...data });
+    } catch (err) {
+      console.log(err);
+    }
+  }
+  return userRef;
+}
+
 export const auth = getAuth(app);
 export default app;
