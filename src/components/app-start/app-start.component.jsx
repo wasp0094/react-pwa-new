@@ -1,11 +1,13 @@
 import React from "react";
 import "./app-start.styles.css";
-import { CircularProgress } from "@mui/material";
+import LinearProgress from "@mui/material/LinearProgress";
+import logo from "../../assets/logo512.png";
 
 function AppStart() {
   return (
     <div className="app-start">
-      <CircularProgress />
+      <img src={logo} alt="Logo" />
+      <LinearProgress className="progress" />
     </div>
   );
 }

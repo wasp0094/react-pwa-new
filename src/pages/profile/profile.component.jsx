@@ -33,7 +33,7 @@ function Profile() {
         }}
       >
         <Avatar
-          src="https://material-ui.com/static/images/avatar/1.jpg"
+          src="https://mui.com/static/images/avatar/1.jpg"
           sx={{ width: 56, height: 56 }}
         />
         <Stack
@@ -45,7 +45,7 @@ function Profile() {
           }}
         >
           <p>
-            full name
+            {user.displayName}
             <br />
             username
           </p>

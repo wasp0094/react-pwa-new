@@ -1,6 +1,16 @@
 .app-start {
   height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.progress {
+  width: 60vw;
+}
+
+.app-start > img {
+  height: 30vh;
+  width: 30vh;
 }

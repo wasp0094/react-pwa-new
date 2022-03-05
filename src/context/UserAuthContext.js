@@ -46,8 +46,8 @@ export function UserAuthContextProvider({ children }) {
       if (currentUser) {
         const userRef = await createUserObject(currentUser);
         onSnapshot(userRef, (snapshot) => {
-          setLoadingUser(false);
           setUser({ id: snapshot.id, ...snapshot.data() });
+          setLoadingUser(false);
           navigate(location.pathname, { replace: true });
         });
       } else {

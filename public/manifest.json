@@ -1,5 +1,5 @@
 {
-  "short_name": "V-Proctor",
+  "short_name": "Proctify.Me",
   "name": "Physiotherapy App",
   "icons": [
     {
@@ -20,6 +20,6 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "hsl(36, 100%, 94%)",
+  "background_color": "hsl(36, 100%, 94%)"
 }

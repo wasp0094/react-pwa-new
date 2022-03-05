@@ -9,6 +9,7 @@ function ProtectedRoute({ children }) {
     return <AppStart />;
   }
   if (!user && !loadingUser) {
+    console.log("here");
     return <Navigate to="/" replace />;
   }
   return children;
