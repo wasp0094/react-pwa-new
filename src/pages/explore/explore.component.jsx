@@ -6,8 +6,10 @@ import ExploreCategoryLink from "../../components/explore-category-link/explore-
 import ExploreCategory from "../../components/explore-category/explore-category.component";
 
 import { targets } from "../../excercises/excercises";
+import { useSetTitle } from "../../hooks/setTitle";
 
 function ExplorePage() {
+  useSetTitle("Explore");
   return (
     <>
       <div
@@ -28,7 +30,7 @@ function ExplorePage() {
 function Explore() {
   return (
     <div className="explore">
-      <h4 className="explore-header">Explore</h4>
+      {/* <h4 className="explore-header">Explore</h4> */}
       <Routes>
         <Route path="/" element={<ExplorePage />} />
         <Route path={"/:explore_category"} element={<ExploreCategory />} />
