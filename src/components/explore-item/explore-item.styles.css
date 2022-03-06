@@ -5,13 +5,7 @@
   font-size: 10px;
 }
 
-.main-card {
-  border-radius: 10px;
-  background-color: rgb(235, 210, 210);
-  /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); */
-}
-
-.active-card {
+.card {
   display: flex;
   flex-direction: row;
   margin: 0.5rem 1rem;
@@ -22,21 +16,28 @@
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 
-.card-content p {
-  padding: 0.2rem 1rem;
-  background-color: aliceblue;
-  border-radius: 2rem;
+.card-content p,
+.card-content h3,
+.card-content h6 {
+  color: rgb(7, 7, 98);
 }
 
 .card-content h3 {
-  font-size: 12px;
-  margin: 1rem 0.5rem;
+  font-size: 14px;
+  font-weight: 700;
+  margin: 0.5rem;
 }
 
 .card-content h6 {
-  font-size: 10px;
+  font-size: 12px;
   margin: 0.5rem;
-  font-weight: 300;
+  font-weight: 400;
+}
+
+.card-content p {
+  padding: 0.2rem 1rem;
+  background-color: #afc3ff;
+  border-radius: 2rem;
 }
 
 .img {

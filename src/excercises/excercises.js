@@ -96,12 +96,107 @@ const shoulder_elevation = {
   },
 };
 
+const dumbell_bicep_curl = {
+  id: "dumbell_bicep_curl",
+  name: "Dumbell Bicep Curl",
+  tags: ["diabetes", "bicep", "dumbell", "curls"],
+  color: "#ffd2d9",
+  short_description:
+    "A lifestyle therapy for prevention and treatment of diabetes.",
+  description:
+    "The dumbbell bicep curls exercise is a weight-training exercise that works the muscles of the upper arm, and to a lesser extent, those of the lower arm. It's a great exercise for seeing results in strength and definition in your arms.",
+  left: {
+    id: "left-dumbell-bicep-curl",
+    name: "Left Dumbell Bicep Curl",
+  },
+  right: {
+    id: "right-dumbell-bicep-curl",
+    name: "Right Dumbell Bicep Curl",
+  },
+};
+
+const lunges = {
+  id: "lunges",
+  name: "Lunges",
+  tags: ["diabetes", "lunges", "legs"],
+  color: "#FFEBB5",
+  short_description:
+    "A lifestyle therapy for prevention and treatment of diabetes.",
+  description:
+    "Lunges refer to any position of the human body where one leg is positioned forward with knee bent and foot flat on the ground while the other leg is positioned behind. Strengthen your lower body and increase your core strength with lunges!",
+  left: {
+    id: "left-lunges",
+    name: "Left Lunges",
+  },
+  right: {
+    id: "right-lunges",
+    name: "Right Lunges",
+  },
+};
+
+const side_kicks = {
+  id: "side_kicks",
+  name: "Side Kicks",
+  tags: ["diabetes", "kicks", "legs"],
+  color: "#afc3ff",
+  short_description:
+    "A lifestyle therapy for prevention and treatment of diabetes.",
+  description:
+    "This is a simple yet dynamic exercise that benefits the legs, glutes, and core muscles. You can expect to see improvements in your stability and an increase in muscle strength. Yes it's that helpful!",
+  left: {
+    id: "left-side-kicks",
+    name: "Left Side Kicks",
+  },
+  right: {
+    id: "right-side-kicks",
+    name: "Right Side Kicks",
+  },
+};
+
+const squats = {
+  id: "squats",
+  name: "Squats",
+  tags: ["diabetes", "legs", "squats"],
+  color: "#ffd2d9",
+  short_description:
+    "A lifestyle therapy for prevention and treatment of diabetes.",
+  description:
+    "Squats refer to crouching. Gift yourself with better flexibility and mobility, burn extra calories, and increase your core strength. Feel fresh once done!",
+};
+
 const excercises = {
   shoulder_abduction,
   shoulder_flexion,
   knee_extension,
   elbow_flexion,
   shoulder_elevation,
+  dumbell_bicep_curl,
+  lunges,
+  side_kicks,
+  squats,
+};
+
+export const targets = {
+  diabetes: {
+    id: "diabetes",
+    name: "Diabetes",
+    src: "https://thumbs.dreamstime.com/b/diabetes-icon-sugar-cube-inside-blood-drop-diabetes-icon-sugar-cube-dissolving-inside-blood-drop-high-glucose-level-sign-isolated-194940500.jpg",
+  },
+  shoulder: {
+    id: "shoulder",
+    name: "Shoulder",
+    src: "https://thumbs.dreamstime.com/b/basic-rgb-161165903.jpg",
+  },
+  elbow: {
+    id: "elbow",
+    name: "Elbow",
+    src: "https://en.pimg.jp/040/445/662/1/40445662.jpg",
+  },
+  knee: {
+    id: "knee",
+    name: "Knee",
+    src: "https://media.istockphoto.com/vectors/woman-feel-knee-pain-vector-isolated-vector-id1215090835?k=20&m=1215090835&s=612x612&w=0&h=43wcP-i3ISjz6IU0ZiE25XeaMIocoRH-eZ_pKZuCWqA=",
+  },
 };
 
 export const calculate = (excercis_id) => {

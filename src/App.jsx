@@ -59,7 +59,7 @@ function App() {
           }
         />
         <Route
-          path="/explore"
+          path="/explore/*"
           element={
             <ProtectedRoute>
               <Explore />
