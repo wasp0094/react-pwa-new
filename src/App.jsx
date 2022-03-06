@@ -13,6 +13,8 @@ import Login from "./pages/login/login.component";
 import Routine from "./pages/routine/routine.component";
 import BottomNav from "./components/bottom-nav/bottom-nav.component";
 import Loading from "./components/loading/loading.component";
+import TitleBar from "./components/title-bar/title-bar.component";
+import "./App.css";
 
 function LoginLoader({ user }) {
   return user ? <Navigate to="/home" replace /> : <Login />;
@@ -25,7 +27,8 @@ function CreateAccountLoader({ user }) {
 function App() {
   const { user, loadingUser } = useUserAuth();
   return (
-    <>
+    <div className="app">
+      {user && <TitleBar />}
       <Routes>
         <Route
           exact
@@ -78,7 +81,7 @@ function App() {
         />
       </Routes>
       {user && <BottomNav />}
-    </>
+    </div>
   );
 }
 

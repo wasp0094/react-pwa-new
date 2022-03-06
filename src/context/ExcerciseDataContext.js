@@ -1,4 +1,4 @@
-import { createContext, useState, useContext } from "react";
+import { createContext, useState, useContext, useEffect } from "react";
 
 const excerciseDataContext = createContext();
 export const INITIAL_DATA = {

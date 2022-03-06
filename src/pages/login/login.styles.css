@@ -5,9 +5,11 @@
   box-sizing: border-box;
 }
 
-body {
-  background-color: #f6f6ff;
-  color: rgb(36, 36, 36);
+.login {
+  margin: -56px 0;
+}
+.account-button {
+  background-image: linear-gradient(#f89b67, #f68341);
 }
 
 .blob-box {
