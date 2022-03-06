@@ -1,124 +1,30 @@
 .explore-header {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  background-color: white;
-}
-
-body {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-.active-card {
-    display: flex;
-    flex-direction: row;
-    margin: 0.5rem 1rem;
-    padding: 0.5rem;
-    font-size: 10px;
-    /* border-radius: 10px;
-    background-color: rgb(228, 189, 189);
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); */
-}
-
-.card {
-    display: flex;
-    flex-direction: row;
-    margin: 0.5rem 1rem;
-    padding: 0.5rem;
-    font-size: 10px;
-    /* border-radius: 10px;
-    background-color: rgb(228, 189, 189);
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); */
-}
-
-.card-content p,
-.card-content h3,
-.card-content h6{
-    color: rgb(7, 7, 98);
-}
-
-.card-content h3 {
-    font-size: 14px;
-    font-weight: 700;
-    margin: 0.5rem;
-}
-
-.card-content h6 {
-    font-size: 12px;
-    margin: 0.5rem;
-    font-weight: 400;
-}
-
-.card-content p{
-    padding: 0.2rem 1rem;
-    background-color: #afc3ff;
-    border-radius: 2rem;
+  text-align: left;
+  font-weight: 300;
+  font-size: 30px;
+  text-align: center;
+  margin: 0;
+  background-color: #fff;
+  position: sticky;
+  z-index: 1;
+  top: 0;
+  min-height: 48px;
 }
 
 .domain {
-    display: flex;
-    color: rgb(146, 144, 144);
-    font-weight: 500;
-    font-size: 14px;
-    padding-top: 1rem;
-    justify-content: space-around;
-    align-items: baseline;
+  display: flex;
+  color: rgb(146, 144, 144);
+  font-weight: 500;
+  font-size: 14px;
+  padding-top: 1rem;
+  justify-content: space-around;
+  align-items: baseline;
 }
 
 .domain hr {
-    width: 30%;
+  width: 30%;
 }
 
 .domain p {
-    margin-right: 10px;
+  margin-right: 10px;
 }
-
-.explore {
-    padding: 2rem 0rem 0rem 1.5rem;
-    background-color: #fcf4f0;
-    position: sticky;
-    z-index: 1;
-    top: 0;
-    left: 10px;
-}
-
-.explore-cards {
-    padding-bottom: 4rem;
-    z-index: -1;
-}
-
-.explore h2 {
-    color: rgb(7, 7, 98);
-    font-size: 1.6rem;
-}
-
-.img {
-    width: 120px;
-    height: 100%;
-}
-
-.main-card {
-    border-radius: 10px;
-    background-color: red;
-    /* background-color: rgb(235, 210, 210); */
-    /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); */
-}
-
-.MuiTabs-flexContainer {
-    justify-content: space-evenly;
-}
-
-.MuiCard-root {
-    margin-bottom: 10px;
-}
-
-.MuiCardActions-root {
-    justify-content: space-between;
-    padding: 4px 15px;
-}
-
-/* .MuiAccordion-root {
-    border-bottom-left-radius: 20px;
-} */

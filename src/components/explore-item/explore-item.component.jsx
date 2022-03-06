@@ -6,9 +6,9 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
-function ExploreItem({ color }) {
+function ExploreItem({ color, short_description, name, description, tags }) {
   return (
-    <div className="explore-item">
+    <div className="explore-item card">
       <Accordion sx={{ background: color }}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
@@ -16,18 +16,28 @@ function ExploreItem({ color }) {
           id="panel1a-header"
         >
           <div className="card-content">
-            <p>tag: shoulder</p>
-            <h3>Exercise Title</h3>
-            <h6>Lorem ipsum dolor sit amet, view description</h6>
+            <p
+              style={{
+                backgroundColor: "rgb(250, 190, 199)",
+                fontWeight: "600",
+              }}
+            >
+              {tags.map((tag, idx) => (
+                <span className="tag" key={idx}>
+                  {tag}
+                </span>
+              ))}
+            </p>
+            <h3>{name}</h3>
+            <h6>{short_description}</h6>
           </div>
           <div className="card-image">
-            <img className="img" src={Workout} alt="workout" />
+            <img className="img" src={Workout} alt={name} />
           </div>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget.
+          <Typography style={{ color: "rgb(7, 7, 98)", fontSize: "13px" }}>
+            {description}
           </Typography>
         </AccordionDetails>
       </Accordion>
