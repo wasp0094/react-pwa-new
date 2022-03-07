@@ -12,10 +12,11 @@ export default function leftShoulderAbduction(
   setExcerciseVars
 ) {
   const { requiredReps } = excerciseVars;
-  const obj12 = points[12];
-  const obj14 = points[14];
-  const vector1 = [obj12.x - obj14.x, obj12.y - obj14.y];
-  const vector2 = [obj12.x - obj12.x, obj12.y - obj12.y - 0.3];
+  const obj24 = points[24];
+  const obj26 = points[26];
+
+  const vector1 = [obj24.x - obj26.x, obj24.y - obj26.y];
+  const vector2 = [obj24.x - obj24.x, obj24.y - obj24.y - 0.3];
 
   const dot = vector1[0] * vector2[0] + vector1[1] * vector2[1];
   const mod_a = Math.sqrt(vector1[0] * vector1[0] + vector1[1] * vector1[1]);
@@ -24,9 +25,9 @@ export default function leftShoulderAbduction(
   const angle = ((Math.acos(dot / (mod_a * mod_b)) * 180) / 3.14).toFixed(2);
   maxAngle = Math.max(maxAngle, angle);
 
-  if (angle <= 30) {
+  if (angle <= 25) {
     down = true;
-  } else if (angle >= 90) {
+  } else if (angle >= 40) {
     up = true;
   }
 

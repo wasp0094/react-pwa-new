@@ -2,11 +2,14 @@ let repsCompleted = 0;
 let setsCompleted = 0;
 let up = false,
   down = false;
-let maxAngle = 10;
+let maxAngle = 15;
 let dayRange = 0;
 let maxAngleSum = 0;
 
-export default function leftShoulderAbduction(
+// let flag = 0;
+// let finalReport = 0;
+
+export default function bothShoulderElevation(
   points,
   excerciseVars,
   setExcerciseVars
@@ -14,6 +17,7 @@ export default function leftShoulderAbduction(
   const { requiredReps } = excerciseVars;
   const obj12 = points[12];
   const obj14 = points[14];
+
   const vector1 = [obj12.x - obj14.x, obj12.y - obj14.y];
   const vector2 = [obj12.x - obj12.x, obj12.y - obj12.y - 0.3];
 
@@ -24,7 +28,7 @@ export default function leftShoulderAbduction(
   const angle = ((Math.acos(dot / (mod_a * mod_b)) * 180) / 3.14).toFixed(2);
   maxAngle = Math.max(maxAngle, angle);
 
-  if (angle <= 30) {
+  if (angle <= 20) {
     down = true;
   } else if (angle >= 90) {
     up = true;
@@ -60,4 +64,11 @@ export default function leftShoulderAbduction(
       setsCompleted,
     });
   }
+
+  // if(set_counter == 3 && flag === 0) {
+  //   flag = 1;
+  //   finalReport = (dayRange / (5 * 3)).toFixed(2);
+  //   return finalReport;
+  // }
+  // return (flag === 0) ? 0 : finalReport;
 }
