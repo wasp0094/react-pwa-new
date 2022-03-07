@@ -235,8 +235,9 @@ export const calculate = (excercise_id) => {
   else if (excercise_id === "right-side-kicks") return rightSideKick;
   else if (excercise_id === "left-elbow-kicks") return leftElbowFlexion;
   else if (excercise_id === "right-elbow-kicks") return rightElbowFlexion;
-  else if (excercise_id === "left-shoulder-kicks") return leftShoulderFlexion;
-  else if (excercise_id === "right-shoulder-kicks") return rightShoulderFlexion;
+  else if (excercise_id === "left-shoulder-flexion") return leftShoulderFlexion;
+  else if (excercise_id === "right-shoulder-flexion")
+    return rightShoulderFlexion;
   else if (excercise_id === "full-lunges") return lunge;
   else if (excercise_id === "full-shoulder-elevation") return shoulderElevation;
 };
