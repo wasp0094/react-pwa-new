@@ -5,14 +5,13 @@ function DailyTask() {
   const tasks = Object.keys(excercises);
   return (
     <div className="daily-task">
-      {tasks.map((task, idx) =>
-        idx === 0 ? (
-          <div key={idx}>
-            <DailyTaskItem task={task} type="left" />
-            <DailyTaskItem task={task} type="right" />
-          </div>
-        ) : null
-      )}
+      {tasks.map((task, idx) => (
+        <div key={idx}>
+          {Object.keys(excercises[task].types).map((type, idx) => (
+            <DailyTaskItem key={idx} task={task} type={type} />
+          ))}
+        </div>
+      ))}
     </div>
   );
 }

@@ -16,7 +16,7 @@ function Camera({ excercise, handleEndExcercise, type }) {
   var PosE = null;
   let { excerciseVars, setExcerciseVars } = useExcerciseData();
   const [loadingCam, setLoadingCam] = useState(true);
-  const excercise_id = excercises[excercise][type].id;
+  const excercise_id = excercises[excercise]["types"][type].id;
 
   function startCamera() {
     if (

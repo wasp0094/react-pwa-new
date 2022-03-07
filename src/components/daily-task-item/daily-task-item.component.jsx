@@ -14,7 +14,7 @@ function DailyTaskItem({ task, type }) {
   const navigate = useNavigate();
   const { excerciseVars, setExcerciseVars } = useExcerciseData();
   const { tags } = excercises[task];
-  const { name } = excercises[task][type];
+  const { name } = excercises[task]["types"][type];
   return (
     <div className="daily-task-item">
       <Card sx={{ minWidth: 275, borderRadius: "13px" }}>

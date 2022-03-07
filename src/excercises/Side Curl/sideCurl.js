@@ -15,11 +15,7 @@ let rightMaxAngle = 10;
 // let dayRange = 0;
 // let maxAngleSum = 0;
 
-export default function leftShoulderAbduction(
-  points,
-  excerciseVars,
-  setExcerciseVars
-) {
+export default function sideCurl(points, excerciseVars, setExcerciseVars) {
   const { requiredReps } = excerciseVars;
   const obj14 = points[14];
   const obj16 = points[16];

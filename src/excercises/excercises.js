@@ -1,5 +1,14 @@
-import leftShoulderAbduction from "./leftShoulderAbduction";
-import rightShoulderAbduction from "./rightShoulderAbduction";
+import leftSideKick from "./side-kicks/leftSideKick";
+import rightSideKick from "./side-kicks/rightSideKick";
+import leftElbowFlexion from "./elbow-flexion/leftElbowFlexion";
+import rightElbowFlexion from "./elbow-flexion/rightElbowFlexion";
+import leftShoulderFlexion from "./elbow-flexion/leftElbowFlexion";
+import rightShoulderFlexion from "./shoulder-flexion/rightShoulderFlexion";
+import leftShoulderAbduction from "./shoulder-abduction/leftShoulderAbduction";
+import rightShoulderAbduction from "./shoulder-abduction/rightShoulderAbduction";
+import squat from "./squats/squats";
+import lunge from "./Lunges/lunges";
+import shoulderElevation from "./shoulder-elevation/shoulderElevation";
 
 const shoulder_abduction = {
   id: "shoulder_abduction",
@@ -10,13 +19,15 @@ const shoulder_abduction = {
     "Characterized by pain and stiffness in the shoulder joint.",
   description:
     "Shoulder abduction involves moving your arm in the same plane as that of your chest. It is generally implemented through wall sliding, a resisted range of motion exercising technique. Do try this out, if needed!",
-  left: {
-    id: "left-shoulder-abduction",
-    name: "Left Shoulder Abduction",
-  },
-  right: {
-    id: "right-shoulder-abduction",
-    name: "Right Shoulder Abduction",
+  types: {
+    left: {
+      id: "left-shoulder-abduction",
+      name: "Left Shoulder Abduction",
+    },
+    right: {
+      id: "right-shoulder-abduction",
+      name: "Right Shoulder Abduction",
+    },
   },
 };
 
@@ -29,13 +40,15 @@ const shoulder_flexion = {
     "Characterized by pain and stiffness in the shoulder joint.",
   description:
     "Shoulder flexion involves picking your arms up and raising them overhead. This gives an exercise to the joint and muscles of shoulder thus, helping to bring the motion back about the joint. Yes, it's that's simple!",
-  left: {
-    id: "left-shoulder-flexion",
-    name: "Left Shoulder Flexion",
-  },
-  right: {
-    id: "right-shoulder-flexion",
-    name: "Right Shoulder Flexion",
+  types: {
+    left: {
+      id: "left-shoulder-flexion",
+      name: "Left Shoulder Flexion",
+    },
+    right: {
+      id: "right-shoulder-flexion",
+      name: "Right Shoulder Flexion",
+    },
   },
 };
 
@@ -48,13 +61,15 @@ const elbow_flexion = {
     "Swelling, stiffness and hindered motion after fracture/ burns.",
   description:
     "Elbow flexion aims at restoring elbow's extension motion. This gives an exercise to the elbow joint thus, helping to bring the motion back about the joint. Yay, you got this!",
-  left: {
-    id: "left-elbow-flexion",
-    name: "Left Elbow Flexion",
-  },
-  right: {
-    id: "right-elbow-flexion",
-    name: "Right Elbow Flexion",
+  types: {
+    left: {
+      id: "left-elbow-flexion",
+      name: "Left Elbow Flexion",
+    },
+    right: {
+      id: "right-elbow-flexion",
+      name: "Right Elbow Flexion",
+    },
   },
 };
 
@@ -67,13 +82,15 @@ const knee_extension = {
     "Stiffness and hindered motion after fracture/ burns in knee joint.",
   description:
     "Knee extension is a resistance training exercise. Simply contract your quadriceps muscles to extend the lower leg until the whole leg is sticking straight out. For the rest, we'll take care. Go ahead!",
-  left: {
-    id: "left-knee-extension",
-    name: "Left Knee Extension",
-  },
-  right: {
-    id: "right-knee-extension",
-    name: "Right Knee Extension",
+  types: {
+    left: {
+      id: "left-knee-extension",
+      name: "Left Knee Extension",
+    },
+    right: {
+      id: "right-knee-extension",
+      name: "Right Knee Extension",
+    },
   },
 };
 
@@ -86,13 +103,11 @@ const shoulder_elevation = {
     "Stiffness and hindered motion of shoulder after elbow fracture.",
   description:
     "This exercise helps in improving the shoulder joint motion which gets hindered due to prolonged fracture plaster. Simply grasp your hand and elevate it to the maximum point where you can take it to. Yes! it's that simple.",
-  left: {
-    id: "left-shoulder-elevation",
-    name: "Left Shoulder Elevation",
-  },
-  right: {
-    id: "right-shoulder-elevation",
-    name: "Right Shoulder Elevation",
+  types: {
+    full: {
+      id: "full-shoulder-elevation",
+      name: "Shoulder Elevation",
+    },
   },
 };
 
@@ -105,13 +120,15 @@ const dumbell_bicep_curl = {
     "A lifestyle therapy for prevention and treatment of diabetes.",
   description:
     "The dumbbell bicep curls exercise is a weight-training exercise that works the muscles of the upper arm, and to a lesser extent, those of the lower arm. It's a great exercise for seeing results in strength and definition in your arms.",
-  left: {
-    id: "left-dumbell-bicep-curl",
-    name: "Left Dumbell Bicep Curl",
-  },
-  right: {
-    id: "right-dumbell-bicep-curl",
-    name: "Right Dumbell Bicep Curl",
+  types: {
+    left: {
+      id: "left-dumbell-bicep-curl",
+      name: "Left Dumbell Bicep Curl",
+    },
+    right: {
+      id: "right-dumbell-bicep-curl",
+      name: "Right Dumbell Bicep Curl",
+    },
   },
 };
 
@@ -124,13 +141,11 @@ const lunges = {
     "A lifestyle therapy for prevention and treatment of diabetes.",
   description:
     "Lunges refer to any position of the human body where one leg is positioned forward with knee bent and foot flat on the ground while the other leg is positioned behind. Strengthen your lower body and increase your core strength with lunges!",
-  left: {
-    id: "left-lunges",
-    name: "Left Lunges",
-  },
-  right: {
-    id: "right-lunges",
-    name: "Right Lunges",
+  types: {
+    full: {
+      id: "full-lunges",
+      name: "Lunges",
+    },
   },
 };
 
@@ -143,13 +158,15 @@ const side_kicks = {
     "A lifestyle therapy for prevention and treatment of diabetes.",
   description:
     "This is a simple yet dynamic exercise that benefits the legs, glutes, and core muscles. You can expect to see improvements in your stability and an increase in muscle strength. Yes it's that helpful!",
-  left: {
-    id: "left-side-kicks",
-    name: "Left Side Kicks",
-  },
-  right: {
-    id: "right-side-kicks",
-    name: "Right Side Kicks",
+  types: {
+    left: {
+      id: "left-side-kicks",
+      name: "Left Side Kicks",
+    },
+    right: {
+      id: "right-side-kicks",
+      name: "Right Side Kicks",
+    },
   },
 };
 
@@ -162,6 +179,12 @@ const squats = {
     "A lifestyle therapy for prevention and treatment of diabetes.",
   description:
     "Squats refer to crouching. Gift yourself with better flexibility and mobility, burn extra calories, and increase your core strength. Feel fresh once done!",
+  types: {
+    full: {
+      id: "full_squats",
+      name: "Squats",
+    },
+  },
 };
 
 const excercises = {
@@ -199,10 +222,19 @@ export const targets = {
   },
 };
 
-export const calculate = (excercis_id) => {
-  if (excercis_id === "left-shoulder-abduction") return leftShoulderAbduction;
-  else if (excercis_id === "right-shoulder-abduction")
+export const calculate = (excercise_id) => {
+  if (excercise_id === "left-shoulder-abduction") return leftShoulderAbduction;
+  else if (excercise_id === "right-shoulder-abduction")
     return rightShoulderAbduction;
+  else if (excercise_id === "full-squats") return squat;
+  else if (excercise_id === "left-side-kicks") return leftSideKick;
+  else if (excercise_id === "right-side-kicks") return rightSideKick;
+  else if (excercise_id === "left-elbow-kicks") return leftElbowFlexion;
+  else if (excercise_id === "right-elbow-kicks") return rightElbowFlexion;
+  else if (excercise_id === "left-shoulder-kicks") return leftShoulderFlexion;
+  else if (excercise_id === "right-shoulder-kicks") return rightShoulderFlexion;
+  else if (excercise_id === "full-lunges") return lunge;
+  else if (excercise_id === "full-shoulder-elevation") return shoulderElevation;
 };
 
 export default excercises;
