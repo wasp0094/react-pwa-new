@@ -9,6 +9,10 @@ import rightShoulderAbduction from "./shoulder-abduction/rightShoulderAbduction"
 import squat from "./squats/squats";
 import lunge from "./Lunges/lunges";
 import shoulderElevation from "./shoulder-elevation/shoulderElevation";
+import diabetesImage from "../assets/diabetes-link.jpg";
+import elbowImage from "../assets/elbow-link.jpg";
+import kneeImage from "../assets/knee-link.jpg";
+import shoulderImage from "../assets/shoulder-link.jpg";
 
 const shoulder_abduction = {
   id: "shoulder_abduction",
@@ -203,22 +207,22 @@ export const targets = {
   diabetes: {
     id: "diabetes",
     name: "Diabetes",
-    src: "https://thumbs.dreamstime.com/b/diabetes-icon-sugar-cube-inside-blood-drop-diabetes-icon-sugar-cube-dissolving-inside-blood-drop-high-glucose-level-sign-isolated-194940500.jpg",
+    src: diabetesImage,
   },
   shoulder: {
     id: "shoulder",
     name: "Shoulder",
-    src: "https://thumbs.dreamstime.com/b/basic-rgb-161165903.jpg",
+    src: shoulderImage,
   },
   elbow: {
     id: "elbow",
     name: "Elbow",
-    src: "https://en.pimg.jp/040/445/662/1/40445662.jpg",
+    src: elbowImage,
   },
   knee: {
     id: "knee",
     name: "Knee",
-    src: "https://media.istockphoto.com/vectors/woman-feel-knee-pain-vector-isolated-vector-id1215090835?k=20&m=1215090835&s=612x612&w=0&h=43wcP-i3ISjz6IU0ZiE25XeaMIocoRH-eZ_pKZuCWqA=",
+    src: kneeImage,
   },
 };
 
