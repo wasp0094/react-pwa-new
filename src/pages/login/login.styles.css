@@ -1,12 +1,13 @@
-@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap");
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-.account-button {
-  background-image: linear-gradient(#f89b67, #f68341);
+body {
+  background-color: #f6f6ff;
+  color: rgb(36, 36, 36);
 }
 
 .blob-box {
@@ -18,8 +19,16 @@
   flex-direction: column;
 }
 
+.create-account-content {
+  padding: 1rem 2rem;
+}
+
 .css-1480iag-MuiInputBase-root-MuiInput-root {
-  font-family: "Fedora One";
+  font-family: "Ubuntu";
+}
+
+.details {
+  margin-top: 2rem;
 }
 
 .else {
@@ -42,8 +51,8 @@
 }
 
 .forgot {
-  color: #fa7d34;
-  font-family: "Fredoka One";
+  color: #bcbcf7;
+  font-family: "Ubuntu";
 }
 
 .google {
@@ -75,12 +84,12 @@ hr {
 
 .login-content {
   align-items: center;
-  padding: 0 3rem;
+  padding: 0 2.5rem;
 }
 
 .login-content h2 {
   font-size: 2rem;
-  padding-bottom: 1rem;
+  padding-bottom: 0.8rem;
   letter-spacing: -1px;
   margin: 0;
 }
@@ -93,8 +102,8 @@ hr {
 
 .text1,
 .sign-up .link {
-  font-family: "Fredoka One";
-  color: #fa7d34;
+  font-family: "Ubuntu";
+  color: #4645e3;
 }
 
 .top-blob {

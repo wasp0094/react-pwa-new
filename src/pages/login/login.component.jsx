@@ -4,7 +4,7 @@ import Box from "@mui/material/Box";
 import { Button } from "@mui/material";
 import { Stack } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
-import blob from "../../assets/blob1.svg";
+import blob from "../../assets/blob.svg";
 import "./login.styles.css";
 import TextField from "@mui/material/TextField";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
@@ -12,21 +12,22 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { FaFacebook } from "react-icons/fa";
 import { FaGooglePlus } from "react-icons/fa";
 import { AiFillTwitterCircle } from "react-icons/ai";
+
 //import GoogleButton from 'react-google-button';
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { logIn, signInWithGoogle, setLoadingUser } = useUserAuth();
+  const [error, setError] = useState("");
+  const { logIn, signInWithGoogle } = useUserAuth();
   const navigate = useNavigate();
-  const error = null;
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       await logIn(email, password);
       navigate("/profile");
     } catch (error) {
-      setLoadingUser(false);
+      setError("Incorrect Email or Password");
     }
   };
 
@@ -36,9 +37,10 @@ function Login() {
       await signInWithGoogle();
       navigate("/profile");
     } catch (error) {
-      setLoadingUser(false);
+      setError("Couldn't login, please try again");
     }
   };
+
   return (
     <>
       <div className="App">
@@ -65,7 +67,7 @@ function Login() {
                       variant="standard"
                       type="email"
                       onChange={(e) => setEmail(e.target.value)}
-                      style={{ width: "15rem" }}
+                      style={{ width: "14rem" }}
                     />
                   </Box>
                   <Box
@@ -81,7 +83,7 @@ function Login() {
                       variant="standard"
                       type="password"
                       onChange={(e) => setPassword(e.target.value)}
-                      style={{ width: "15rem" }}
+                      style={{ width: "14rem" }}
                     >
                       {" "}
                     </TextField>
@@ -93,8 +95,12 @@ function Login() {
                 >
                   {error && (
                     <p
-                      className="error-text text1"
-                      style={{ color: "red", fontSize: "0.8rem" }}
+                      className="error-text"
+                      style={{
+                        color: "red",
+                        fontSize: "0.8rem",
+                        fontWeight: "600",
+                      }}
                     >
                       {" "}
                       {error}
@@ -104,8 +110,12 @@ function Login() {
                 <Button
                   variant="contained"
                   type="Submit"
-                  className="account-button login-btn"
-                  style={{ marginTop: "0.6rem", borderRadius: "30px" }}
+                  className="login-btn"
+                  style={{
+                    marginTop: "0.6rem",
+                    borderRadius: "30px",
+                    backgroundColor: "#4645e3",
+                  }}
                 >
                   Sign In
                 </Button>
@@ -125,11 +135,11 @@ function Login() {
                 <p
                   className="sign-up"
                   style={{
-                    margin: "5rem auto 0",
+                    margin: "4.5rem auto 0",
                     textAlign: "center",
                     fontSize: "0.9rem",
-                    fontFamily: "Fredoka One",
-                    color: " #fa7d34",
+                    fontFamily: "Ubuntu",
+                    color: " #4645e3",
                   }}
                 >
                   Don't have an account?{" "}
@@ -145,5 +155,4 @@ function Login() {
     </>
   );
 }
-
 export default Login;

@@ -4,27 +4,26 @@ import Box from "@mui/material/Box";
 import { TextField } from "@mui/material";
 import { Button } from "@mui/material";
 import { Stack } from "@mui/material";
-import { Link, useNavigate } from "react-router-dom";
-import blob from "../../assets/blob1.svg";
+import { Link } from "react-router-dom";
+import blob from "../../assets/blob.svg";
+import "../login/login.styles.css";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import FaceIcon from "@mui/icons-material/Face";
 
+// create account page, (for mobile)
+
 function CreateAccount() {
-  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [displayName, setDisplayName] = useState("");
   const [error, setError] = useState("");
-  const { signUp, setLoadingUser } = useUserAuth();
+  const { signUp } = useUserAuth();
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await signUp(email, password, { displayName });
-      navigate("/profile");
+      await signUp(email, password);
     } catch (error) {
-      setLoadingUser(false);
-      setError(error.message);
+      setError("Failed to create a new account.");
     }
   };
 
@@ -42,13 +41,12 @@ function CreateAccount() {
             <div className="blob-box">
               <img className="top-blob" src={blob} alt="blob" />
             </div>
-            <div className="login-content">
+            <div className="create-account-content">
               <h2>Create Account</h2>
               <p className="text1">Create a new account</p>
-              {error && <p>{error}</p>}
-              <Stack spacing={2}>
+              <Stack className="details" spacing={2}>
                 <Box
-                  className="input-detail"
+                  className="input-field"
                   sx={{ display: "flex", alignItems: "flex-end" }}
                 >
                   <FaceIcon sx={{ color: "action.active", mr: 1, my: 0.5 }} />
@@ -57,12 +55,11 @@ function CreateAccount() {
                     label="Full Name"
                     variant="standard"
                     type="text"
-                    onChange={(e) => setDisplayName(e.target.value)}
-                    style={{ width: "15rem" }}
+                    style={{ width: "14rem" }}
                   />
                 </Box>
                 <Box
-                  className="input-detail"
+                  className="input-field"
                   sx={{ display: "flex", alignItems: "flex-end" }}
                 >
                   <EmailOutlinedIcon
@@ -74,12 +71,11 @@ function CreateAccount() {
                     variant="standard"
                     type="email"
                     onChange={(e) => setEmail(e.target.value)}
-                    style={{ width: "15rem" }}
+                    style={{ width: "14rem" }}
                   />
                 </Box>
-
                 <Box
-                  className="input-detail"
+                  className="input-field"
                   sx={{ display: "flex", alignItems: "flex-end" }}
                 >
                   <LockOutlinedIcon
@@ -91,13 +87,13 @@ function CreateAccount() {
                     variant="standard"
                     type="password"
                     onChange={(e) => setPassword(e.target.value)}
-                    style={{ width: "15rem" }}
+                    style={{ width: "14rem" }}
                   >
                     {" "}
                   </TextField>
                 </Box>
                 <Box
-                  className="input-detail"
+                  className="input-field"
                   sx={{ display: "flex", alignItems: "flex-end" }}
                 >
                   <LockOutlinedIcon
@@ -109,16 +105,38 @@ function CreateAccount() {
                     variant="standard"
                     type="password"
                     onChange={(e) => setPassword(e.target.value)}
-                    style={{ width: "15rem" }}
+                    style={{ width: "14rem" }}
                   >
                     {" "}
                   </TextField>
                 </Box>
                 <br />
+                <div
+                  className="error-msg"
+                  style={{ marginTop: "0.2rem", marginLeft: "0.2rem" }}
+                >
+                  {error && (
+                    <p
+                      className="error-text"
+                      style={{
+                        color: "red",
+                        fontSize: "0.8rem",
+                        fontWeight: "600",
+                      }}
+                    >
+                      {" "}
+                      {error}
+                    </p>
+                  )}
+                </div>
                 <Button
                   variant="contained"
-                  className="account-button login-btn"
-                  style={{ marginTop: "0.6rem", borderRadius: "30px" }}
+                  className="login-btn"
+                  style={{
+                    marginTop: "0.6rem",
+                    borderRadius: "30px",
+                    backgroundColor: "#4645e3",
+                  }}
                   type="Submit"
                 >
                   Create Account
@@ -127,11 +145,11 @@ function CreateAccount() {
               <p
                 className="sign-up"
                 style={{
-                  margin: "3.5rem auto 0",
+                  margin: "2.4rem auto 0",
                   textAlign: "center",
                   fontSize: "0.9rem",
-                  fontFamily: "Fredoka One",
-                  color: " #fa7d34",
+                  fontFamily: "Ubuntu",
+                  color: "#4645e3",
                 }}
               >
                 Already have an account?{" "}
