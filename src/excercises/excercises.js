@@ -6,19 +6,29 @@ import leftShoulderFlexion from "./elbow-flexion/leftElbowFlexion";
 import rightShoulderFlexion from "./shoulder-flexion/rightShoulderFlexion";
 import leftShoulderAbduction from "./shoulder-abduction/leftShoulderAbduction";
 import rightShoulderAbduction from "./shoulder-abduction/rightShoulderAbduction";
+import shoulderElevation from "./shoulder-elevation/shoulderElevation";
 import squat from "./squats/squats";
 import lunge from "./Lunges/lunges";
-import shoulderElevation from "./shoulder-elevation/shoulderElevation";
+
 import diabetesImage from "../assets/diabetes-link.jpg";
 import elbowImage from "../assets/elbow-link.jpg";
-import kneeImage from "../assets/knee-link.jpg";
 import shoulderImage from "../assets/shoulder-link.jpg";
+
+import bicepCurl from "../assets/bicepCurl.svg";
+import lungesImage from "../assets/lunges.svg";
+import sideKick from "../assets/sideKick.svg";
+import squatsImage from "../assets/squats.svg";
+import elbowFlexion from "../assets/elbowFlexion.svg";
+import shoulderElevationImage from "../assets/shoulderElevation.svg";
+import shoulderAbduction from "../assets/shoulderAbduction.svg";
+import shoulderFlexion from "../assets/shoulderFlexion.svg";
 
 const shoulder_abduction = {
   id: "shoulder_abduction",
   name: "Shoulder Abduction",
   tags: ["shoulder", "abduction"],
   color: "#FFEBB5",
+  image: shoulderAbduction,
   short_description:
     "Characterized by pain and stiffness in the shoulder joint.",
   description:
@@ -40,6 +50,7 @@ const shoulder_flexion = {
   name: "Shoulder Flexion",
   tags: ["shoulder", "flexion"],
   color: "#afc3ff",
+  image: shoulderFlexion,
   short_description:
     "Characterized by pain and stiffness in the shoulder joint.",
   description:
@@ -61,6 +72,7 @@ const elbow_flexion = {
   name: "Elbow Flexion",
   tags: ["elbow", "flexion"],
   color: "#FFEBB5",
+  image: elbowFlexion,
   short_description:
     "Swelling, stiffness and hindered motion after fracture/ burns.",
   description:
@@ -77,32 +89,12 @@ const elbow_flexion = {
   },
 };
 
-const knee_extension = {
-  id: "knee_extension",
-  name: "Knee Extension",
-  tags: ["knee", "extension"],
-  color: "#ffd2d9",
-  short_description:
-    "Stiffness and hindered motion after fracture/ burns in knee joint.",
-  description:
-    "Knee extension is a resistance training exercise. Simply contract your quadriceps muscles to extend the lower leg until the whole leg is sticking straight out. For the rest, we'll take care. Go ahead!",
-  types: {
-    left: {
-      id: "left-knee-extension",
-      name: "Left Knee Extension",
-    },
-    right: {
-      id: "right-knee-extension",
-      name: "Right Knee Extension",
-    },
-  },
-};
-
 const shoulder_elevation = {
   id: "shoulder_elevation",
   name: "Shoulder Elevation",
   tags: ["elbow", "elevation"],
   color: "#afc3ff",
+  image: shoulderElevationImage,
   short_description:
     "Stiffness and hindered motion of shoulder after elbow fracture.",
   description:
@@ -120,6 +112,7 @@ const dumbell_bicep_curl = {
   name: "Dumbell Bicep Curl",
   tags: ["diabetes", "bicep", "dumbell", "curls"],
   color: "#ffd2d9",
+  image: bicepCurl,
   short_description:
     "A lifestyle therapy for prevention and treatment of diabetes.",
   description:
@@ -141,6 +134,7 @@ const lunges = {
   name: "Lunges",
   tags: ["diabetes", "lunges", "legs"],
   color: "#FFEBB5",
+  image: lungesImage,
   short_description:
     "A lifestyle therapy for prevention and treatment of diabetes.",
   description:
@@ -158,6 +152,7 @@ const side_kicks = {
   name: "Side Kicks",
   tags: ["diabetes", "kicks", "legs"],
   color: "#afc3ff",
+  image: sideKick,
   short_description:
     "A lifestyle therapy for prevention and treatment of diabetes.",
   description:
@@ -179,6 +174,7 @@ const squats = {
   name: "Squats",
   tags: ["diabetes", "legs", "squats"],
   color: "#ffd2d9",
+  image: squatsImage,
   short_description:
     "A lifestyle therapy for prevention and treatment of diabetes.",
   description:
@@ -194,7 +190,6 @@ const squats = {
 const excercises = {
   shoulder_abduction,
   shoulder_flexion,
-  knee_extension,
   elbow_flexion,
   shoulder_elevation,
   dumbell_bicep_curl,
@@ -218,11 +213,6 @@ export const targets = {
     id: "elbow",
     name: "Elbow",
     src: elbowImage,
-  },
-  knee: {
-    id: "knee",
-    name: "Knee",
-    src: kneeImage,
   },
 };
 

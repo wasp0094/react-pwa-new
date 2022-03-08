@@ -5,9 +5,6 @@ body {
     "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  background-color: hsl(36, 100%, 94%) !important;
-  color: rgb(36, 36, 36);
 }
 
 a {

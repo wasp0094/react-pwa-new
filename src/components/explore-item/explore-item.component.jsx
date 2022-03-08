@@ -1,12 +1,18 @@
 import "./explore-item.styles.css";
-import Workout from "../../assets/Workout-bro.svg";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
-function ExploreItem({ color, short_description, name, description, tags }) {
+function ExploreItem({
+  color,
+  short_description,
+  name,
+  description,
+  tags,
+  image,
+}) {
   return (
     <div className="explore-item card">
       <Accordion sx={{ background: color }}>
@@ -14,25 +20,23 @@ function ExploreItem({ color, short_description, name, description, tags }) {
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"
           id="panel1a-header"
+          className="card-header"
         >
           <div className="card-content">
-            <p
-              style={{
-                backgroundColor: "rgb(250, 190, 199)",
-                fontWeight: "600",
-              }}
-            >
-              {tags.map((tag, idx) => (
-                <span className="tag" key={idx}>
-                  {tag}
-                </span>
-              ))}
-            </p>
+            {/* <p>
+              {tags.map((tag, idx) =>
+                idx < 2 ? (
+                  <span className="tag" key={idx}>
+                    {tag}
+                  </span>
+                ) : null
+              )}
+            </p> */}
             <h3>{name}</h3>
             <h6>{short_description}</h6>
           </div>
           <div className="card-image">
-            <img className="img" src={Workout} alt={name} />
+            <img className="img" src={image} alt={name} />
           </div>
         </AccordionSummary>
         <AccordionDetails>

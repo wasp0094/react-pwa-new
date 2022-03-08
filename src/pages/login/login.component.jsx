@@ -19,7 +19,7 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const { logIn, signInWithGoogle } = useUserAuth();
+  const { logIn, signInWithGoogle, setLoadingUser } = useUserAuth();
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,6 +27,7 @@ function Login() {
       await logIn(email, password);
       navigate("/profile");
     } catch (error) {
+      setLoadingUser(false);
       setError("Incorrect Email or Password");
     }
   };
@@ -37,6 +38,7 @@ function Login() {
       await signInWithGoogle();
       navigate("/profile");
     } catch (error) {
+      setLoadingUser(false);
       setError("Couldn't login, please try again");
     }
   };

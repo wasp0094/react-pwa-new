@@ -16,6 +16,12 @@
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 
+.card-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .card-content p,
 .card-content h3,
 .card-content h6 {
@@ -23,7 +29,7 @@
 }
 
 .card-content h3 {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 700;
   margin: 0.5rem;
 }
@@ -34,10 +40,9 @@
   font-weight: 400;
 }
 
-.card-content p {
-  padding: 0.2rem 1rem;
-  background-color: #afc3ff;
-  border-radius: 2rem;
+.card-image {
+  width: 110px;
+  height: 110px;
 }
 
 .img {
