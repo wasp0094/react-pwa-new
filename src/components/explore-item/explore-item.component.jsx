@@ -26,15 +26,6 @@ function ExploreItem({
           className="card-header"
         >
           <div className="card-content">
-            {/* <p>
-              {tags.map((tag, idx) =>
-                idx < 2 ? (
-                  <span className="tag" key={idx}>
-                    {tag}
-                  </span>
-                ) : null
-              )}
-            </p> */}
             <h3>{name}</h3>
             <h6>{short_description}</h6>
           </div>

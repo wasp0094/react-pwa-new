@@ -1,0 +1,33 @@
+.excercise-details {
+  background-size: 60%;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: calc(100vh - 56px);
+}
+.excercise-details-container {
+  backdrop-filter: blur(10px);
+  height: calc(100vh - 56px);
+  color: rgb(7, 7, 98);
+  padding: 0 0.8rem;
+}
+
+.excercise-details-header {
+  text-align: center;
+  padding: 1rem;
+}
+
+.excercise-details-description {
+  word-break: break-all;
+  hyphens: auto;
+}
+
+.tag {
+  display: inline-block;
+  margin-right: 10px !important;
+  padding: 0.3em;
+  background-color: rgba(0, 0, 0, 0.4);
+  color: white;
+  border-radius: 5px;
+  letter-spacing: 0.05em;
+  font-size: 0.6em;
+}

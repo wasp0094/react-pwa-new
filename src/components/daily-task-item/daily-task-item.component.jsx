@@ -19,19 +19,6 @@ function DailyTaskItem({ task, type }) {
     <div className="daily-task-item">
       <Card sx={{ minWidth: 275, borderRadius: "13px" }}>
         <CardContent sx={{ padding: "6px 15px" }}>
-          <div className="tags">
-            {tags.map((tag, idx) => (
-              <Typography
-                key={idx}
-                sx={{ fontSize: "0.6em" }}
-                color="text.secondary"
-                className="tag"
-              >
-                {tag}
-              </Typography>
-            ))}
-          </div>
-
           <Typography variant="h6" component="div">
             {name}
           </Typography>
