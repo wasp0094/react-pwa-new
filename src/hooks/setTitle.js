@@ -7,11 +7,11 @@ export function useSetTitle(new_title) {
   useEffect(() => {
     if (title !== new_title) {
       setTitle(new_title);
-      console.log(title, new_title);
       document.title = new_title;
     }
     return () => {
       document.title = prev_title;
     };
+    //eslint-disable-next-line
   }, []);
 }

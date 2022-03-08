@@ -4,6 +4,7 @@ import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import NotificationsIcon from "@mui/icons-material/Notifications";
 import { useNavigate } from "react-router-dom";
 import { useTitleBar } from "../../context/TitleContext";
 
@@ -24,6 +25,9 @@ function TitleBar() {
           >
             {title}
           </Typography>
+          <IconButton>
+            <NotificationsIcon size="small"></NotificationsIcon>
+          </IconButton>
         </Toolbar>
       </AppBar>
     </Box>
