@@ -1,5 +1,3 @@
-//prescriptioncomponent
-
 import React, { useState, useEffect } from "react";
 import { FormControl } from "@mui/material";
 import { InputLabel } from "@mui/material";

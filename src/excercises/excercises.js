@@ -216,20 +216,22 @@ export const targets = {
   },
 };
 
+const excerciseFuncs = {
+  "left-shoulder-abduction": leftShoulderAbduction,
+  "right-shoulder-abduction": rightShoulderAbduction,
+  "full-squats": squat,
+  "left-side-kicks": leftSideKick,
+  "right-side-kicks": rightSideKick,
+  "left-elbow-kicks": leftElbowFlexion,
+  "right-elbow-kicks": rightElbowFlexion,
+  "left-shoulder-flexion": leftShoulderFlexion,
+  "right-shoulder-flexion": rightShoulderFlexion,
+  "full-lunges": lunge,
+  "full-shoulder-elevation": shoulderElevation,
+};
+
 export const calculate = (excercise_id) => {
-  if (excercise_id === "left-shoulder-abduction") return leftShoulderAbduction;
-  else if (excercise_id === "right-shoulder-abduction")
-    return rightShoulderAbduction;
-  else if (excercise_id === "full-squats") return squat;
-  else if (excercise_id === "left-side-kicks") return leftSideKick;
-  else if (excercise_id === "right-side-kicks") return rightSideKick;
-  else if (excercise_id === "left-elbow-kicks") return leftElbowFlexion;
-  else if (excercise_id === "right-elbow-kicks") return rightElbowFlexion;
-  else if (excercise_id === "left-shoulder-flexion") return leftShoulderFlexion;
-  else if (excercise_id === "right-shoulder-flexion")
-    return rightShoulderFlexion;
-  else if (excercise_id === "full-lunges") return lunge;
-  else if (excercise_id === "full-shoulder-elevation") return shoulderElevation;
+  return excerciseFuncs[excercise_id];
 };
 
 export default excercises;

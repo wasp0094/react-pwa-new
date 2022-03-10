@@ -13,6 +13,7 @@ import Login from "./pages/login/login.component";
 import Routine from "./pages/routine/routine.component";
 import BottomNav from "./components/bottom-nav/bottom-nav.component";
 import Loading from "./components/loading/loading.component";
+import FormPopup from "./components/form-popup.component";
 
 import Prescription from "./components/prescription-form/Prescription";
 
@@ -56,7 +57,7 @@ function App() {
           path="/home"
           element={
             <ProtectedRoute>
-              <Home />
+              {FormPopup(Home)({ preDefined: false, excercise: "" })}
             </ProtectedRoute>
           }
         />
