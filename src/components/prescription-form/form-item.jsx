@@ -8,12 +8,20 @@ import { TextField } from "@mui/material";
 import { Button } from "@mui/material";
 import { Stack } from "@mui/material";
 import Slider from "@mui/material/Slider";
-
+import excercises from "../../excercises/excercises";
 import { firestore } from "../../firebase/firebase";
-import { collection, addDoc, Timestamp, getDocs } from "firebase/firestore";
+import {
+  collection,
+  addDoc,
+  Timestamp,
+  getDocs,
+  doc,
+} from "firebase/firestore";
+import { useUserAuth } from "../../context/UserAuthContext";
 
-function FormComponent() {
-  const [exercise, setExercise] = useState("");
+function FormComponent({ preDefined, excerciseName }) {
+  const [exercise, setExercise] = useState(excerciseName);
+  const { user } = useUserAuth();
 
   const handleChange = (event) => {
     setExercise(event.target.value);
@@ -34,6 +42,7 @@ function FormComponent() {
         sets: sets,
         reps: reps,
         completed: false,
+        user: doc(firestore, `users/${user.id}`),
         created: Timestamp.now(),
       });
     } catch (err) {
@@ -41,20 +50,20 @@ function FormComponent() {
     }
   };
 
-  const [prescriptions, setPrescriptions] = useState([]);
+  // const [prescriptions, setPrescriptions] = useState([]);
 
-  useEffect(() => {
-    const getData = async () => {
-      const formData = await getDocs(collection(firestore, "prescriptions"));
-      // console.log(parkingData);
-      setPrescriptions(
-        formData.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
-      );
-      console.log(formData);
-    };
+  // useEffect(() => {
+  //   const getData = async () => {
+  //     const formData = await getDocs(collection(firestore, "prescriptions"));
+  //     // console.log(parkingData);
+  //     setPrescriptions(
+  //       formData.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
+  //     );
+  //     console.log(formData);
+  //   };
 
-    getData();
-  }, []);
+  //   getData();
+  // }, []);
 
   // for slider
   function valuetext(value) {
@@ -62,76 +71,75 @@ function FormComponent() {
   }
 
   return (
-    <>
-      <Box sx={{ margin: 2 }}>
-        <form onSubmit={handleSubmit}>
-          <FormControl fullWidth>
-            <InputLabel id="demo-simple-select-label">Exercise Name</InputLabel>
-            <Select
-              labelId="exercise-name"
-              id="exercise"
-              value={exercise}
-              label="Exercise"
-              onChange={handleChange}
-              size="small"
-            >
-              <MenuItem value={"shoulder-abduction"}>
-                Shoulder Abduction
+    <Box sx={{ margin: 2 }}>
+      <form onSubmit={handleSubmit}>
+        <FormControl fullWidth>
+          <InputLabel id="demo-simple-select-label">Exercise</InputLabel>
+          <Select
+            disabled={preDefined}
+            labelId="exercise-name"
+            id="exercise"
+            value={exercise}
+            label="Exercise"
+            onChange={handleChange}
+            size="small"
+          >
+            {Object.keys(excercises).map((excercise_id, idx) => (
+              <MenuItem value={excercise_id} key={idx}>
+                {excercises[excercise_id].name}
               </MenuItem>
-              <MenuItem value={"shoulder-flextion"}>Shoulder Flextion</MenuItem>
-              <MenuItem value={"elbow"}>Elbow</MenuItem>
-            </Select>
-            <br />
-            <Stack direction="row" spacing={2}>
-              <TextField
-                id="days-input"
-                name="days"
-                label="Days"
-                type="number"
-                placeholder="0"
-                size="small"
-                value={days}
-                onChange={(e) => setDays(e.target.value)}
-              />
-              <br />
-              <TextField
-                id="sets-input"
-                name="sets"
-                label="Sets"
-                type="number"
-                size="small"
-                value={sets}
-                onChange={(e) => setSets(e.target.value)}
-              />
-              <br />
-              <TextField
-                id="reps-input"
-                name="reps"
-                label="Reps"
-                type="number"
-                size="small"
-                value={reps}
-                onChange={(e) => setReps(e.target.value)}
-              />
-            </Stack>
-            <Slider
-              aria-label="Small steps"
-              defaultValue={3}
-              getAriaValueText={valuetext}
-              step={1}
-              marks
-              min={1}
-              max={10}
-              valueLabelDisplay="auto"
+            ))}
+          </Select>
+          <br />
+          <Stack direction="row" spacing={2}>
+            <TextField
+              id="days-input"
+              name="days"
+              label="Days"
+              type="number"
+              placeholder="0"
+              size="small"
+              value={days}
+              onChange={(e) => setDays(e.target.value)}
             />
             <br />
-            <Button variant="contained" color="primary" type="submit">
-              Save
-            </Button>
-          </FormControl>
-        </form>
-      </Box>
-    </>
+            <TextField
+              id="sets-input"
+              name="sets"
+              label="Sets"
+              type="number"
+              size="small"
+              value={sets}
+              onChange={(e) => setSets(e.target.value)}
+            />
+            <br />
+            <TextField
+              id="reps-input"
+              name="reps"
+              label="Reps"
+              type="number"
+              size="small"
+              value={reps}
+              onChange={(e) => setReps(e.target.value)}
+            />
+          </Stack>
+          <Slider
+            aria-label="Small steps"
+            defaultValue={3}
+            getAriaValueText={valuetext}
+            step={1}
+            marks
+            min={1}
+            max={10}
+            valueLabelDisplay="auto"
+          />
+          <br />
+          <Button variant="contained" color="primary" type="submit">
+            Save
+          </Button>
+        </FormControl>
+      </form>
+    </Box>
   );
 }
 

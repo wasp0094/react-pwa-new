@@ -4,7 +4,7 @@ import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
 import Typography from "@mui/material/Typography";
-import FormComponent from "./prescription-form/form-item";
+import FormComponent from "../prescription-form/form-item";
 
 const style = {
   position: "absolute",
@@ -46,9 +46,12 @@ function FormPopup(WrappedComponent) {
               >
                 Set Prescription
               </Typography>
-              <Typography id="transition-modal-description" sx={{ mt: 2 }}>
-                <FormComponent />
-              </Typography>
+              <Box id="transition-modal-description" sx={{ mt: 2 }}>
+                <FormComponent
+                  preDefined={preDefined}
+                  excerciseName={excercise}
+                />
+              </Box>
             </Box>
           </Fade>
         </Modal>

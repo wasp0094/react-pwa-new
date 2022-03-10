@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 
 import { useUserAuth } from "./context/UserAuthContext";
@@ -13,10 +13,12 @@ import Login from "./pages/login/login.component";
 import Routine from "./pages/routine/routine.component";
 import BottomNav from "./components/bottom-nav/bottom-nav.component";
 import Loading from "./components/loading/loading.component";
-import FormPopup from "./components/form-popup.component";
+import FormPopup from "./components/form-popup/form-popup.component";
 
 import Prescription from "./components/prescription-form/Prescription";
 import ExcerciseDetails from "./components/excercise-details/excercise-details.component";
+import { addCollectionsAndDocuments } from "./firebase/firebase";
+import excercises from "./excercises/excercises";
 
 function LoginLoader({ user }) {
   return user ? <Navigate to="/home" replace /> : <Login />;

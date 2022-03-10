@@ -1,6 +1,13 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-import { doc, getDoc, getFirestore, setDoc } from "firebase/firestore";
+import {
+  doc,
+  getDoc,
+  getFirestore,
+  setDoc,
+  writeBatch,
+  collection,
+} from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -33,3 +40,17 @@ export async function createUserObject(userAuth, data) {
 
 export const auth = getAuth(app);
 export default app;
+
+export const addCollectionsAndDocuments = async (
+  collectionKey,
+  objectsToAdd
+) => {
+  const collectionRef = collection(firestore, collectionKey);
+  console.log(collectionRef);
+  const batch = writeBatch(firestore);
+  Object.keys(objectsToAdd).forEach((key) => {
+    const docRef = doc(firestore, `${collectionKey}/${objectsToAdd[key].id}`);
+    batch.set(docRef, { ...objectsToAdd[key], id: docRef.id });
+  });
+  await batch.commit();
+};

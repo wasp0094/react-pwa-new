@@ -5,6 +5,7 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { useNavigate } from "react-router-dom";
+import { resolveImage } from "../../excercises/excercises";
 
 function ExploreItem({
   color,
@@ -13,7 +14,6 @@ function ExploreItem({
   id,
   description,
   tags,
-  image,
 }) {
   const navigate = useNavigate();
   return (
@@ -30,7 +30,7 @@ function ExploreItem({
             <h6>{short_description}</h6>
           </div>
           <div className="card-image">
-            <img className="img" src={image} alt={name} />
+            <img className="img" src={resolveImage(id)} alt={name} />
           </div>
         </AccordionSummary>
         <AccordionDetails>

@@ -23,12 +23,25 @@ import shoulderElevationImage from "../assets/shoulderElevation.svg";
 import shoulderAbduction from "../assets/shoulderAbduction.svg";
 import shoulderFlexion from "../assets/shoulderFlexion.svg";
 
+const excerciseImages = {
+  shoulder_abduction: shoulderAbduction,
+  shoulder_flexion: shoulderFlexion,
+  elbow_flexion: elbowFlexion,
+  shoulder_elevation: shoulderElevationImage,
+  dumbell_bicep_curl: bicepCurl,
+  lunges: lungesImage,
+  side_kicks: sideKick,
+  squats: squatsImage,
+};
+
+export const resolveImage = (excercise_id) => excerciseImages[excercise_id];
+
 const shoulder_abduction = {
-  id: "shoulder_abduction",
+  id: "hjal5KUjqNxNT9bDZw8n",
   name: "Shoulder Abduction",
   tags: ["shoulder", "abduction"],
   color: "#FFEBB5",
-  image: shoulderAbduction,
+
   short_description:
     "Characterized by pain and stiffness in the shoulder joint.",
   description:
@@ -46,11 +59,11 @@ const shoulder_abduction = {
 };
 
 const shoulder_flexion = {
-  id: "shoulder_flexion",
+  id: "QSfsP0Wwm3XUbfI0nyDi",
   name: "Shoulder Flexion",
   tags: ["shoulder", "flexion"],
   color: "#afc3ff",
-  image: shoulderFlexion,
+
   short_description:
     "Characterized by pain and stiffness in the shoulder joint.",
   description:
@@ -68,11 +81,11 @@ const shoulder_flexion = {
 };
 
 const elbow_flexion = {
-  id: "elbow_flexion",
+  id: "WAtBat858CahWQdzxN4B",
   name: "Elbow Flexion",
-  tags: ["elbow", "flexion"],
+  tags: ["elbow", "flexion", "fracture"],
   color: "#FFEBB5",
-  image: elbowFlexion,
+
   short_description:
     "Swelling, stiffness and hindered motion after fracture/ burns.",
   description:
@@ -90,11 +103,11 @@ const elbow_flexion = {
 };
 
 const shoulder_elevation = {
-  id: "shoulder_elevation",
+  id: "IU2DBECRlUFtzc4VftOe",
   name: "Shoulder Elevation",
   tags: ["elbow", "elevation"],
   color: "#afc3ff",
-  image: shoulderElevationImage,
+
   short_description:
     "Stiffness and hindered motion of shoulder after elbow fracture.",
   description:
@@ -108,11 +121,11 @@ const shoulder_elevation = {
 };
 
 const dumbell_bicep_curl = {
-  id: "dumbell_bicep_curl",
+  id: "et7RXuBsXRNZHhG92Jae",
   name: "Dumbell Bicep Curl",
   tags: ["diabetes", "bicep", "dumbell", "curls"],
   color: "#ffd2d9",
-  image: bicepCurl,
+
   short_description:
     "A lifestyle therapy for prevention and treatment of diabetes.",
   description:
@@ -130,11 +143,11 @@ const dumbell_bicep_curl = {
 };
 
 const lunges = {
-  id: "lunges",
+  id: "37t6GHylJeUZmGx1eMNg",
   name: "Lunges",
   tags: ["diabetes", "lunges", "legs"],
   color: "#FFEBB5",
-  image: lungesImage,
+
   short_description:
     "A lifestyle therapy for prevention and treatment of diabetes.",
   description:
@@ -148,11 +161,11 @@ const lunges = {
 };
 
 const side_kicks = {
-  id: "side_kicks",
+  id: "KEsdWebYLs0BPfDuEOur",
   name: "Side Kicks",
-  tags: ["diabetes", "kicks", "legs"],
+  tags: ["diabetes", "kicks", "legs", "cardio"],
   color: "#afc3ff",
-  image: sideKick,
+
   short_description:
     "A lifestyle therapy for prevention and treatment of diabetes.",
   description:
@@ -170,11 +183,11 @@ const side_kicks = {
 };
 
 const squats = {
-  id: "squats",
+  id: "ZxgI2YvKjlpCWrIDe2OX",
   name: "Squats",
   tags: ["diabetes", "legs", "squats"],
   color: "#ffd2d9",
-  image: squatsImage,
+
   short_description:
     "A lifestyle therapy for prevention and treatment of diabetes.",
   description:

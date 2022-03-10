@@ -1,15 +1,15 @@
 import { useParams } from "react-router-dom";
-import excercises from "../../excercises/excercises";
+import excercises, { resolveImage } from "../../excercises/excercises";
 import "./excercise-details.styles.css";
+import FormPopup from "../form-popup/form-popup.component";
 
-function ExcerciseDetails() {
-  const { excercise_id } = useParams();
-  const { name, image, description, short_description, tags, color } =
+function ExcerciseDetailsPage({ excercise_id, handleModalOpen }) {
+  const { id, name, description, short_description, tags, color } =
     excercises[excercise_id];
   return (
     <div
       className="excercise-details"
-      style={{ color: { color }, backgroundImage: `url(${image})` }}
+      style={{ color: { color }, backgroundImage: `url(${resolveImage(id)})` }}
     >
       <div className="excercise-details-container">
         <h1 className="excercise-details-header">{name}</h1>
@@ -30,9 +30,19 @@ function ExcerciseDetails() {
             ) : null
           )}
         </p>
+        <button onClick={handleModalOpen}>Open modal</button>
       </div>
     </div>
   );
+}
+
+function ExcerciseDetails() {
+  const { excercise_id } = useParams();
+  return FormPopup(ExcerciseDetailsPage)({
+    preDefined: true,
+    excercise: excercise_id,
+    excercise_id,
+  });
 }
 
 export default ExcerciseDetails;
