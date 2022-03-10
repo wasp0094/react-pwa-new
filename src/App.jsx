@@ -16,6 +16,7 @@ import Loading from "./components/loading/loading.component";
 import FormPopup from "./components/form-popup.component";
 
 import Prescription from "./components/prescription-form/Prescription";
+import ExcerciseDetails from "./components/excercise-details/excercise-details.component";
 
 function LoginLoader({ user }) {
   return user ? <Navigate to="/home" replace /> : <Login />;
@@ -66,6 +67,14 @@ function App() {
           element={
             <ProtectedRoute>
               <Explore />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/details/:excercise_id"
+          element={
+            <ProtectedRoute>
+              <ExcerciseDetails />
             </ProtectedRoute>
           }
         />

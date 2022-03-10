@@ -4,15 +4,18 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { useNavigate } from "react-router-dom";
 
 function ExploreItem({
   color,
   short_description,
   name,
+  id,
   description,
   tags,
   image,
 }) {
+  const navigate = useNavigate();
   return (
     <div className="explore-item card">
       <Accordion sx={{ background: color }}>
@@ -41,8 +44,16 @@ function ExploreItem({
         </AccordionSummary>
         <AccordionDetails>
           <Typography style={{ color: "rgb(7, 7, 98)", fontSize: "13px" }}>
-            {description}
+            {description.slice(0, 100)}...
           </Typography>
+          <button
+            className="explore-item-button"
+            onClick={() => {
+              navigate(`/details/${id}`);
+            }}
+          >
+            ADD TO YOUR ROUTINE
+          </button>
         </AccordionDetails>
       </Accordion>
     </div>

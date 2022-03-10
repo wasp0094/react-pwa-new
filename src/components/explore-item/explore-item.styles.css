@@ -62,3 +62,20 @@
   justify-content: space-between;
   padding: 4px 15px;
 }
+
+.explore-item-button {
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 0.5rem 0;
+  outline: none;
+  border-radius: 5px;
+  border: 1px solid rgb(7, 7, 98);
+  box-shadow: 2px 3px 12px rgba(0, 0, 0, 0.5);
+  background-color: white;
+  transition: all 0.2s;
+  color: rgb(7, 7, 98);
+}
+
+.explore-item-button:active {
+  box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.5);
+}
