@@ -29,6 +29,9 @@ function CreateAccountLoader({ user }) {
 }
 
 function App() {
+  useEffect(() => {
+    // addCollectionsAndDocuments("excercises", excercises);
+  }, []);
   const { user, loadingUser } = useUserAuth();
   return (
     <>

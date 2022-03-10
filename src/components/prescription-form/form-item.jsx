@@ -14,8 +14,8 @@ import {
   collection,
   addDoc,
   Timestamp,
-  getDocs,
   doc,
+  updateDoc,
 } from "firebase/firestore";
 import { useUserAuth } from "../../context/UserAuthContext";
 
@@ -30,21 +30,27 @@ function FormComponent({ preDefined, excerciseName }) {
   const [days, setDays] = useState(0);
   const [sets, setSets] = useState(0);
   const [reps, setReps] = useState(0);
+  const [type, setType] = useState("");
 
   //days , sets, reps get sent as strings to database
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await addDoc(collection(firestore, "prescriptionData"), {
-        exercise: exercise,
+      const userRef = doc(firestore, `users/${user.id}`);
+      const docRef = await addDoc(collection(firestore, "prescriptions"), {
+        exercise: doc(firestore, `excercises/${exercise}`),
+        type: type,
         days: days,
         sets: sets,
         reps: reps,
         completed: false,
-        user: doc(firestore, `users/${user.id}`),
+        user: userRef,
         created: Timestamp.now(),
       });
+      console.log(docRef);
+      const routine = user?.routine || [];
+      await updateDoc(userRef, { routine: [...routine, docRef] });
     } catch (err) {
       alert(err);
     }
@@ -74,7 +80,7 @@ function FormComponent({ preDefined, excerciseName }) {
     <Box sx={{ margin: 2 }}>
       <form onSubmit={handleSubmit}>
         <FormControl fullWidth>
-          <InputLabel id="demo-simple-select-label">Exercise</InputLabel>
+          <InputLabel id="exercise-name">Exercise</InputLabel>
           <Select
             disabled={preDefined}
             labelId="exercise-name"
@@ -123,7 +129,7 @@ function FormComponent({ preDefined, excerciseName }) {
               onChange={(e) => setReps(e.target.value)}
             />
           </Stack>
-          <Slider
+          {/* <Slider
             aria-label="Small steps"
             defaultValue={3}
             getAriaValueText={valuetext}
@@ -132,7 +138,7 @@ function FormComponent({ preDefined, excerciseName }) {
             min={1}
             max={10}
             valueLabelDisplay="auto"
-          />
+          /> */}
           <br />
           <Button variant="contained" color="primary" type="submit">
             Save

@@ -24,14 +24,14 @@ import shoulderAbduction from "../assets/shoulderAbduction.svg";
 import shoulderFlexion from "../assets/shoulderFlexion.svg";
 
 const excerciseImages = {
-  shoulder_abduction: shoulderAbduction,
-  shoulder_flexion: shoulderFlexion,
-  elbow_flexion: elbowFlexion,
-  shoulder_elevation: shoulderElevationImage,
-  dumbell_bicep_curl: bicepCurl,
-  lunges: lungesImage,
-  side_kicks: sideKick,
-  squats: squatsImage,
+  hjal5KUjqNxNT9bDZw8n: shoulderAbduction,
+  QSfsP0Wwm3XUbfI0nyDi: shoulderFlexion,
+  WAtBat858CahWQdzxN4B: elbowFlexion,
+  IU2DBECRlUFtzc4VftOe: shoulderElevationImage,
+  et7RXuBsXRNZHhG92Jae: bicepCurl,
+  "37t6GHylJeUZmGx1eMNg": lungesImage,
+  KEsdWebYLs0BPfDuEOur: sideKick,
+  ZxgI2YvKjlpCWrIDe2OX: squatsImage,
 };
 
 export const resolveImage = (excercise_id) => excerciseImages[excercise_id];
@@ -83,7 +83,7 @@ const shoulder_flexion = {
 const elbow_flexion = {
   id: "WAtBat858CahWQdzxN4B",
   name: "Elbow Flexion",
-  tags: ["elbow", "flexion", "fracture"],
+  tags: ["elbow", "flexion"],
   color: "#FFEBB5",
 
   short_description:
@@ -201,14 +201,14 @@ const squats = {
 };
 
 const excercises = {
-  shoulder_abduction,
-  shoulder_flexion,
-  elbow_flexion,
-  shoulder_elevation,
-  dumbell_bicep_curl,
-  lunges,
-  side_kicks,
-  squats,
+  hjal5KUjqNxNT9bDZw8n: shoulder_abduction,
+  QSfsP0Wwm3XUbfI0nyDi: shoulder_flexion,
+  WAtBat858CahWQdzxN4B: elbow_flexion,
+  IU2DBECRlUFtzc4VftOe: shoulder_elevation,
+  et7RXuBsXRNZHhG92Jae: dumbell_bicep_curl,
+  "37t6GHylJeUZmGx1eMNg": lunges,
+  KEsdWebYLs0BPfDuEOur: side_kicks,
+  ZxgI2YvKjlpCWrIDe2OX: squats,
 };
 
 export const targets = {

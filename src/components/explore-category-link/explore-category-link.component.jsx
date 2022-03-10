@@ -11,7 +11,7 @@ function ExploreCategoryLink({ src, name, id }) {
           <Avatar
             className="explore-category-link-image"
             src={src}
-            sx={{ width: 128, height: 128 }}
+            sx={{ width: 96, height: 96 }}
           />
           <span className="explore-category-link-name">{name}</span>
         </div>

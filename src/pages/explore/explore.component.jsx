@@ -2,8 +2,8 @@ import { Routes, Route } from "react-router-dom";
 
 import "./explore.styles.css";
 
-import ExploreCategoryLink from "../../components/explore-category-link/explore-category-link.component";
 import ExploreCategory from "../../components/explore-category/explore-category.component";
+import ExploreCategoryLink from "../../components/explore-category-link/explore-category-link.component";
 
 import { targets } from "../../excercises/excercises";
 

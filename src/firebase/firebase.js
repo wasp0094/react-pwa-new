@@ -28,9 +28,10 @@ export async function createUserObject(userAuth, data) {
   const userSnapshot = await getDoc(userRef);
   if (!userSnapshot.exists()) {
     const { email, displayName } = userAuth;
-    const createdAt = new Date();
+    const createdAt = new Date(),
+      routine = [];
     try {
-      setDoc(userRef, { displayName, email, createdAt, ...data });
+      setDoc(userRef, { displayName, email, routine, createdAt, ...data });
     } catch (err) {
       console.log(err);
     }
@@ -46,10 +47,9 @@ export const addCollectionsAndDocuments = async (
   objectsToAdd
 ) => {
   const collectionRef = collection(firestore, collectionKey);
-  console.log(collectionRef);
   const batch = writeBatch(firestore);
   Object.keys(objectsToAdd).forEach((key) => {
-    const docRef = doc(firestore, `${collectionKey}/${objectsToAdd[key].id}`);
+    const docRef = doc(collectionRef, key);
     batch.set(docRef, { ...objectsToAdd[key], id: docRef.id });
   });
   await batch.commit();
