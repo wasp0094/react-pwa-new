@@ -14,6 +14,8 @@ import Routine from "./pages/routine/routine.component";
 import BottomNav from "./components/bottom-nav/bottom-nav.component";
 import Loading from "./components/loading/loading.component";
 
+import Prescription from "./components/prescription-form/Prescription";
+
 function LoginLoader({ user }) {
   return user ? <Navigate to="/home" replace /> : <Login />;
 }
@@ -76,6 +78,9 @@ function App() {
             </ProtectedRoute>
           }
         />
+
+        {/* testing form */}
+        <Route path="/form" element={<Prescription />} />
       </Routes>
       {user && <BottomNav />}
     </>
