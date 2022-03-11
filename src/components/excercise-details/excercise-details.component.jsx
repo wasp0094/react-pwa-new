@@ -37,7 +37,7 @@ function ExcerciseDetailsPage({ excercise_id, handleModalOpen }) {
             ) : null
           )}
         </p>
-        <Button onClick={handleModalOpen}>Open modal</Button>
+        <Button onClick={handleModalOpen}>SET GOAL</Button>
       </div>
     </div>
   );

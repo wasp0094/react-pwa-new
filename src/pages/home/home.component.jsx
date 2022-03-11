@@ -10,7 +10,7 @@ import { useSetTitle } from "../../hooks/setTitle";
 function HomePage({ handleModalOpen }) {
   useSetTitle("Home");
   return (
-    <div>
+    <div className="home-page" style={{ marginTop: "-56px" }}>
       <img src={banner} alt="banner" style={{ width: "100vw" }} />
       <div
         style={{
@@ -23,7 +23,7 @@ function HomePage({ handleModalOpen }) {
           <ExploreCategoryLink key={idx} {...targets[target]} />
         ))}
       </div>
-      <Button onClick={handleModalOpen}>Open modal</Button>
+      <Button onClick={handleModalOpen}>Add Prescription</Button>
     </div>
   );
 }

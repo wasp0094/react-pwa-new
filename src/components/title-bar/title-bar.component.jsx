@@ -10,27 +10,30 @@ import { useTitleBar } from "../../context/TitleContext";
 
 function TitleBar() {
   const navigate = useNavigate();
-  const { title } = useTitleBar();
+  const { title, visible } = useTitleBar();
+  if (!visible) return null;
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="fixed" style={{ background: "#fff", color: "#000" }}>
-        <Toolbar>
-          <IconButton onClick={() => navigate(-1)}>
-            <ArrowBackIcon size="small"></ArrowBackIcon>
-          </IconButton>
-          <Typography
-            variant="h6"
-            style={{ textAlign: "center" }}
-            sx={{ flexGrow: 1 }}
-          >
-            {title}
-          </Typography>
-          <IconButton>
-            <NotificationsIcon size="small"></NotificationsIcon>
-          </IconButton>
-        </Toolbar>
-      </AppBar>
-    </Box>
+    <div className="title-bar">
+      <Box sx={{ flexGrow: 1 }}>
+        <AppBar position="fixed" style={{ background: "#fff", color: "#000" }}>
+          <Toolbar>
+            <IconButton onClick={() => navigate(-1)}>
+              <ArrowBackIcon size="small"></ArrowBackIcon>
+            </IconButton>
+            <Typography
+              variant="h6"
+              style={{ textAlign: "center" }}
+              sx={{ flexGrow: 1 }}
+            >
+              {title}
+            </Typography>
+            <IconButton>
+              <NotificationsIcon size="small"></NotificationsIcon>
+            </IconButton>
+          </Toolbar>
+        </AppBar>
+      </Box>
+    </div>
   );
 }
 

@@ -2,11 +2,11 @@
   background-size: 60%;
   background-position: center;
   background-repeat: no-repeat;
-  height: calc(100vh - 56px);
+  height: calc(100vh - 112px);
 }
 .excercise-details-container {
   backdrop-filter: blur(10px);
-  height: calc(100vh - 56px);
+  height: calc(100vh - 112px);
   color: rgb(7, 7, 98);
   padding: 0 0.8rem;
   padding-top: 0.5rem;

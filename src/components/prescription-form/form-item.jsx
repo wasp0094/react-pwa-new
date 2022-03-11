@@ -52,9 +52,7 @@ function FormComponent({ preDefined, excerciseName, handleClose }) {
 
   //days , sets, reps get sent as strings to database
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    handleClose();
+  const setGoalToDb = async () => {
     try {
       const userRef = doc(firestore, `users/${user.id}`);
       const docRef = await addDoc(collection(firestore, "prescriptions"), {
@@ -74,12 +72,26 @@ function FormComponent({ preDefined, excerciseName, handleClose }) {
     }
   };
 
+  const handleSetGoal = async (e) => {
+    await setGoalToDb();
+  };
+
+  const handleAddMore = async (e) => {
+    setExercise(excerciseName);
+    setDays(0);
+    setSets(0);
+    setReps(0);
+    setLeft(false);
+    setRight(false);
+    await setGoalToDb();
+  };
+
   function valuetext(value) {
     return `${value}°C`;
   }
   return (
     <Box sx={{ margin: 2 }}>
-      <form onSubmit={handleSubmit}>
+      <form>
         <FormControl fullWidth>
           <InputLabel id="exercise-name">Exercise</InputLabel>
           <Select
@@ -114,6 +126,7 @@ function FormComponent({ preDefined, excerciseName, handleClose }) {
               id="sets-input"
               name="sets"
               label="Sets"
+              placeholder="0"
               type="number"
               size="small"
               value={sets}
@@ -124,6 +137,7 @@ function FormComponent({ preDefined, excerciseName, handleClose }) {
               id="reps-input"
               name="reps"
               label="Reps"
+              placeholder="0"
               type="number"
               size="small"
               value={reps}
@@ -157,10 +171,34 @@ function FormComponent({ preDefined, excerciseName, handleClose }) {
             </Stack>
           )}
           <br />
-
-          <Button variant="contained" color="primary" type="submit">
-            Save
-          </Button>
+          {!preDefined ? (
+            <Stack direction="row" style={{ justifyContent: "space-between" }}>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={() => {
+                  handleClose();
+                }}
+              >
+                Done
+              </Button>
+              <Button
+                variant="contained"
+                color="secondary"
+                onClick={() => handleAddMore()}
+              >
+                Add more
+              </Button>
+            </Stack>
+          ) : (
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={() => handleSetGoal()}
+            >
+              Set Goal
+            </Button>
+          )}
         </FormControl>
       </form>
     </Box>
