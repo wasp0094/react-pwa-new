@@ -1,38 +1,27 @@
-import { Routes, Route } from "react-router-dom";
-
 import "./explore.styles.css";
-
-import ExploreCategory from "../../components/explore-category/explore-category.component";
-import ExploreCategoryLink from "../../components/explore-category-link/explore-category-link.component";
-
-import { targets } from "../../excercises/excercises";
-
-function ExplorePage() {
-  return (
-    <>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-evenly",
-          flexWrap: "wrap",
-        }}
-      >
-        {Object.keys(targets).map((target, idx) => (
-          <ExploreCategoryLink key={idx} {...targets[target]} />
-        ))}
-      </div>
-    </>
-  );
-}
+import excercises, { targets } from "../../excercises/excercises";
+import ExploreItem from "../../components/explore-item/explore-item.component";
 
 function Explore() {
   return (
     <div className="explore">
       <h4 className="explore-header">Explore</h4>
-      <Routes>
-        <Route path="/" element={<ExplorePage />} />
-        <Route path={"/:explore_category"} element={<ExploreCategory />} />
-      </Routes>
+      <div style={{ paddingBottom: "4rem" }}>
+        {Object.keys(targets).map((target, idx) => (
+          <div className="explore-domains" key={idx}>
+            <div className="domain">
+              <hr></hr>
+              <p>{target.toUpperCase()}</p>
+              <hr></hr>
+            </div>
+            {Object.keys(excercises).map((excercise, idx) =>
+              excercises[excercise].tags.includes(target) ? (
+                <ExploreItem key={idx} {...excercises[excercise]} />
+              ) : null
+            )}
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

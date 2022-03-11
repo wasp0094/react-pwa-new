@@ -21,7 +21,11 @@ function FormPopup(WrappedComponent) {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  return function ({ preDefined, excercise, ...otherProps }) {
+  return function ({
+    preDefined = false,
+    excercise = "ZxgI2YvKjlpCWrIDe2OX",
+    ...otherProps
+  } = {}) {
     return (
       <>
         <WrappedComponent handleModalOpen={handleOpen} {...otherProps} />
@@ -49,6 +53,7 @@ function FormPopup(WrappedComponent) {
                 <FormComponent
                   preDefined={preDefined}
                   excerciseName={excercise}
+                  handleClose={handleClose}
                 />
               </Box>
             </Box>

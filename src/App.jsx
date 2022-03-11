@@ -60,12 +60,8 @@ function App() {
           }
         />
         <Route
-          path="/home"
-          element={
-            <ProtectedRoute>
-              {FormPopup(Home)({ preDefined: false, excercise: "" })}
-            </ProtectedRoute>
-          }
+          path="/home/*"
+          element={<ProtectedRoute>{FormPopup(Home)()}</ProtectedRoute>}
         />
         <Route
           path="/explore/*"
@@ -95,7 +91,13 @@ function App() {
         />
 
         {/* testing form */}
-        <Route path="/form" element={<Prescription />} />
+        <Route
+          path="/form"
+          element={FormPopup(Prescription)({
+            preDefined: false,
+            excercise: "",
+          })}
+        />
       </Routes>
       {user && <BottomNav />}
     </>

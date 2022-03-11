@@ -2,7 +2,7 @@ import * as React from "react";
 import Button from "@mui/material/Button";
 import FormOutput from "./form-output";
 
-export default function Prescription() {
+export default function Prescription({ handleModalOpen }) {
   return (
     <div>
       <div>
@@ -10,6 +10,7 @@ export default function Prescription() {
         <p>Name: </p>
         <p>Age:</p>
       </div>
+      <Button onClick={handleModalOpen}>Open modal</Button>
       <FormOutput />
     </div>
   );

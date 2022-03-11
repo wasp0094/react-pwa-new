@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import excercises, { resolveImage } from "../../excercises/excercises";
 import "./excercise-details.styles.css";
 import FormPopup from "../form-popup/form-popup.component";
+import { Button } from "@mui/material";
 
 function ExcerciseDetailsPage({ excercise_id, handleModalOpen }) {
   const { id, name, description, short_description, tags, color } =
@@ -30,7 +31,7 @@ function ExcerciseDetailsPage({ excercise_id, handleModalOpen }) {
             ) : null
           )}
         </p>
-        <button onClick={handleModalOpen}>Open modal</button>
+        <Button onClick={handleModalOpen}>Open modal</Button>
       </div>
     </div>
   );

@@ -187,7 +187,6 @@ const squats = {
   name: "Squats",
   tags: ["diabetes", "legs", "squats"],
   color: "#ffd2d9",
-
   short_description:
     "A lifestyle therapy for prevention and treatment of diabetes.",
   description:
