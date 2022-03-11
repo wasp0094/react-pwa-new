@@ -6,7 +6,7 @@ function Explore() {
   useSetTitle("Explore");
   return (
     <div className="explore">
-      <h4 className="explore-header">Explore</h4>
+      {/* <h4 className="explore-header">Explore</h4> */}
       <div style={{ paddingBottom: "4rem" }}>
         {Object.keys(targets).map((target, idx) => (
           <div className="explore-domains" key={idx}>
