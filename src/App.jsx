@@ -15,10 +15,9 @@ import BottomNav from "./components/bottom-nav/bottom-nav.component";
 import Loading from "./components/loading/loading.component";
 import FormPopup from "./components/form-popup/form-popup.component";
 
-import Prescription from "./components/prescription-form/Prescription";
 import ExcerciseDetails from "./components/excercise-details/excercise-details.component";
-import { addCollectionsAndDocuments } from "./firebase/firebase";
-import excercises from "./excercises/excercises";
+// import { addCollectionsAndDocuments } from "./firebase/firebase";
+// import excercises from "./excercises/excercises";
 import TitleBar from "./components/title-bar/title-bar.component";
 import "./App.css";
 
@@ -91,15 +90,6 @@ function App() {
               </ExcerciseDataContextProvider>
             </ProtectedRoute>
           }
-        />
-
-        {/* testing form */}
-        <Route
-          path="/form"
-          element={FormPopup(Prescription)({
-            preDefined: false,
-            excercise: "",
-          })}
         />
       </Routes>
       {user && <BottomNav />}

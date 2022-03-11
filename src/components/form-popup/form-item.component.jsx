@@ -8,9 +8,9 @@ import { TextField } from "@mui/material";
 import { Button } from "@mui/material";
 import { Stack } from "@mui/material";
 import Checkbox from "@mui/material/Checkbox";
-import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
-import Favorite from "@mui/icons-material/Favorite";
-import Slider from "@mui/material/Slider";
+// import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
+// import Favorite from "@mui/icons-material/Favorite";
+// import Slider from "@mui/material/Slider";
 
 import FormControlLabel from "@mui/material/FormControlLabel";
 import excercises from "../../excercises/excercises";
@@ -73,6 +73,7 @@ function FormComponent({ preDefined, excerciseName, handleClose }) {
   };
 
   const handleSetGoal = async (e) => {
+    handleClose();
     await setGoalToDb();
   };
 
@@ -86,9 +87,9 @@ function FormComponent({ preDefined, excerciseName, handleClose }) {
     await setGoalToDb();
   };
 
-  function valuetext(value) {
-    return `${value}°C`;
-  }
+  // function valuetext(value) {
+  //   return `${value}°C`;
+  // }
   return (
     <Box sx={{ margin: 2 }}>
       <form>

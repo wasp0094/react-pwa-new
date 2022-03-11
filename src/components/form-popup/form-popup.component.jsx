@@ -4,7 +4,7 @@ import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
 import Typography from "@mui/material/Typography";
-import FormComponent from "../prescription-form/form-item";
+import FormComponent from "./form-item.component";
 
 const style = {
   position: "absolute",
