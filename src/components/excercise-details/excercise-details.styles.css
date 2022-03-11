@@ -21,6 +21,10 @@
   hyphens: auto;
 }
 
+.excercise-details-caution {
+  margin: 0;
+}
+
 .tag {
   display: inline-block;
   margin-right: 10px !important;

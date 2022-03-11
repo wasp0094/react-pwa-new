@@ -48,7 +48,6 @@ export function UserAuthContextProvider({ children }) {
         onSnapshot(userRef, (snapshot) => {
           setUser({ id: snapshot.id, ...snapshot.data() });
           setLoadingUser(false);
-          console.log(user);
           if (user) navigate(location.pathname, { replace: true });
         });
       } else {

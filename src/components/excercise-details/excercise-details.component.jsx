@@ -5,7 +5,7 @@ import FormPopup from "../form-popup/form-popup.component";
 import { Button } from "@mui/material";
 
 function ExcerciseDetailsPage({ excercise_id, handleModalOpen }) {
-  const { id, name, description, short_description, tags, color } =
+  const { id, name, description, short_description, tags, color, cautions } =
     excercises[excercise_id];
   return (
     <div
@@ -19,7 +19,11 @@ function ExcerciseDetailsPage({ excercise_id, handleModalOpen }) {
         </p>
         <h4>Cautions</h4>
         <p className="excercise-details-description">
-          - {short_description} <br /> - {short_description}
+          {cautions.map((caution, idx) => (
+            <p key={idx} className="excercise-details-caution">
+              - {caution}
+            </p>
+          ))}
         </p>
         <h4>Tags</h4>
         <p>

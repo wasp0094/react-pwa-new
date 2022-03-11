@@ -34,21 +34,14 @@ function DailyTask() {
   };
 
   useEffect(() => {
-    const temp = async () => {
-      await getRoutines();
-    };
-    temp();
+    getRoutines();
   }, []);
 
   useEffect(() => {
-    if (tasks.length === user.routine.length) setLoad(false);
+    if (tasks.length === user.routine?.length) setLoad(false);
   }, [tasks]);
 
-  useEffect(() => {
-    console.log(tasks);
-  }, [load]);
-
-  if (user.routine.length === 0) return <p> Nothing to Show </p>;
+  if (!user?.routine) return <p> Nothing to Show </p>;
 
   return (
     <div className="daily-task">

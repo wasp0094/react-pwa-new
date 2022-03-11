@@ -41,7 +41,10 @@ const shoulder_abduction = {
   name: "Shoulder Abduction",
   tags: ["shoulder", "abduction"],
   color: "#FFEBB5",
-
+  cautions: [
+    "Stand and hold a weight in your hand with your palm facing your body.",
+    "Do not raise your arm over your head unless your healthcare provider says it is okay.",
+  ],
   short_description:
     "Characterized by pain and stiffness in the shoulder joint.",
   description:
@@ -63,7 +66,10 @@ const shoulder_flexion = {
   name: "Shoulder Flexion",
   tags: ["shoulder", "flexion"],
   color: "#afc3ff",
-
+  cautions: [
+    "An extension is when you move your arms and stick them out behind you.",
+    "Those with shoulder injuries should initially steer clear of exercises that involve pressing movements or overhead movements",
+  ],
   short_description:
     "Characterized by pain and stiffness in the shoulder joint.",
   description:
@@ -85,7 +91,10 @@ const elbow_flexion = {
   name: "Elbow Flexion",
   tags: ["elbow", "flexion"],
   color: "#FFEBB5",
-
+  cautions: [
+    "The elbow joint allows us to perform flexion–extension,values for flexion lie between 130° and 154°",
+    "Dont exaggerate yourself to achieve maximum range.",
+  ],
   short_description:
     "Swelling, stiffness and hindered motion after fracture/ burns.",
   description:
@@ -107,7 +116,10 @@ const shoulder_elevation = {
   name: "Shoulder Elevation",
   tags: ["elbow", "elevation"],
   color: "#afc3ff",
-
+  cautions: [
+    "Exercise the right way. Warm up before you work out.",
+    "Listen to your body. If your shoulder gets sore after any activity, don't ignore it. If the pain is serious and doesn't go away, see your doctor",
+  ],
   short_description:
     "Stiffness and hindered motion of shoulder after elbow fracture.",
   description:
@@ -125,7 +137,11 @@ const dumbell_bicep_curl = {
   name: "Dumbell Bicep Curl",
   tags: ["diabetes", "bicep", "dumbell", "curls"],
   color: "#ffd2d9",
-
+  cautions: [
+    "Be sure to keep the body in a neutral alignment and avoid compensation when performing the movement.",
+    "Shoulders should remain stable and fixed to the side of the body.",
+    "The elbows should be a hinge joint and also be pinned to the side of the body.",
+  ],
   short_description:
     "A lifestyle therapy for prevention and treatment of diabetes.",
   description:
@@ -147,7 +163,11 @@ const lunges = {
   name: "Lunges",
   tags: ["diabetes", "lunges", "legs"],
   color: "#FFEBB5",
-
+  cautions: [
+    "Keep your body upright through the movement",
+    "Don't overextend your leg when you lunge forward, which can cause your back to arch.",
+    "Keep your core engaged throughout the entire lunge.",
+  ],
   short_description:
     "A lifestyle therapy for prevention and treatment of diabetes.",
   description:
@@ -165,7 +185,11 @@ const side_kicks = {
   name: "Side Kicks",
   tags: ["diabetes", "kicks", "legs", "cardio"],
   color: "#afc3ff",
-
+  cautions: [
+    "Keep your heel up and your toes down.",
+    "Strike with the outside of the foot.",
+    "Set the heel of your supporting leg towards the direction of your kick",
+  ],
   short_description:
     "A lifestyle therapy for prevention and treatment of diabetes.",
   description:
@@ -187,6 +211,11 @@ const squats = {
   name: "Squats",
   tags: ["diabetes", "legs", "squats"],
   color: "#ffd2d9",
+  cautions: [
+    "Always push off from the heels.",
+    "Avoid letting your knees get close together when you squat.",
+    "Your knees should move out in a 30-degree angle following the line of your feet",
+  ],
   short_description:
     "A lifestyle therapy for prevention and treatment of diabetes.",
   description:
