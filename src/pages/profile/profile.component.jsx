@@ -9,9 +9,11 @@ import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import Button from "@mui/material/Button";
 import { useUserAuth } from "../../context/UserAuthContext";
+import { useSetTitle } from "../../hooks/setTitle";
 
 function Profile() {
   const { user, logOut } = useUserAuth();
+  useSetTitle(user.displayName);
   const handleLogOut = async () => {
     try {
       await logOut();

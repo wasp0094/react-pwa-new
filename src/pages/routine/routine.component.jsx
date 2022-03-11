@@ -8,6 +8,7 @@ import "./routine.styles.css";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Excercise from "../../components/start-excercise/excercise.component";
 import { useExcerciseData } from "../../context/ExcerciseDataContext";
+import { useSetTitle } from "../../hooks/setTitle";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -66,6 +67,7 @@ function RoutinePage() {
 
 function Routine() {
   const { excerciseVars } = useExcerciseData();
+  useSetTitle("Routine");
   return (
     <>
       <Routes>

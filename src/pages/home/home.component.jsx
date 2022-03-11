@@ -5,8 +5,10 @@ import { Routes, Route } from "react-router-dom";
 import { targets } from "../../excercises/excercises";
 import { Button } from "@mui/material";
 import ExploreCategory from "../../components/explore-category/explore-category.component";
+import { useSetTitle } from "../../hooks/setTitle";
 
 function HomePage({ handleModalOpen }) {
+  useSetTitle("Home");
   return (
     <div>
       <img src={banner} alt="banner" style={{ width: "100vw" }} />

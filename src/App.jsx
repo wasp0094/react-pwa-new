@@ -19,6 +19,8 @@ import Prescription from "./components/prescription-form/Prescription";
 import ExcerciseDetails from "./components/excercise-details/excercise-details.component";
 import { addCollectionsAndDocuments } from "./firebase/firebase";
 import excercises from "./excercises/excercises";
+import TitleBar from "./components/title-bar/title-bar.component";
+import "./App.css";
 
 function LoginLoader({ user }) {
   return user ? <Navigate to="/home" replace /> : <Login />;
@@ -34,7 +36,8 @@ function App() {
   }, []);
   const { user, loadingUser } = useUserAuth();
   return (
-    <>
+    <div className="app">
+      {user && <TitleBar />}
       <Routes>
         <Route
           exact
@@ -100,7 +103,7 @@ function App() {
         />
       </Routes>
       {user && <BottomNav />}
-    </>
+    </div>
   );
 }
 

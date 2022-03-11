@@ -1,8 +1,9 @@
 import "./explore.styles.css";
 import excercises, { targets } from "../../excercises/excercises";
 import ExploreItem from "../../components/explore-item/explore-item.component";
-
+import { useSetTitle } from "../../hooks/setTitle";
 function Explore() {
+  useSetTitle("Explore");
   return (
     <div className="explore">
       <h4 className="explore-header">Explore</h4>

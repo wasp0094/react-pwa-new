@@ -45,7 +45,7 @@ function Login() {
 
   return (
     <>
-      <div className="App">
+      <div className="login">
         <form onSubmit={handleSubmit}>
           <Box className="content-box">
             <div className="blob-box">
