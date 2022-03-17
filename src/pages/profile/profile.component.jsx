@@ -10,6 +10,7 @@ import ListItemText from "@mui/material/ListItemText";
 import Button from "@mui/material/Button";
 import { useUserAuth } from "../../context/UserAuthContext";
 import { useSetTitle } from "../../hooks/setTitle";
+import "./profile.css";
 
 function Profile() {
   const { user, logOut } = useUserAuth();
@@ -29,14 +30,16 @@ function Profile() {
           display: "flex",
           flexDirection: "row",
           alignItems: "center",
-          margin: "1rem 3rem",
+          justifyContent: "center",
+          margin: "0 3rem",
+          padding: "1rem",
         }}
       >
         <Avatar
           src="https://mui.com/static/images/avatar/1.jpg"
-          sx={{ width: 56, height: 56 }}
+          sx={{ width: 70, height: 70 }}
         />
-        <Stack
+        {/* <Stack
           sx={{
             display: "flex",
             flexDirection: "column",
@@ -49,13 +52,20 @@ function Profile() {
             <br />
             username
           </p>
-        </Stack>
-        <IconButton>
+        </Stack> */}
+        <IconButton sx={{ marginTop: "1.5rem" }}>
           <EditIcon fontSize="small" color="action" />
         </IconButton>
       </Box>
-      <Box sx={{ display: "flex", flexDirection: "column", margin: "0.5rem" }}>
-        <List>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          margin: "0 0.5rem",
+          padding: "0 1.5rem",
+        }}
+      >
+        {/* <List>
           <ListItem>
             {" "}
             <ListItemText secondary="profile information"></ListItemText>{" "}
@@ -77,17 +87,42 @@ function Profile() {
             <ListItemText primary="Password: ******"></ListItemText>
             <ListItemText secondary="CHANGE"></ListItemText>{" "}
           </ListItem>
-        </List>
+        </List> */}
+
+        <div className="field">
+          <p>EMAIL</p>
+          <p>{user && user.email}</p>
+        </div>
+
+        <div className="field">
+          <p>PASSWORD</p>
+          <p>*************</p>
+        </div>
+
+        <div className="field">
+          <p>PHONE</p>
+          <p>00000-0000</p>
+        </div>
+
+        <div className="field">
+          <p>D.O.B.</p>
+          <p>02/12/1998</p>
+        </div>
       </Box>
       <Box
         sx={{
           justifyContent: "center",
           alignItems: "center",
-          marginBottom: "5rem",
+          marginBottom: "3rem",
         }}
       >
-        <Stack direction="row" sx={{ marginLeft: "7rem" }}>
-          <Button variant="outlined" color="error" onClick={handleLogOut}>
+        <Stack direction="row" sx={{ justifyContent: "center" }}>
+          <Button
+            variant="contained"
+            color="error"
+            onClick={handleLogOut}
+            sx={{ margin: "0.5rem" }}
+          >
             {" "}
             Log Out{" "}
           </Button>
