@@ -31,9 +31,8 @@ function Profile() {
           flexDirection: "row",
           alignItems: "center",
           justifyContent: "center",
-          margin: "0 3rem",
-          padding: "1rem",
         }}
+        className="avatar-container"
       >
         <Avatar
           src="https://mui.com/static/images/avatar/1.jpg"
@@ -61,34 +60,9 @@ function Profile() {
         sx={{
           display: "flex",
           flexDirection: "column",
-          margin: "0 0.5rem",
-          padding: "0 1.5rem",
         }}
+        className="profile-list"
       >
-        {/* <List>
-          <ListItem>
-            {" "}
-            <ListItemText secondary="profile information"></ListItemText>{" "}
-          </ListItem>
-          <ListItem>
-            {" "}
-            <ListItemText primary={user && user.email}></ListItemText>{" "}
-          </ListItem>
-          <ListItem>
-            {" "}
-            <ListItemText primary="Phone:"></ListItemText>{" "}
-          </ListItem>
-          <ListItem>
-            {" "}
-            <ListItemText primary="Date of Birth:"></ListItemText>{" "}
-          </ListItem>
-          <ListItem>
-            {" "}
-            <ListItemText primary="Password: ******"></ListItemText>
-            <ListItemText secondary="CHANGE"></ListItemText>{" "}
-          </ListItem>
-        </List> */}
-
         <div className="field">
           <p>EMAIL</p>
           <p>{user && user.email}</p>

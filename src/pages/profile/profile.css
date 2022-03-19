@@ -1,3 +1,17 @@
+body {
+  background-image: url("./bg.jpeg");
+}
+
+.avatar-container {
+  margin: 0 3rem;
+  padding: 1rem;
+}
+
+.profile-list {
+  margin: 0 0.5rem;
+  padding: 0 1.5rem;
+}
+
 .field {
   border-bottom: 1px solid #ccc;
   margin: 0.2rem 0.5rem;
@@ -14,4 +28,15 @@
   color: rgb(151, 150, 150);
   font-weight: 500;
   text-transform: capitalize;
+}
+
+@media screen and (min-width: 768px) {
+  .avatar-container {
+    margin: 0 3rem;
+    padding: 3rem;
+  }
+
+  .profile-list {
+    margin: 1rem 10rem;
+  }
 }
