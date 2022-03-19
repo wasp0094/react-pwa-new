@@ -1,14 +1,24 @@
 .camera {
   padding: 0;
   padding-bottom: 56px;
+  position: relative;
+  text-align: center;
+  color: rgb(27, 224, 20);
+  font-weight: 700;
 }
 .camera-canvas,
 .camera-webcam {
   display: none;
   width: 100%;
-  height: 15em;
+  height: 34em;
 }
 
 .block {
   display: block;
+}
+
+.result-container {
+  position: absolute;
+  bottom: 50px;
+  left: 16px;
 }

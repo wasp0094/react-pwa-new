@@ -1,0 +1,27 @@
+h5,
+h4 {
+  display: contents;
+}
+
+h5 {
+  color: blue;
+  font-family: consolas;
+}
+
+.results-box {
+  background-color: aliceblue;
+  padding: 14vw;
+  border: 2px solid black;
+  border-radius: 20px;
+  text-align: center;
+  align-self: baseline;
+}
+
+.results {
+  text-align: center;
+}
+
+button {
+  font-weight: 600;
+  font-size: medium;
+}

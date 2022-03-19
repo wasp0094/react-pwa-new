@@ -89,7 +89,7 @@ function Camera({ excercise, handleEndExcercise, type }) {
 function ResultContainer({ excerciseVars }) {
   return (
     <div className="result-container">
-      <p>Day range :: {excerciseVars.dayRange}</p>
+      {/* <p>Day range :: {excerciseVars.dayRange}</p> */}
       <p>Reps :: {excerciseVars.repsCompleted}</p>
       <p>Sets :: {excerciseVars.setsCompleted}</p>
     </div>
