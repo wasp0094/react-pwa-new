@@ -1,5 +1,6 @@
 body {
   background-image: url("./bg.jpeg");
+  background-repeat: repeat-y;
 }
 
 .avatar-container {
