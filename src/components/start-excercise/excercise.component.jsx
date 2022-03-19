@@ -12,10 +12,16 @@ function Excercise() {
   const { excerciseVars } = useExcerciseData();
   const title =
     excercises[excerciseVars.task]["types"][excerciseVars.type].name;
+  const instructions = excercises[excerciseVars.task].instructions;
   useSetTitle(title);
   return (
     <div className="start-excercise">
-      {started === 0 && <Instructions handleExcerciseStart={setStarted} />}
+      {started === 0 && (
+        <Instructions
+          handleExcerciseStart={setStarted}
+          instructions={instructions}
+        />
+      )}
       {started === 1 && (
         <Camera
           excercise={excerciseVars.task}

@@ -59,6 +59,11 @@ const shoulder_abduction = {
       name: "Right Shoulder Abduction",
     },
   },
+  instructions: [
+    "Make sure that your upper body is clearly visible on the screen.",
+    "Make use of a towel/sponge to slide your arm against the wall.",
+    "Face should be towards the camera.",
+  ],
 };
 
 const shoulder_flexion = {
@@ -84,6 +89,12 @@ const shoulder_flexion = {
       name: "Right Shoulder Flexion",
     },
   },
+  instructions: [
+    "Left-arm away from the camera (for left-hand shoulder flexion)",
+    "Head away from the elbow.",
+    "Make use of a towel/sponge to slide your arm against the wall.",
+    "Arms should be straight and perpendicular to the wall.",
+  ],
 };
 
 const elbow_flexion = {
@@ -109,6 +120,12 @@ const elbow_flexion = {
       name: "Right Elbow Flexion",
     },
   },
+  instructions: [
+    "Perform this exercise while seated.",
+    "Affected elbow should be away from the camera.",
+    "Make sure the other elbow is still in the camera scope as shown in the image attached.",
+    "Upper arm should rest on the table completely.",
+  ],
 };
 
 const shoulder_elevation = {
@@ -130,6 +147,9 @@ const shoulder_elevation = {
       name: "Shoulder Elevation",
     },
   },
+  instructions: [
+    "Make sure that your upper body is clearly visible on the screen.",
+  ],
 };
 
 const dumbell_bicep_curl = {
@@ -156,6 +176,11 @@ const dumbell_bicep_curl = {
       name: "Right Dumbell Bicep Curl",
     },
   },
+  instructions: [
+    "Perform this exercise while seated.",
+    "The face should be towards the camera.",
+    "Make sure that your upper body is clearly visible on the screen.",
+  ],
 };
 
 const lunges = {
@@ -178,6 +203,10 @@ const lunges = {
       name: "Lunges",
     },
   },
+  instructions: [
+    "Look towards your left.",
+    "Make sure that your full body is clearly visible on the screen.",
+  ],
 };
 
 const side_kicks = {
@@ -204,6 +233,10 @@ const side_kicks = {
       name: "Right Side Kicks",
     },
   },
+  instructions: [
+    "Perform this exercise in a standing position and you can take support from the table.",
+    "Make sure that your full body is clearly visible on the screen.",
+  ],
 };
 
 const squats = {
@@ -226,6 +259,10 @@ const squats = {
       name: "Squats",
     },
   },
+  instructions: [
+    "The face should be towards the camera.",
+    "Make sure that your full body is clearly visible on the screen.",
+  ],
 };
 
 const excercises = {

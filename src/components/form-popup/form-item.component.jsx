@@ -58,11 +58,17 @@ function FormComponent({ preDefined, excerciseName, handleClose }) {
       const docRef = await addDoc(collection(firestore, "prescriptions"), {
         exercise: doc(firestore, `excercises/${exercise}`),
         type: getType(),
-        days: days,
-        sets: sets,
-        reps: reps,
+        days: parseInt(days),
+        sets: parseInt(sets),
+        reps: parseInt(reps),
         completed: false,
         user: userRef,
+        routine: Array(parseInt(days)).fill({
+          completed: false,
+          sets: 0,
+          reps: 0,
+          dailyRange: 0,
+        }),
         created: Timestamp.now(),
       });
       const routine = user?.routine || [];
@@ -181,7 +187,7 @@ function FormComponent({ preDefined, excerciseName, handleClose }) {
                   handleClose();
                 }}
               >
-                Done
+                Cancel
               </Button>
               <Button
                 variant="contained"
