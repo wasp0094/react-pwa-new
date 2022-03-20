@@ -1,9 +1,5 @@
-body,
-html {
-  height: 100%;
-}
-
-body {
+.home-content {
+  margin-top: -56px;
   background-image: url(../../assets/homeBG.svg);
   background-position-x: center;
   background-position-y: top;
@@ -15,9 +11,9 @@ body {
   text-align: center;
 }
 
-.categories img {
+/* .categories img {
   width: 60%;
-}
+} */
 
 .categories p {
   font-size: 0.9rem;
@@ -25,15 +21,15 @@ body {
   color: #020233;
 }
 
-.explore-cards {
+.category-cards {
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
 
-.explore-cards img {
+/* .explore-cards img {
   width: 20%;
-}
+} */
 
 .home-content {
   padding: 1.5rem 1rem;
@@ -48,7 +44,7 @@ strong {
 }
 
 .welcome {
-  padding-top: 50%;
+  padding-top: calc(50% + 56px);
   text-align: center;
   padding-bottom: 2rem;
 }

@@ -5,6 +5,7 @@ import { INITIAL_DATA } from "../../context/ExcerciseDataContext";
 function Results() {
   const { excerciseVars, setExcerciseVars } = useExcerciseData();
   useEffect(() => {
+    console.log(excerciseVars);
     return function cleanup() {
       setExcerciseVars(INITIAL_DATA);
     };

@@ -52,9 +52,9 @@ function Profile() {
             username
           </p>
         </Stack> */}
-        <IconButton sx={{ marginTop: "1.5rem" }}>
+        {/* <IconButton sx={{ marginTop: "1.5rem" }}>
           <EditIcon fontSize="small" color="action" />
-        </IconButton>
+        </IconButton> */}
       </Box>
       <Box
         sx={{

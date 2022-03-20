@@ -1,8 +1,3 @@
-body {
-  background-image: url("./bg.jpeg");
-  background-repeat: repeat-y;
-}
-
 .avatar-container {
   margin: 0 3rem;
   padding: 1rem;
