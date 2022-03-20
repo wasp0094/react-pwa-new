@@ -10,9 +10,16 @@
   display: block;
 }
 
-.start-button {
-  position: absolute;
-  bottom: 20vh;
-  right: 20vw;
-  display: block;
+button {
+  font-weight: 600;
+  font-size: medium;
+}
+
+.instruction {
+  padding-top: 5vh;
+  padding-left: 5vw;
+}
+
+.instruction h2 {
+  text-align: center;
 }
