@@ -23,7 +23,7 @@ function TitleBar() {
             <Typography
               variant="h6"
               style={{ textAlign: "center" }}
-              sx={{ flexGrow: 1 }}
+              sx={{ flexGrow: 1, textTransform: "capitalize" }}
             >
               {title}
             </Typography>

@@ -79,3 +79,11 @@
 .explore-item-button:active {
   box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.5);
 }
+
+/* media queries */
+
+@media screen and (min-width: 768px) {
+  .explore-item {
+    margin: 1rem 5rem;
+  }
+}
