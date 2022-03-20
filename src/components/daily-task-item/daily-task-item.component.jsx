@@ -10,10 +10,9 @@ import { useExcerciseData } from "../../context/ExcerciseDataContext";
 import excercises from "../../excercises/excercises";
 import "./daily-task-item.styles.css";
 
-function DailyTaskItem({ task, type }) {
+function DailyTaskItem({ task, type, task_item }) {
   const navigate = useNavigate();
   const { excerciseVars, setExcerciseVars } = useExcerciseData();
-  const { tags } = excercises[task];
   const { name } = excercises[task]["types"][type];
   return (
     <div className="daily-task-item">
@@ -25,9 +24,17 @@ function DailyTaskItem({ task, type }) {
         </CardContent>
         <CardActions sx={{ padding: "4px 15px" }}>
           <Button
+            disabled={task_item.completed}
             size="small"
             onClick={() => {
-              setExcerciseVars({ ...excerciseVars, task: task, type: type });
+              setExcerciseVars({
+                ...excerciseVars,
+                task: task,
+                type: type,
+                requiredSets: task_item.sets,
+                requiredReps: task_item.reps,
+                routine_id: task_item.routine_item_id,
+              });
               navigate("excercise", { replace: true });
             }}
           >

@@ -6,7 +6,12 @@ function DailyTask({ tasks }) {
       {tasks.map((task, idx) => (
         <div key={`tasks_${idx}`}>
           {task.exercise_type.map((type, idx) => (
-            <DailyTaskItem key={idx} task={task.id} type={type} />
+            <DailyTaskItem
+              key={idx}
+              task={task.id}
+              type={type}
+              task_item={task}
+            />
           ))}
         </div>
       ))}

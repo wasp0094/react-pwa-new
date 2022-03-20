@@ -6,7 +6,10 @@ function Dashboard({ tasks }) {
   return (
     <div className="dashboard">
       {tasks.map((task, idx) => (
-        <DailyRangeChart key={idx} data={createDataset(task)} />
+        <div key={idx}>
+          <p>{task.types[task.exercise_type[0]].name}</p>
+          <DailyRangeChart data={createDataset(task)} />
+        </div>
       ))}
     </div>
   );

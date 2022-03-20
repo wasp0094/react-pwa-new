@@ -60,6 +60,7 @@ function RoutinePage() {
         {
           ...exercise_item,
           ...routine_item,
+          routine_item_id: routine_item_snap.id,
           exercise_type: getType(routine_item.type, exercise_item.id),
         },
         ...tasks_arr,
