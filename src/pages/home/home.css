@@ -1,0 +1,55 @@
+.home-content {
+  margin-top: -56px;
+  background-image: url(../../assets/homeBG.svg);
+  background-position-x: center;
+  background-position-y: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.categories {
+  text-align: center;
+}
+
+/* .categories img {
+  width: 60%;
+} */
+
+.categories p {
+  font-size: 0.9rem;
+  font-weight: 480;
+  color: #020233;
+}
+
+.category-cards {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+/* .explore-cards img {
+  width: 20%;
+} */
+
+.home-content {
+  padding: 1.5rem 1rem;
+}
+
+span {
+  color: #0968f7;
+}
+
+strong {
+  font-size: 1.1rem;
+}
+
+.welcome {
+  padding-top: calc(50% + 56px);
+  text-align: center;
+  padding-bottom: 2rem;
+}
+
+.welcome h2,
+.welcome h5 {
+  margin-bottom: 0rem;
+}

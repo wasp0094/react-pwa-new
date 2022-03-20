@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 
 import { useUserAuth } from "./context/UserAuthContext";
@@ -13,6 +13,13 @@ import Login from "./pages/login/login.component";
 import Routine from "./pages/routine/routine.component";
 import BottomNav from "./components/bottom-nav/bottom-nav.component";
 import Loading from "./components/loading/loading.component";
+import FormPopup from "./components/form-popup/form-popup.component";
+
+import ExcerciseDetails from "./components/excercise-details/excercise-details.component";
+// import { addCollectionsAndDocuments } from "./firebase/firebase";
+// import excercises from "./excercises/excercises";
+import TitleBar from "./components/title-bar/title-bar.component";
+import "./App.css";
 
 function LoginLoader({ user }) {
   return user ? <Navigate to="/home" replace /> : <Login />;
@@ -23,9 +30,13 @@ function CreateAccountLoader({ user }) {
 }
 
 function App() {
+  useEffect(() => {
+    // addCollectionsAndDocuments("excercises", excercises);
+  }, []);
   const { user, loadingUser } = useUserAuth();
   return (
-    <>
+    <div className="app">
+      {user && <TitleBar />}
       <Routes>
         <Route
           exact
@@ -51,18 +62,22 @@ function App() {
           }
         />
         <Route
-          path="/home"
-          element={
-            <ProtectedRoute>
-              <Home />
-            </ProtectedRoute>
-          }
+          path="/home/*"
+          element={<ProtectedRoute>{FormPopup(Home)()}</ProtectedRoute>}
         />
         <Route
           path="/explore/*"
           element={
             <ProtectedRoute>
               <Explore />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/details/:excercise_id"
+          element={
+            <ProtectedRoute>
+              <ExcerciseDetails />
             </ProtectedRoute>
           }
         />
@@ -78,7 +93,7 @@ function App() {
         />
       </Routes>
       {user && <BottomNav />}
-    </>
+    </div>
   );
 }
 

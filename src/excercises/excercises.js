@@ -23,12 +23,28 @@ import shoulderElevationImage from "../assets/shoulderElevation.svg";
 import shoulderAbduction from "../assets/shoulderAbduction.svg";
 import shoulderFlexion from "../assets/shoulderFlexion.svg";
 
+const excerciseImages = {
+  hjal5KUjqNxNT9bDZw8n: shoulderAbduction,
+  QSfsP0Wwm3XUbfI0nyDi: shoulderFlexion,
+  WAtBat858CahWQdzxN4B: elbowFlexion,
+  IU2DBECRlUFtzc4VftOe: shoulderElevationImage,
+  et7RXuBsXRNZHhG92Jae: bicepCurl,
+  "37t6GHylJeUZmGx1eMNg": lungesImage,
+  KEsdWebYLs0BPfDuEOur: sideKick,
+  ZxgI2YvKjlpCWrIDe2OX: squatsImage,
+};
+
+export const resolveImage = (excercise_id) => excerciseImages[excercise_id];
+
 const shoulder_abduction = {
-  id: "shoulder_abduction",
+  id: "hjal5KUjqNxNT9bDZw8n",
   name: "Shoulder Abduction",
   tags: ["shoulder", "abduction"],
   color: "#FFEBB5",
-  image: shoulderAbduction,
+  cautions: [
+    "Stand and hold a weight in your hand with your palm facing your body.",
+    "Do not raise your arm over your head unless your healthcare provider says it is okay.",
+  ],
   short_description:
     "Characterized by pain and stiffness in the shoulder joint.",
   description:
@@ -43,14 +59,22 @@ const shoulder_abduction = {
       name: "Right Shoulder Abduction",
     },
   },
+  instructions: [
+    "Make sure that your upper body is clearly visible on the screen.",
+    "Make use of a towel/sponge to slide your arm against the wall.",
+    "Face should be towards the camera.",
+  ],
 };
 
 const shoulder_flexion = {
-  id: "shoulder_flexion",
+  id: "QSfsP0Wwm3XUbfI0nyDi",
   name: "Shoulder Flexion",
   tags: ["shoulder", "flexion"],
   color: "#afc3ff",
-  image: shoulderFlexion,
+  cautions: [
+    "An extension is when you move your arms and stick them out behind you.",
+    "Those with shoulder injuries should initially steer clear of exercises that involve pressing movements or overhead movements",
+  ],
   short_description:
     "Characterized by pain and stiffness in the shoulder joint.",
   description:
@@ -65,14 +89,23 @@ const shoulder_flexion = {
       name: "Right Shoulder Flexion",
     },
   },
+  instructions: [
+    "Left-arm away from the camera (for left-hand shoulder flexion)",
+    "Head away from the elbow.",
+    "Make use of a towel/sponge to slide your arm against the wall.",
+    "Arms should be straight and perpendicular to the wall.",
+  ],
 };
 
 const elbow_flexion = {
-  id: "elbow_flexion",
+  id: "WAtBat858CahWQdzxN4B",
   name: "Elbow Flexion",
   tags: ["elbow", "flexion"],
   color: "#FFEBB5",
-  image: elbowFlexion,
+  cautions: [
+    "The elbow joint allows us to perform flexion–extension,values for flexion lie between 130° and 154°",
+    "Dont exaggerate yourself to achieve maximum range.",
+  ],
   short_description:
     "Swelling, stiffness and hindered motion after fracture/ burns.",
   description:
@@ -87,14 +120,23 @@ const elbow_flexion = {
       name: "Right Elbow Flexion",
     },
   },
+  instructions: [
+    "Perform this exercise while seated.",
+    "Affected elbow should be away from the camera.",
+    "Make sure the other elbow is still in the camera scope as shown in the image attached.",
+    "Upper arm should rest on the table completely.",
+  ],
 };
 
 const shoulder_elevation = {
-  id: "shoulder_elevation",
+  id: "IU2DBECRlUFtzc4VftOe",
   name: "Shoulder Elevation",
   tags: ["elbow", "elevation"],
   color: "#afc3ff",
-  image: shoulderElevationImage,
+  cautions: [
+    "Exercise the right way. Warm up before you work out.",
+    "Listen to your body. If your shoulder gets sore after any activity, don't ignore it. If the pain is serious and doesn't go away, see your doctor",
+  ],
   short_description:
     "Stiffness and hindered motion of shoulder after elbow fracture.",
   description:
@@ -105,14 +147,21 @@ const shoulder_elevation = {
       name: "Shoulder Elevation",
     },
   },
+  instructions: [
+    "Make sure that your upper body is clearly visible on the screen.",
+  ],
 };
 
 const dumbell_bicep_curl = {
-  id: "dumbell_bicep_curl",
+  id: "et7RXuBsXRNZHhG92Jae",
   name: "Dumbell Bicep Curl",
   tags: ["diabetes", "bicep", "dumbell", "curls"],
   color: "#ffd2d9",
-  image: bicepCurl,
+  cautions: [
+    "Be sure to keep the body in a neutral alignment and avoid compensation when performing the movement.",
+    "Shoulders should remain stable and fixed to the side of the body.",
+    "The elbows should be a hinge joint and also be pinned to the side of the body.",
+  ],
   short_description:
     "A lifestyle therapy for prevention and treatment of diabetes.",
   description:
@@ -127,14 +176,23 @@ const dumbell_bicep_curl = {
       name: "Right Dumbell Bicep Curl",
     },
   },
+  instructions: [
+    "Perform this exercise while seated.",
+    "The face should be towards the camera.",
+    "Make sure that your upper body is clearly visible on the screen.",
+  ],
 };
 
 const lunges = {
-  id: "lunges",
+  id: "37t6GHylJeUZmGx1eMNg",
   name: "Lunges",
   tags: ["diabetes", "lunges", "legs"],
   color: "#FFEBB5",
-  image: lungesImage,
+  cautions: [
+    "Keep your body upright through the movement",
+    "Don't overextend your leg when you lunge forward, which can cause your back to arch.",
+    "Keep your core engaged throughout the entire lunge.",
+  ],
   short_description:
     "A lifestyle therapy for prevention and treatment of diabetes.",
   description:
@@ -145,14 +203,22 @@ const lunges = {
       name: "Lunges",
     },
   },
+  instructions: [
+    "Look towards your left.",
+    "Make sure that your full body is clearly visible on the screen.",
+  ],
 };
 
 const side_kicks = {
-  id: "side_kicks",
+  id: "KEsdWebYLs0BPfDuEOur",
   name: "Side Kicks",
-  tags: ["diabetes", "kicks", "legs"],
+  tags: ["diabetes", "kicks", "legs", "cardio"],
   color: "#afc3ff",
-  image: sideKick,
+  cautions: [
+    "Keep your heel up and your toes down.",
+    "Strike with the outside of the foot.",
+    "Set the heel of your supporting leg towards the direction of your kick",
+  ],
   short_description:
     "A lifestyle therapy for prevention and treatment of diabetes.",
   description:
@@ -167,14 +233,22 @@ const side_kicks = {
       name: "Right Side Kicks",
     },
   },
+  instructions: [
+    "Perform this exercise in a standing position and you can take support from the table.",
+    "Make sure that your full body is clearly visible on the screen.",
+  ],
 };
 
 const squats = {
-  id: "squats",
+  id: "ZxgI2YvKjlpCWrIDe2OX",
   name: "Squats",
   tags: ["diabetes", "legs", "squats"],
   color: "#ffd2d9",
-  image: squatsImage,
+  cautions: [
+    "Always push off from the heels.",
+    "Avoid letting your knees get close together when you squat.",
+    "Your knees should move out in a 30-degree angle following the line of your feet",
+  ],
   short_description:
     "A lifestyle therapy for prevention and treatment of diabetes.",
   description:
@@ -185,17 +259,21 @@ const squats = {
       name: "Squats",
     },
   },
+  instructions: [
+    "The face should be towards the camera.",
+    "Make sure that your full body is clearly visible on the screen.",
+  ],
 };
 
 const excercises = {
-  shoulder_abduction,
-  shoulder_flexion,
-  elbow_flexion,
-  shoulder_elevation,
-  dumbell_bicep_curl,
-  lunges,
-  side_kicks,
-  squats,
+  hjal5KUjqNxNT9bDZw8n: shoulder_abduction,
+  QSfsP0Wwm3XUbfI0nyDi: shoulder_flexion,
+  WAtBat858CahWQdzxN4B: elbow_flexion,
+  IU2DBECRlUFtzc4VftOe: shoulder_elevation,
+  et7RXuBsXRNZHhG92Jae: dumbell_bicep_curl,
+  "37t6GHylJeUZmGx1eMNg": lunges,
+  KEsdWebYLs0BPfDuEOur: side_kicks,
+  ZxgI2YvKjlpCWrIDe2OX: squats,
 };
 
 export const targets = {
@@ -216,20 +294,22 @@ export const targets = {
   },
 };
 
+const excerciseFuncs = {
+  "left-shoulder-abduction": leftShoulderAbduction,
+  "right-shoulder-abduction": rightShoulderAbduction,
+  "full-squats": squat,
+  "left-side-kicks": leftSideKick,
+  "right-side-kicks": rightSideKick,
+  "left-elbow-kicks": leftElbowFlexion,
+  "right-elbow-kicks": rightElbowFlexion,
+  "left-shoulder-flexion": leftShoulderFlexion,
+  "right-shoulder-flexion": rightShoulderFlexion,
+  "full-lunges": lunge,
+  "full-shoulder-elevation": shoulderElevation,
+};
+
 export const calculate = (excercise_id) => {
-  if (excercise_id === "left-shoulder-abduction") return leftShoulderAbduction;
-  else if (excercise_id === "right-shoulder-abduction")
-    return rightShoulderAbduction;
-  else if (excercise_id === "full-squats") return squat;
-  else if (excercise_id === "left-side-kicks") return leftSideKick;
-  else if (excercise_id === "right-side-kicks") return rightSideKick;
-  else if (excercise_id === "left-elbow-kicks") return leftElbowFlexion;
-  else if (excercise_id === "right-elbow-kicks") return rightElbowFlexion;
-  else if (excercise_id === "left-shoulder-flexion") return leftShoulderFlexion;
-  else if (excercise_id === "right-shoulder-flexion")
-    return rightShoulderFlexion;
-  else if (excercise_id === "full-lunges") return lunge;
-  else if (excercise_id === "full-shoulder-elevation") return shoulderElevation;
+  return excerciseFuncs[excercise_id];
 };
 
 export default excercises;

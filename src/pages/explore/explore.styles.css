@@ -10,3 +10,21 @@
   top: 0;
   min-height: 48px;
 }
+
+.domain {
+  display: flex;
+  color: rgb(146, 144, 144);
+  font-weight: 500;
+  font-size: 14px;
+  padding-top: 1rem;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.domain hr {
+  width: 33%;
+}
+
+.domain p {
+  margin-bottom: 0;
+}

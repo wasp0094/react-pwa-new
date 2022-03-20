@@ -1,14 +1,17 @@
 import DailyTaskItem from "../daily-task-item/daily-task-item.component";
-import excercises from "../../excercises/excercises";
 
-function DailyTask() {
-  const tasks = Object.keys(excercises);
+function DailyTask({ tasks }) {
   return (
     <div className="daily-task">
       {tasks.map((task, idx) => (
-        <div key={idx}>
-          {Object.keys(excercises[task].types).map((type, idx) => (
-            <DailyTaskItem key={idx} task={task} type={type} />
+        <div key={`tasks_${idx}`}>
+          {task.exercise_type.map((type, idx) => (
+            <DailyTaskItem
+              key={idx}
+              task={task.id}
+              type={type}
+              task_item={task}
+            />
           ))}
         </div>
       ))}

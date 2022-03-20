@@ -17,7 +17,6 @@ function Camera({ excercise, handleEndExcercise, type }) {
   let { excerciseVars, setExcerciseVars } = useExcerciseData();
   const [loadingCam, setLoadingCam] = useState(true);
   const excercise_id = excercises[excercise]["types"][type].id;
-  console.log(excercise_id);
 
   function startCamera() {
     if (
@@ -90,7 +89,7 @@ function Camera({ excercise, handleEndExcercise, type }) {
 function ResultContainer({ excerciseVars }) {
   return (
     <div className="result-container">
-      <p>Day range :: {excerciseVars.dayRange}</p>
+      {/* <p>Day range :: {excerciseVars.dayRange}</p> */}
       <p>Reps :: {excerciseVars.repsCompleted}</p>
       <p>Sets :: {excerciseVars.setsCompleted}</p>
     </div>

@@ -1,6 +1,13 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-import { doc, getDoc, getFirestore, setDoc } from "firebase/firestore";
+import {
+  doc,
+  getDoc,
+  getFirestore,
+  setDoc,
+  writeBatch,
+  collection,
+} from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -21,9 +28,10 @@ export async function createUserObject(userAuth, data) {
   const userSnapshot = await getDoc(userRef);
   if (!userSnapshot.exists()) {
     const { email, displayName } = userAuth;
-    const createdAt = new Date();
+    const createdAt = new Date(),
+      routine = [];
     try {
-      setDoc(userRef, { displayName, email, createdAt, ...data });
+      setDoc(userRef, { displayName, email, routine, createdAt, ...data });
     } catch (err) {
       console.log(err);
     }
@@ -33,3 +41,16 @@ export async function createUserObject(userAuth, data) {
 
 export const auth = getAuth(app);
 export default app;
+
+export const addCollectionsAndDocuments = async (
+  collectionKey,
+  objectsToAdd
+) => {
+  const collectionRef = collection(firestore, collectionKey);
+  const batch = writeBatch(firestore);
+  Object.keys(objectsToAdd).forEach((key) => {
+    const docRef = doc(collectionRef, key);
+    batch.set(docRef, { ...objectsToAdd[key], id: docRef.id });
+  });
+  await batch.commit();
+};

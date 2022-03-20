@@ -5,13 +5,16 @@ import reportWebVitals from "./reportWebVitals";
 import App from "./App";
 import { BrowserRouter as Router } from "react-router-dom";
 import { UserAuthContextProvider } from "./context/UserAuthContext";
+import TitleBarContextProvider from "./context/TitleContext";
 import "./index.css";
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
       <UserAuthContextProvider>
-        <App />
+        <TitleBarContextProvider>
+          <App />
+        </TitleBarContextProvider>
       </UserAuthContextProvider>
     </Router>
   </React.StrictMode>,
