@@ -302,8 +302,8 @@ const excerciseFuncs = {
   "right-side-kicks": rightSideKick,
   "left-elbow-kicks": leftElbowFlexion,
   "right-elbow-kicks": rightElbowFlexion,
-  "left-shoulder-flexion": leftShoulderFlexion,
-  "right-shoulder-flexion": rightShoulderFlexion,
+  "left-shoulder-flexion": leftShoulderAbduction,
+  "right-shoulder-flexion": rightShoulderAbduction,
   "full-lunges": lunge,
   "full-shoulder-elevation": shoulderElevation,
 };
