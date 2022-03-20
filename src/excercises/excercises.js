@@ -101,7 +101,7 @@ const elbow_flexion = {
   id: "WAtBat858CahWQdzxN4B",
   name: "Elbow Flexion",
   tags: ["elbow", "flexion"],
-  color: "#FFEBB5",
+  color: "#ffd2d9",
   cautions: [
     "The elbow joint allows us to perform flexion–extension,values for flexion lie between 130° and 154°",
     "Dont exaggerate yourself to achieve maximum range.",
@@ -277,11 +277,6 @@ const excercises = {
 };
 
 export const targets = {
-  diabetes: {
-    id: "diabetes",
-    name: "Diabetes",
-    src: diabetesImage,
-  },
   shoulder: {
     id: "shoulder",
     name: "Shoulder",
@@ -291,6 +286,11 @@ export const targets = {
     id: "elbow",
     name: "Elbow",
     src: elbowImage,
+  },
+  diabetes: {
+    id: "diabetes",
+    name: "Diabetes",
+    src: diabetesImage,
   },
 };
 
