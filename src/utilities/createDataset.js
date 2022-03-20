@@ -1,5 +1,5 @@
 export default function createDataset({ routine }) {
-  const labels = routine.map((el, id) => `Day ${id}`);
+  const labels = routine.map((el, id) => ``);
   const data = routine.map((el, id) => el.dailyRange);
   return {
     labels,
