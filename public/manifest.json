@@ -1,5 +1,5 @@
 {
-  "short_name": "Proctify.Me",
+  "short_name": "Proctify",
   "name": "Physiotherapy App",
   "icons": [
     {
@@ -20,6 +20,6 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "hsl(36, 100%, 94%)",
-  "background_color": "hsl(36, 100%, 94%)"
+  "theme_color": "white",
+  "background_color": "white"
 }
