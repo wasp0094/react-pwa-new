@@ -10,6 +10,11 @@ import Excercise from "../../components/start-excercise/excercise.component";
 import { useExcerciseData } from "../../context/ExcerciseDataContext";
 import { useSetTitle } from "../../hooks/setTitle";
 
+import excercises from "../../excercises/excercises";
+import { useEffect, useState } from "react";
+import { useUserAuth } from "../../context/UserAuthContext";
+import { getDoc } from "firebase/firestore";
+
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -35,32 +40,77 @@ function a11yProps(index) {
 
 function RoutinePage() {
   const [value, setValue] = React.useState(0);
+  const { user } = useUserAuth();
+  let tasks_arr = [];
+  const [tasks, setTasks] = useState([]);
+  const [load, setLoad] = useState(true);
+  const getType = (type, id) => {
+    if (type === 0 && excercises[id].types?.full) return ["full"];
+    if (type === 0 && !excercises[id].types?.full) return ["left", "right"];
+    if (type === 1) return ["left"];
+    return ["right"];
+  };
+  const getRoutines = async () => {
+    user.routine?.forEach(async (routinRef, idx) => {
+      const routine_item_snap = await getDoc(routinRef);
+      if (!routine_item_snap.exists()) return;
+      const routine_item = await routine_item_snap.data();
+      const exercise_item = await (await getDoc(routine_item.exercise)).data();
+      const new_tasks_arr = [
+        {
+          ...exercise_item,
+          ...routine_item,
+          exercise_type: getType(routine_item.type, exercise_item.id),
+        },
+        ...tasks_arr,
+      ];
+      tasks_arr = new_tasks_arr;
+      setTasks(new_tasks_arr);
+    });
+  };
+
+  useEffect(() => {
+    getRoutines();
+  }, []);
+
+  useEffect(() => {
+    if (tasks.length === user.routine?.length) setLoad(false);
+  }, [tasks]);
+
+  if (!user?.routine)
+    return <p>Your Routine and Dashboard will show up here. </p>;
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
   return (
     <Box sx={{ width: "100%" }}>
-      <Box
-        className="routine-tabs-container"
-        sx={{ borderBottom: 1, borderColor: "divider" }}
-      >
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          aria-label="basic tabs example"
-          className="routine-tabs"
-        >
-          <Tab label="Daily Tasks" {...a11yProps(0)} />
-          <Tab label="Dashboard" {...a11yProps(1)} />
-        </Tabs>
-      </Box>
-      <TabPanel value={value} index={0}>
-        <DailyTask />
-      </TabPanel>
-      <TabPanel value={value} index={1}>
-        <Dashboard />
-      </TabPanel>
+      {!load ? (
+        <>
+          <Box
+            className="routine-tabs-container"
+            sx={{ borderBottom: 1, borderColor: "divider" }}
+          >
+            <Tabs
+              value={value}
+              onChange={handleChange}
+              aria-label="basic tabs example"
+              className="routine-tabs"
+            >
+              <Tab label="Daily Tasks" {...a11yProps(0)} />
+              <Tab label="Dashboard" {...a11yProps(1)} />
+            </Tabs>
+          </Box>
+          <TabPanel value={value} index={0}>
+            <DailyTask tasks={tasks} />
+          </TabPanel>
+          <TabPanel value={value} index={1}>
+            <Dashboard tasks={tasks} />
+          </TabPanel>
+        </>
+      ) : (
+        "Loading"
+      )}
     </Box>
   );
 }

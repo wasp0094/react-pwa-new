@@ -8,7 +8,7 @@ import { useSetTitle } from "../../hooks/setTitle";
 import excercises from "../../excercises/excercises";
 
 function Excercise() {
-  const [started, setStarted] = useState(0);
+  const [started, setStarted] = useState(2);
   const { excerciseVars } = useExcerciseData();
   const title =
     excercises[excerciseVars.task]["types"][excerciseVars.type].name;

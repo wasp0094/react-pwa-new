@@ -1,15 +1,13 @@
-import React from "react";
+import DailyRangeChart from "../daily-range-chart/daily-range-chart.component";
+import createDataset from "../../utilities/createDataset";
 
-import BarChart from "../dashboard-panels/shoulderAbduction";
-
-function Dashboard() {
+function Dashboard({ tasks }) {
+  console.log(tasks);
   return (
     <div className="dashboard">
-      <h1>Dashboard</h1>
-      <BarChart />
-      <BarChart />
-      <BarChart />
-      <BarChart />
+      {tasks.map((task, idx) => (
+        <DailyRangeChart key={idx} data={createDataset(task)} />
+      ))}
     </div>
   );
 }
