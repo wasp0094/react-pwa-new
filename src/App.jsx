@@ -14,6 +14,7 @@ import Routine from "./pages/routine/routine.component";
 import BottomNav from "./components/bottom-nav/bottom-nav.component";
 import Loading from "./components/loading/loading.component";
 import FormPopup from "./components/form-popup/form-popup.component";
+import VideoCall from "./components/video-call/video-call.component";
 
 import ExcerciseDetails from "./components/excercise-details/excercise-details.component";
 // import { addCollectionsAndDocuments } from "./firebase/firebase";
@@ -88,6 +89,14 @@ function App() {
               <ExcerciseDataContextProvider>
                 <Routine />
               </ExcerciseDataContextProvider>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/chat"
+          element={
+            <ProtectedRoute>
+              <VideoCall />
             </ProtectedRoute>
           }
         />
