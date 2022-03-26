@@ -7,6 +7,7 @@ import { Button } from "@mui/material";
 import ExploreCategory from "../../components/explore-category/explore-category.component";
 import { useSetTitle } from "../../hooks/setTitle";
 import { useUserAuth } from "../../context/UserAuthContext";
+import { Link } from "react-router-dom";
 
 function HomePage({ handleModalOpen }) {
   useSetTitle("Home");
@@ -35,6 +36,9 @@ function HomePage({ handleModalOpen }) {
           ))}
         </div>
         <Button onClick={handleModalOpen}>Add Prescription</Button>
+        <Button component={Link} to="/chat">
+          CALL A DOCTOR
+        </Button>
       </div>
     </div>
   );

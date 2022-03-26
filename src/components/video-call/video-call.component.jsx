@@ -1,6 +1,9 @@
 import AgoraRTC from "agora-rtc-sdk-ng";
 import { useEffect, useState } from "react";
 import { useUserAuth } from "../../context/UserAuthContext";
+import CallIcon from "@mui/icons-material/Call";
+import CallEndIcon from "@mui/icons-material/CallEnd";
+import BottomNav from "../bottom-nav/bottom-nav.component";
 
 function VideoCall() {
   let rtc = {
@@ -30,9 +33,10 @@ function VideoCall() {
     await rtc.client.publish([rtc.localAudioTrack, rtc.localVideoTrack]);
     const localPlayerContainer = document.createElement("div");
     localPlayerContainer.id = options.uid;
-    localPlayerContainer.textContent = "Local user " + options.uid;
-    localPlayerContainer.style.width = "4rem";
-    localPlayerContainer.style.height = "3rem";
+    // localPlayerContainer.textContent = "You ";
+    localPlayerContainer.style.width = "320px";
+    localPlayerContainer.style.height = "180px";
+    localPlayerContainer.style.marginBottom = "5px";
     document.body.append(localPlayerContainer);
     rtc.localVideoTrack.play(localPlayerContainer);
     console.log("publish success!");
@@ -58,10 +62,11 @@ function VideoCall() {
           const remoteVideoTrack = user.videoTrack;
           const remotePlayerContainer = document.createElement("div");
           remotePlayerContainer.id = user.uid.toString();
-          remotePlayerContainer.textContent =
-            "Remote user " + user.uid.toString();
-          remotePlayerContainer.style.width = "4rem";
-          remotePlayerContainer.style.height = "3rem";
+          // remotePlayerContainer.textContent =
+          //   "Remote user " + user.uid.toString();
+          remotePlayerContainer.style.width = "320px";
+          remotePlayerContainer.style.height = "180px";
+          remotePlayerContainer.style.paddingBottom = "5px";
           document.body.append(remotePlayerContainer);
           remoteVideoTrack.play(remotePlayerContainer);
         }
@@ -79,19 +84,44 @@ function VideoCall() {
   }, []);
 
   return (
-    <div>
-      <h2 className="left-align">Agora Video Web SDK Quickstart</h2>
-      <div className="row">
-        <div>
-          <button type="button" onClick={handleJoin}>
-            JOIN
-          </button>
-          <button type="button" onClick={handleLeave}>
-            LEAVE
-          </button>
+    <>
+      <div style={{ textAlign: "center", marginTop: "5rem" }}>
+        <h2>Video Call Room</h2>
+        <div className="row">
+          <div>
+            <button
+              style={{
+                margin: "0.5rem",
+                padding: "5px",
+                borderRadius: "10px",
+                backgroundColor: "green",
+                color: "white",
+                fontSize: "0.8rem",
+              }}
+              type="button"
+              onClick={handleJoin}
+            >
+              <CallIcon /> JOIN CALL
+            </button>
+            <button
+              style={{
+                margin: "0.5rem",
+                padding: "5px",
+                borderRadius: "10px",
+                backgroundColor: "red",
+                color: "white",
+                fontSize: "0.8rem",
+              }}
+              type="button"
+              onClick={handleLeave}
+            >
+              <CallEndIcon /> LEAVE CALL
+            </button>
+          </div>
         </div>
       </div>
-    </div>
+      <BottomNav />
+    </>
   );
 }
 
