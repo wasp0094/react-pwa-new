@@ -37,11 +37,11 @@ export default function drawCanvas(webcamRef, canvasRef, results) {
   );
   canvasCtx.globalCompositeOperation = "source-over";
   connect(canvasCtx, results.poseLandmarks, pose.POSE_CONNECTIONS, {
-    color: "#00FF00",
+    color: "#fff",
     lineWidth: 4,
   });
   landMarks(canvasCtx, results.poseLandmarks, {
-    color: "#FF0000",
+    color: "#fff",
     lineWidth: 2,
   });
   canvasCtx.restore();
