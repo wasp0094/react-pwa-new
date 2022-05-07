@@ -1,3 +1,4 @@
+//MaterialUI imports
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -5,7 +6,11 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import { IconButton } from "@mui/material";
+
+//React Imports
 import { useNavigate } from "react-router-dom";
+
+//Components imports
 import { useExcerciseData } from "../../context/ExcerciseDataContext";
 import excercises from "../../excercises/excercises";
 import "./daily-task-item.styles.css";
@@ -14,6 +19,12 @@ function DailyTaskItem({ task, type, task_item }) {
   const navigate = useNavigate();
   const { excerciseVars, setExcerciseVars } = useExcerciseData();
   const { name } = excercises[task]["types"][type];
+  const dayNo = Math.floor(
+    (new Date() - task_item.created.toDate()) / 86400000
+  );
+  const doneForToday = task_item.routine[dayNo]?.completed;
+  console.log(dayNo);
+
   return (
     <div className="daily-task-item">
       <Card sx={{ minWidth: 275, borderRadius: "13px" }}>
@@ -24,7 +35,7 @@ function DailyTaskItem({ task, type, task_item }) {
         </CardContent>
         <CardActions sx={{ padding: "4px 15px" }}>
           <Button
-            disabled={task_item.completed}
+            disabled={doneForToday}
             size="small"
             onClick={() => {
               setExcerciseVars({
@@ -38,10 +49,13 @@ function DailyTaskItem({ task, type, task_item }) {
               navigate("excercise", { replace: true });
             }}
           >
-            Start Now
+            {doneForToday ? "Done For Today" : "Start Now"}
           </Button>
           <IconButton>
-            <CheckCircleOutlineIcon fontSize="small" color="action" />
+            <CheckCircleOutlineIcon
+              fontSize="small"
+              color={doneForToday ? "success" : "action"}
+            />
           </IconButton>
         </CardActions>
       </Card>

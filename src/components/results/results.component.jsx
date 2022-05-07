@@ -1,12 +1,14 @@
-import React, { useEffect } from "react";
-import { useExcerciseData } from "../../context/ExcerciseDataContext";
-import "./results.styles.css";
-import { INITIAL_DATA } from "../../context/ExcerciseDataContext";
+// MaterialUI imports
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
+// Dependencies imports
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
+import "./results.styles.css";
+import { useExcerciseData } from "../../context/ExcerciseDataContext";
+import { INITIAL_DATA } from "../../context/ExcerciseDataContext";
 import { firestore } from "../../firebase/firebase";
 
 function Results() {
@@ -39,12 +41,10 @@ function Results() {
   useEffect(() => {
     console.log(excerciseVars);
     updateRoutine();
-  }, []);
-  useEffect(() => {
     return function cleanup() {
       setExcerciseVars(INITIAL_DATA);
     };
-  });
+  }, []);
   return (
     <div className="results">
       <div className="explore-item card">
