@@ -35,6 +35,7 @@ function Camera({ excercise, handleEndExcercise, type }) {
   function onResults(results) {
     if (loadingCam) setLoadingCam(false);
     if (!results.poseLandmarks) return;
+    console.log(excercise_id);
     calculate(excercise_id)(
       results.poseLandmarks,
       excerciseVars,

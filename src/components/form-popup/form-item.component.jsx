@@ -50,8 +50,6 @@ function FormComponent({ preDefined, excerciseName, handleClose }) {
     return FULL;
   };
 
-  //days , sets, reps get sent as strings to database
-
   const setGoalToDb = async () => {
     try {
       const userRef = doc(firestore, `users/${user.id}`);
