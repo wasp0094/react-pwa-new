@@ -64,6 +64,7 @@ const shoulder_abduction = {
     "Make use of a towel/sponge to slide your arm against the wall.",
     "Face should be towards the camera.",
   ],
+  instructions_video: "ksnlkvKMOMM",
 };
 
 const shoulder_flexion = {
@@ -95,6 +96,7 @@ const shoulder_flexion = {
     "Make use of a towel/sponge to slide your arm against the wall.",
     "Arms should be straight and perpendicular to the wall.",
   ],
+  instructions_video: "ZLzrFBRTG58",
 };
 
 const elbow_flexion = {
@@ -126,6 +128,7 @@ const elbow_flexion = {
     "Make sure the other elbow is still in the camera scope as shown in the image attached.",
     "Upper arm should rest on the table completely.",
   ],
+  instructions_video: "e5NYL7ciqfw",
 };
 
 const shoulder_elevation = {
@@ -150,6 +153,7 @@ const shoulder_elevation = {
   instructions: [
     "Make sure that your upper body is clearly visible on the screen.",
   ],
+  instructions_video: "JnzLkf8YqB0",
 };
 
 const dumbell_bicep_curl = {
@@ -181,6 +185,7 @@ const dumbell_bicep_curl = {
     "The face should be towards the camera.",
     "Make sure that your upper body is clearly visible on the screen.",
   ],
+  instructions_video: "MDkqgyXKqnA",
 };
 
 const lunges = {
@@ -207,6 +212,7 @@ const lunges = {
     "Look towards your left.",
     "Make sure that your full body is clearly visible on the screen.",
   ],
+  instructions_video: "NHDvkCz_8gI",
 };
 
 const side_kicks = {
@@ -237,6 +243,7 @@ const side_kicks = {
     "Perform this exercise in a standing position and you can take support from the table.",
     "Make sure that your full body is clearly visible on the screen.",
   ],
+  instructions_video: "TxBCpB36cSI",
 };
 
 const squats = {
@@ -263,6 +270,7 @@ const squats = {
     "The face should be towards the camera.",
     "Make sure that your full body is clearly visible on the screen.",
   ],
+  instructions_video: "4nKxO7dTjr8",
 };
 
 const excercises = {
