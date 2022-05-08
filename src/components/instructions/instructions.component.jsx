@@ -1,7 +1,6 @@
 import "./instructions.styles.css";
-import { Button } from "@mui/material";
 
-import instruction from "../../assets/banner1.jpg";
+// import instruction from "../../assets/banner1.jpg";
 
 function Instructions(props) {
   const { handleExcerciseStart, instructions } = props;
@@ -10,11 +9,12 @@ function Instructions(props) {
   };
   return (
     <div className="instruction">
-      <img
+      {/* <img
         src={instruction}
         alt="instruction"
         className="img-fluid instruction-image"
-      />
+      /> */}
+      <h2>INSTRUCTIONS</h2>
       <div className="rules">
         {instructions.map((rule, idx) => (
           <p key={idx} className="rule">
@@ -22,13 +22,11 @@ function Instructions(props) {
           </p>
         ))}
       </div>
-      <Button
-        variant="primary"
-        onClick={handleClick}
-        className="btn instruction-button"
-      >
-        Start
-      </Button>
+      <h2>
+        <button className="btn-success start-button" onClick={handleClick}>
+          Start
+        </button>
+      </h2>
     </div>
   );
 }
