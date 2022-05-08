@@ -1,5 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import AgoraRTC from "agora-rtc-sdk-ng";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useUserAuth } from "../../context/UserAuthContext";
 import CallIcon from "@mui/icons-material/Call";
 import CallEndIcon from "@mui/icons-material/CallEnd";
