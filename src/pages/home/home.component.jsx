@@ -36,9 +36,9 @@ function HomePage({ handleModalOpen }) {
           ))}
         </div>
         <Button onClick={handleModalOpen}>Add Prescription</Button>
-        <Button component={Link} to="/chat">
+        {/* <Button component={Link} to="/chat">
           CALL A DOCTOR
-        </Button>
+        </Button> */}
       </div>
     </div>
   );
