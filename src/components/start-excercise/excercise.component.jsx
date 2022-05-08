@@ -13,6 +13,7 @@ function Excercise() {
   const title =
     excercises[excerciseVars.task]["types"][excerciseVars.type].name;
   const instructions = excercises[excerciseVars.task].instructions;
+  const instructions_video = excercises[excerciseVars.task].instructions_video;
   useSetTitle(title);
   return (
     <div className="start-excercise">
@@ -20,6 +21,7 @@ function Excercise() {
         <Instructions
           handleExcerciseStart={setStarted}
           instructions={instructions}
+          instructions_video={instructions_video}
         />
       )}
       {started === 1 && (

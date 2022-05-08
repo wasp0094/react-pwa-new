@@ -1,19 +1,12 @@
 import "./instructions.styles.css";
 
-// import instruction from "../../assets/banner1.jpg";
-
 function Instructions(props) {
-  const { handleExcerciseStart, instructions } = props;
+  const { handleExcerciseStart, instructions, instructions_video } = props;
   const handleClick = (e) => {
     handleExcerciseStart(1);
   };
   return (
     <div className="instruction">
-      {/* <img
-        src={instruction}
-        alt="instruction"
-        className="img-fluid instruction-image"
-      /> */}
       <h2>INSTRUCTIONS</h2>
       <div className="rules">
         {instructions.map((rule, idx) => (
@@ -27,6 +20,15 @@ function Instructions(props) {
           Start
         </button>
       </h2>
+      <iframe
+        width="auto"
+        height="auto"
+        src={`https://www.youtube.com/embed/${instructions_video}`}
+        title="YouTube video player"
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+      ></iframe>
     </div>
   );
 }
