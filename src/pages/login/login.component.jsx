@@ -142,6 +142,7 @@ function Login() {
                     fontSize: "0.9rem",
                     fontFamily: "Ubuntu",
                     color: " #4645e3",
+                    textTransform: "uppercase",
                   }}
                 >
                   Don't have an account?{" "}

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
@@ -23,8 +24,7 @@ function Profile() {
     }
   };
   return (
-    <div>
-      {/* <h3>Profile</h3> */}
+    <div className="main-div">
       <Box
         sx={{
           display: "flex",
@@ -35,75 +35,57 @@ function Profile() {
         className="avatar-container"
       >
         <Avatar
-          src="https://mui.com/static/images/avatar/1.jpg"
-          sx={{ width: 70, height: 70 }}
+          src="https://mui.com/static/images/avatar/2.jpg"
+          sx={{ width: 150, height: 150 }}
         />
-        {/* <Stack
+      </Box>
+      <div className="content-container">
+        <Box
           sx={{
             display: "flex",
             flexDirection: "column",
-            margin: "1rem",
-            padding: "0 1rem",
+            margin: "1rem 2rem 2rem 0.9rem",
+            padding: 0,
+          }}
+          className="profile-list"
+        >
+          <div className="field">
+            <p>Name</p>
+            <p>{user && user.displayName}</p>
+          </div>
+          <div className="field">
+            <p>EMAIL</p>
+            <p>{user && user.email}</p>
+          </div>
+          <div className="field">
+            <p>D.O.B</p>
+            <p>{user && user.dob}</p>
+          </div>
+          <div className="field">
+            <p>Weight</p>
+            <p>{user && user.weight}</p>
+          </div>
+        </Box>
+        <Box
+          sx={{
+            justifyContent: "center",
+            alignItems: "center",
+            marginBottom: "3rem",
           }}
         >
-          <p>
-            {user.displayName}
-            <br />
-            username
-          </p>
-        </Stack> */}
-        {/* <IconButton sx={{ marginTop: "1.5rem" }}>
-          <EditIcon fontSize="small" color="action" />
-        </IconButton> */}
-      </Box>
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-        }}
-        className="profile-list"
-      >
-        <div className="field">
-          <p>EMAIL</p>
-          <p>{user && user.email}</p>
-        </div>
-
-        <div className="field">
-          <p>PASSWORD</p>
-          <p>*************</p>
-        </div>
-
-        <div className="field">
-          <p>PHONE</p>
-          <p>00000-0000</p>
-        </div>
-
-        <div className="field">
-          <p>D.O.B.</p>
-          <p>02/12/1998</p>
-        </div>
-      </Box>
-      <Box
-        sx={{
-          justifyContent: "center",
-          alignItems: "center",
-          marginBottom: "3rem",
-        }}
-      >
-        <Stack direction="row" sx={{ justifyContent: "center" }}>
-          <Button
-            variant="contained"
-            color="error"
-            onClick={handleLogOut}
-            sx={{ margin: "0.5rem" }}
-          >
-            {" "}
-            Log Out{" "}
-          </Button>
-          {/* <Button variant="outlined" color="error"> <Link to='home'> Log Out </Link></Button> */}
-          {/* above link not working */}
-        </Stack>
-      </Box>
+          <Stack direction="row" sx={{ justifyContent: "center" }}>
+            <Button
+              variant="contained"
+              color="error"
+              onClick={handleLogOut}
+              sx={{ margin: "0.5rem", borderRadius: "10px" }}
+            >
+              {" "}
+              Log Out{" "}
+            </Button>
+          </Stack>
+        </Box>
+      </div>
     </div>
   );
 }

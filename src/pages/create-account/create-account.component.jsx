@@ -1,27 +1,37 @@
 import React, { useState } from "react";
 import { useUserAuth } from "../../context/UserAuthContext";
-import Box from "@mui/material/Box";
-import { TextField } from "@mui/material";
-import { Button } from "@mui/material";
-import { Stack } from "@mui/material";
+import { TextField, MenuItem, Box, Button, Stack } from "@mui/material";
 import { Link } from "react-router-dom";
 import blob from "../../assets/blob.svg";
 import "../login/login.styles.css";
-import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import FaceIcon from "@mui/icons-material/Face";
-
-// create account page, (for mobile)
+import {
+  EmailOutlined,
+  LockOutlined,
+  Face,
+  LineWeightOutlined,
+  ManOutlined,
+} from "@mui/icons-material";
 
 function CreateAccount() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
+  const [dob, setDob] = useState("");
+  const [gender, setGender] = useState("");
+  const [weight, setWeight] = useState("");
   const [error, setError] = useState("");
   const { signUp } = useUserAuth();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await signUp(email, password);
+      const data = {
+        displayName: name,
+        dob: dob,
+        gender: gender,
+        weight: weight,
+      };
+      await signUp(email, password, data);
     } catch (error) {
       setError("Failed to create a new account.");
     }
@@ -49,20 +59,72 @@ function CreateAccount() {
                   className="input-field"
                   sx={{ display: "flex", alignItems: "flex-end" }}
                 >
-                  <FaceIcon sx={{ color: "action.active", mr: 1, my: 0.5 }} />
+                  <Face sx={{ color: "action.active", mr: 1, my: 0.5 }} />
                   <TextField
                     id="input-with-sx"
                     label="Full Name"
                     variant="standard"
                     type="text"
-                    style={{ width: "14rem" }}
+                    onChange={(e) => setName(e.target.value)}
+                    style={{ width: "8rem" }}
                   />
+                  <LineWeightOutlined
+                    sx={{ color: "action.active", mr: 1, my: 0.5 }}
+                  />
+                  <TextField
+                    id="input-with-sx"
+                    label="Weight"
+                    variant="standard"
+                    onChange={(e) => setWeight(e.target.value)}
+                    type="number"
+                    style={{ width: "4rem" }}
+                  />
+                </Box>
+
+                <Box
+                  className="input-field"
+                  sx={{ display: "flex", alignItems: "flex-end" }}
+                >
+                  <Face sx={{ color: "action.active", mr: 1, my: 0.5 }} />
+                  <TextField
+                    id="date"
+                    label="DOB"
+                    type="date"
+                    variant="standard"
+                    defaultValue="2002-03-19"
+                    sx={{ width: "6.5rem" }}
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
+                    onChange={(e) => setDob(e.target.value)}
+                  />
+                  <ManOutlined
+                    sx={{ color: "action.active", mr: 1, my: 0.5 }}
+                  />
+                  <TextField
+                    id="input-with-sx"
+                    select
+                    label="Gender"
+                    variant="standard"
+                    onChange={(e) => setGender(e.target.value)}
+                    style={{ width: "5rem" }}
+                  >
+                    <MenuItem key="Male" value="Male">
+                      Male
+                    </MenuItem>
+                    <MenuItem key="Female" value="Female">
+                      Female
+                    </MenuItem>
+                    <MenuItem key="Others" value="Others">
+                      Others
+                    </MenuItem>
+                  </TextField>
                 </Box>
                 <Box
                   className="input-field"
                   sx={{ display: "flex", alignItems: "flex-end" }}
                 >
-                  <EmailOutlinedIcon
+                  <EmailOutlined
                     sx={{ color: "action.active", mr: 1, my: 0.5 }}
                   />
                   <TextField
@@ -78,7 +140,7 @@ function CreateAccount() {
                   className="input-field"
                   sx={{ display: "flex", alignItems: "flex-end" }}
                 >
-                  <LockOutlinedIcon
+                  <LockOutlined
                     sx={{ color: "action.active", mr: 1, my: 0.5 }}
                   />
                   <TextField
@@ -96,7 +158,7 @@ function CreateAccount() {
                   className="input-field"
                   sx={{ display: "flex", alignItems: "flex-end" }}
                 >
-                  <LockOutlinedIcon
+                  <LockOutlined
                     sx={{ color: "action.active", mr: 1, my: 0.5 }}
                   />
                   <TextField
@@ -150,6 +212,7 @@ function CreateAccount() {
                   fontSize: "0.9rem",
                   fontFamily: "Ubuntu",
                   color: "#4645e3",
+                  textTransform: "uppercase",
                 }}
               >
                 Already have an account?{" "}
