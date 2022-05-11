@@ -15,6 +15,13 @@ button {
   font-size: medium;
 }
 
+.start-button {
+  padding: 0.3vh 4vw;
+  height: 5vh;
+  width: 22vw;
+  border-radius: 19px;
+}
+
 .instruction {
   padding-top: 5vh;
   padding-left: 5vw;
@@ -22,4 +29,11 @@ button {
 
 .instruction h2 {
   text-align: center;
+}
+
+iframe {
+  margin: 5vw;
+  width: 80vw;
+  height: 24vh;
+  border-radius: 15px;
 }

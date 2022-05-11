@@ -15,20 +15,20 @@ function Instructions(props) {
           </p>
         ))}
       </div>
-      <h2>
-        <button className="btn-success start-button" onClick={handleClick}>
-          Start
-        </button>
-      </h2>
       <iframe
         width="auto"
         height="auto"
         src={`https://www.youtube.com/embed/${instructions_video}`}
         title="YouTube video player"
-        frameBorder="0"
+        frameBorder="2"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen
       ></iframe>
+      <h2>
+        <button className="btn-success start-button" onClick={handleClick}>
+          Start
+        </button>
+      </h2>
     </div>
   );
 }
