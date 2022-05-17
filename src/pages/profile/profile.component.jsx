@@ -35,7 +35,7 @@ function Profile() {
         className="avatar-container"
       >
         <Avatar
-          src="https://mui.com/static/images/avatar/2.jpg"
+          src={user.imgUrl || "https://mui.com/static/images/avatar/2.jpg"}
           sx={{ width: 150, height: 150 }}
         />
       </Box>

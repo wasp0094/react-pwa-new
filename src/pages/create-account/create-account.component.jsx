@@ -3,7 +3,11 @@ import { useUserAuth } from "../../context/UserAuthContext";
 import { TextField, MenuItem, Box, Button, Stack } from "@mui/material";
 import { Link } from "react-router-dom";
 import blob from "../../assets/blob.svg";
+import "./create-account.css";
 import "../login/login.styles.css";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { v4 } from "uuid";
+import { storage } from "../../firebase/firebase";
 import {
   EmailOutlined,
   LockOutlined,
@@ -20,20 +24,46 @@ function CreateAccount() {
   const [gender, setGender] = useState("");
   const [weight, setWeight] = useState("");
   const [error, setError] = useState("");
+  const [imgUrl, setImgUrl] = useState(
+    "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+  );
+  const [image, setImage] = useState(null);
   const { signUp } = useUserAuth();
+
+  const handleChange = (e) => {
+    if (e.target.files[0]) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        if (reader.readyState === 2) {
+          setImgUrl(reader.result);
+        }
+      };
+      reader.readAsDataURL(e.target.files[0]);
+      setImage(e.target.files[0]);
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      if (image == null) return;
+      const imageRef = ref(storage, `images/${image.name + v4()}`);
+      uploadBytes(imageRef, image).then((snapshot) => {
+        getDownloadURL(snapshot.ref).then((url) => {
+          setImgUrl(url);
+        });
+      });
       const data = {
         displayName: name,
         dob: dob,
         gender: gender,
         weight: weight,
+        imgUrl: imgUrl,
       };
       await signUp(email, password, data);
     } catch (error) {
       setError("Failed to create a new account.");
+      console.log(error);
     }
   };
 
@@ -55,6 +85,17 @@ function CreateAccount() {
               <h2>Create Account</h2>
               <p className="text1">Create a new account</p>
               <Stack className="details" spacing={2}>
+                <Box>
+                  <img src={imgUrl} className="profile-pic" alt="profile pic" />
+                  <input
+                    type="file"
+                    style={{
+                      fontSize: "15px",
+                      marginLeft: "4vw",
+                    }}
+                    onChange={handleChange}
+                  />
+                </Box>
                 <Box
                   className="input-field"
                   sx={{ display: "flex", alignItems: "flex-end" }}
