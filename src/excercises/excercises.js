@@ -1,14 +1,15 @@
-import leftSideKick from "./side-kicks/leftSideKick";
-import rightSideKick from "./side-kicks/rightSideKick";
-import leftElbowFlexion from "./elbow-flexion/leftElbowFlexion";
-import rightElbowFlexion from "./elbow-flexion/rightElbowFlexion";
-import leftShoulderFlexion from "./elbow-flexion/leftElbowFlexion";
-import rightShoulderFlexion from "./shoulder-flexion/rightShoulderFlexion";
 import leftShoulderAbduction from "./shoulder-abduction/leftShoulderAbduction";
 import rightShoulderAbduction from "./shoulder-abduction/rightShoulderAbduction";
+import leftShoulderFlexion from "./elbow-flexion/leftElbowFlexion";
+import rightShoulderFlexion from "./shoulder-flexion/rightShoulderFlexion";
+import leftElbowFlexion from "./elbow-flexion/leftElbowFlexion";
+import rightElbowFlexion from "./elbow-flexion/rightElbowFlexion";
 import shoulderElevation from "./shoulder-elevation/shoulderElevation";
-import squat from "./squats/squats";
+import sideCurl from "./side-curl/sideCurl";
 import lunge from "./Lunges/lunges";
+import leftSideKick from "./side-kicks/leftSideKick";
+import rightSideKick from "./side-kicks/rightSideKick";
+import squat from "./squats/squats";
 
 import diabetesImage from "../assets/diabetes-link.jpg";
 import elbowImage from "../assets/elbow-link.jpg";
@@ -171,14 +172,14 @@ const dumbell_bicep_curl = {
   description:
     "The dumbbell bicep curls exercise is a weight-training exercise that works the muscles of the upper arm, and to a lesser extent, those of the lower arm. It's a great exercise for seeing results in strength and definition in your arms.",
   types: {
-    left: {
+    full: {
       id: "left-dumbell-bicep-curl",
-      name: "Left Dumbell Bicep Curl",
+      name: "Dumbell Bicep Curl",
     },
-    right: {
-      id: "right-dumbell-bicep-curl",
-      name: "Right Dumbell Bicep Curl",
-    },
+    // right: {
+    //   id: "right-dumbell-bicep-curl",
+    //   name: "Dumbell Bicep Curl",
+    // },
   },
   instructions: [
     "Perform this exercise while seated.",
@@ -305,15 +306,17 @@ export const targets = {
 const excerciseFuncs = {
   "left-shoulder-abduction": leftShoulderAbduction,
   "right-shoulder-abduction": rightShoulderAbduction,
-  "full-squats": squat,
+  "left-shoulder-flexion": leftShoulderFlexion,
+  "right-shoulder-flexion": rightShoulderFlexion,
+  "full-shoulder-elevation": shoulderElevation,
+  "left-elbow-flexion": leftElbowFlexion,
+  "right-elbow-flexion": rightElbowFlexion,
+  "left-dumbell-bicep-curl": sideCurl,
+  "right-dumbell-bicep-curl": sideCurl,
   "left-side-kicks": leftSideKick,
   "right-side-kicks": rightSideKick,
-  "left-elbow-kicks": leftElbowFlexion,
-  "right-elbow-kicks": rightElbowFlexion,
-  "left-shoulder-flexion": leftShoulderAbduction,
-  "right-shoulder-flexion": rightShoulderAbduction,
   "full-lunges": lunge,
-  "full-shoulder-elevation": shoulderElevation,
+  "full-squats": squat,
 };
 
 export const calculate = (excercise_id) => {

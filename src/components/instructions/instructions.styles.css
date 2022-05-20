@@ -32,8 +32,8 @@ button {
 }
 
 iframe {
-  margin: 5vw;
-  width: 80vw;
+  margin: 5vh 6vw;
+  width: 75vw;
   height: 24vh;
-  border-radius: 15px;
+  /* border-radius: 15px; */
 }
