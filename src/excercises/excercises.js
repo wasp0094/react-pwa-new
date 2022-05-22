@@ -306,6 +306,8 @@ const excerciseFuncs = {
   "right-shoulder-flexion": rightShoulderFlexion,
   "full-lunges": lunge,
   "full-shoulder-elevation": shoulderElevation,
+  "right-elbow-flexion": rightElbowFlexion,
+  "left-elbow-flexion": leftElbowFlexion,
 };
 
 export const calculate = (excercise_id) => {

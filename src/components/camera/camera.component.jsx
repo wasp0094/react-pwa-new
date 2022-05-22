@@ -45,6 +45,7 @@ function Camera({ excercise, handleEndExcercise, type }) {
 
   useEffect(() => {
     if (excerciseVars.setsCompleted === excerciseVars.requiredSets) {
+      // console.log(webcamRef);
       handleEndExcercise(2);
     }
     //eslint-disable-next-line

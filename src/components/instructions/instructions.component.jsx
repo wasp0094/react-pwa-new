@@ -5,7 +5,7 @@ import "./instructions.styles.css";
 function Instructions(props) {
   const { handleExcerciseStart, instructions } = props;
   const handleClick = (e) => {
-    handleExcerciseStart(1);
+    handleExcerciseStart(0);
   };
   return (
     <div className="instruction">

@@ -6,9 +6,10 @@ import { useExcerciseData } from "../../context/ExcerciseDataContext";
 import Results from "../results/results.component";
 import { useSetTitle } from "../../hooks/setTitle";
 import excercises from "../../excercises/excercises";
+import FaceRecogComponent from "../face-recognition/face-recog.component";
 
 function Excercise() {
-  const [started, setStarted] = useState(0);
+  const [started, setStarted] = useState(-1);
   const { excerciseVars } = useExcerciseData();
   const title =
     excercises[excerciseVars.task]["types"][excerciseVars.type].name;
@@ -16,11 +17,14 @@ function Excercise() {
   useSetTitle(title);
   return (
     <div className="start-excercise">
-      {started === 0 && (
+      {started === -1 && (
         <Instructions
           handleExcerciseStart={setStarted}
           instructions={instructions}
         />
+      )}
+      {started === 0 && (
+        <FaceRecogComponent handleExcerciseStart={setStarted} />
       )}
       {started === 1 && (
         <Camera
