@@ -10,8 +10,8 @@ import {
 import { auth, createUserObject } from "../firebase/firebase";
 import { useLocation, useNavigate } from "react-router-dom";
 import { onSnapshot } from "firebase/firestore";
-
 const userAuthContext = createContext();
+
 export function UserAuthContextProvider({ children }) {
   const [user, setUser] = useState(null);
   const [loadingUser, setLoadingUser] = useState(true);
