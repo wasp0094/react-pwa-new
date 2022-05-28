@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
+import axios from "axios";
 import {
   doc,
   getDoc,
@@ -7,6 +8,9 @@ import {
   setDoc,
   writeBatch,
   collection,
+  Timestamp,
+  updateDoc,
+  addDoc,
 } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -24,23 +28,57 @@ export const firestore = getFirestore();
 
 export async function createUserObject(userAuth, data) {
   if (!userAuth) return;
-  const userRef = doc(firestore, `users/${userAuth.uid}`);
-  const userSnapshot = await getDoc(userRef);
-  if (!userSnapshot.exists()) {
-    const { email, displayName } = userAuth;
-    const createdAt = new Date(),
-      routine = [];
-    try {
-      setDoc(userRef, { displayName, email, routine, createdAt, ...data });
-    } catch (err) {
-      console.log(err);
-    }
-  }
-  return userRef;
+  const res = await axios.post("http://localhost:4000/create-user", {
+    userAuth: userAuth,
+    data: data,
+  });
+  console.log(res);
+  return res.userReff;
 }
+// export async function createUserObject(userAuth, data) {
+//   if (!userAuth) return;
+//   const userRef = doc(firestore, `users/${userAuth.uid}`);
+//   const userSnapshot = await getDoc(userRef);
+//   if (!userSnapshot.exists()) {
+//     const { email, displayName } = userAuth;
+//     const createdAt = new Date(),
+//       routine = [];
+//     try {
+//       setDoc(userRef, { displayName, email, routine, createdAt, ...data });
+//     } catch (err) {
+//       console.log(err);
+//     }
+//   }
+//   return userRef;
+// }
+
+export const setGoalstoDB = async (goals) => {
+  try {
+    const userRef = doc(firestore, `users/${goals.user.id}`);
+    const docRef = await addDoc(collection(firestore, "prescriptions"), {
+      exercise: doc(firestore, `excercises/${goals.exercise}`),
+      type: goals.type,
+      days: goals.days,
+      sets: goals.sets,
+      reps: goals.reps,
+      completed: goals.completed,
+      user: userRef,
+      routine: Array(parseInt(goals.days)).fill({
+        completed: false,
+        sets: 0,
+        reps: 0,
+        dailyRange: 0,
+      }),
+      created: Timestamp.now(),
+    });
+    const routine = goals.user?.routine || [];
+    await updateDoc(userRef, { routine: [...routine, docRef] });
+  } catch (err) {
+    alert(err);
+  }
+};
 
 export const auth = getAuth(app);
-export default app;
 
 export const addCollectionsAndDocuments = async (
   collectionKey,
@@ -54,3 +92,30 @@ export const addCollectionsAndDocuments = async (
   });
   await batch.commit();
 };
+
+export const updateRoutineDB = async (excerciseVars) => {
+  const { requiredReps, requiredSets, routine_id, dayRange } = excerciseVars;
+  const routine_item_ref = doc(firestore, `prescriptions/${routine_id}`);
+  const routine_item = (await getDoc(routine_item_ref)).data();
+  const dayNo = Math.floor(
+    (new Date() - routine_item.created.toDate()) / 86400000
+  );
+  const dayValues = {
+    completed: true,
+    reps: requiredReps,
+    sets: requiredSets,
+    dailyRange: dayRange || 135.0,
+  };
+  const updatedRoutineArray = routine_item.routine.map((item, idx) =>
+    idx === dayNo ? dayValues : item
+  );
+  const updated_routine_item = {
+    ...routine_item,
+    routine: updatedRoutineArray,
+    completed: dayNo === updatedRoutineArray.length ? true : false,
+  };
+  console.log(updated_routine_item);
+  await updateDoc(routine_item_ref, updated_routine_item);
+};
+
+export default app;

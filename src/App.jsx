@@ -17,8 +17,6 @@ import FormPopup from "./components/form-popup/form-popup.component";
 import VideoCall from "./components/video-call/video-call.component";
 
 import ExcerciseDetails from "./components/excercise-details/excercise-details.component";
-// import { addCollectionsAndDocuments } from "./firebase/firebase";
-// import excercises from "./excercises/excercises";
 import TitleBar from "./components/title-bar/title-bar.component";
 import "./App.css";
 
@@ -31,9 +29,6 @@ function CreateAccountLoader({ user }) {
 }
 
 function App() {
-  useEffect(() => {
-    // addCollectionsAndDocuments("excercises", excercises);
-  }, []);
   const { user, loadingUser } = useUserAuth();
   return (
     <div className="app">
