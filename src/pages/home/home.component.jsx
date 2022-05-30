@@ -7,7 +7,6 @@ import { Button } from "@mui/material";
 import ExploreCategory from "../../components/explore-category/explore-category.component";
 import { useSetTitle } from "../../hooks/setTitle";
 import { useUserAuth } from "../../context/UserAuthContext";
-import { Link } from "react-router-dom";
 
 function HomePage({ handleModalOpen }) {
   useSetTitle("Home");

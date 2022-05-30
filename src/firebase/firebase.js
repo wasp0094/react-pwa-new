@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-import axios from "axios";
+// import axios from "axios";
 import {
   doc,
   getDoc,
@@ -25,32 +25,25 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 export const firestore = getFirestore();
+export const auth = getAuth(app);
+export default app;
 
 export async function createUserObject(userAuth, data) {
   if (!userAuth) return;
-  const res = await axios.post("http://localhost:4000/create-user", {
-    userAuth: userAuth,
-    data: data,
-  });
-  console.log(res);
-  return res.userReff;
+  const userRef = doc(firestore, `users/${userAuth.uid}`);
+  const userSnapshot = await getDoc(userRef);
+  if (!userSnapshot.exists()) {
+    const { email, displayName } = userAuth;
+    const createdAt = new Date(),
+      routine = [];
+    try {
+      setDoc(userRef, { displayName, email, routine, createdAt, ...data });
+    } catch (err) {
+      console.log(err);
+    }
+  }
+  return userRef;
 }
-// export async function createUserObject(userAuth, data) {
-//   if (!userAuth) return;
-//   const userRef = doc(firestore, `users/${userAuth.uid}`);
-//   const userSnapshot = await getDoc(userRef);
-//   if (!userSnapshot.exists()) {
-//     const { email, displayName } = userAuth;
-//     const createdAt = new Date(),
-//       routine = [];
-//     try {
-//       setDoc(userRef, { displayName, email, routine, createdAt, ...data });
-//     } catch (err) {
-//       console.log(err);
-//     }
-//   }
-//   return userRef;
-// }
 
 export const setGoalstoDB = async (goals) => {
   try {
@@ -77,8 +70,6 @@ export const setGoalstoDB = async (goals) => {
     alert(err);
   }
 };
-
-export const auth = getAuth(app);
 
 export const addCollectionsAndDocuments = async (
   collectionKey,
@@ -118,4 +109,27 @@ export const updateRoutineDB = async (excerciseVars) => {
   await updateDoc(routine_item_ref, updated_routine_item);
 };
 
-export default app;
+// export async function createUserObject(userAuth, data) {
+//   if (!userAuth) return;
+//   const userRef = doc(firestore, `users/${userAuth.uid}`);
+//   const res = await axios.post("http://localhost:4000/create-user", {
+//     userAuth: userAuth,
+//     data: data,
+//   });
+//   return userRef;
+// }
+
+// export const setGoalstoDB = async (goals) => {
+//   if(!goals) return;
+//   console.log(goals);
+//   const res = await axios.post("http://localhost:4000/set-goals", {
+//     goals: goals,
+//   });
+// };
+
+// export const updateRoutineDB = async (excerciseVars) => {
+//   if(!excerciseVars) return;
+//   const res = await axios.post("http://localhost:4000/update-routine", {
+//     excerciseVars: excerciseVars,
+//   });
+// };
