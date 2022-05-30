@@ -176,10 +176,6 @@ const dumbell_bicep_curl = {
       id: "left-dumbell-bicep-curl",
       name: "Dumbell Bicep Curl",
     },
-    // right: {
-    //   id: "right-dumbell-bicep-curl",
-    //   name: "Dumbell Bicep Curl",
-    // },
   },
   instructions: [
     "Perform this exercise while seated.",
