@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
+import { getStorage } from "firebase/storage";
 // import axios from "axios";
 import {
   doc,
@@ -25,6 +26,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 export const firestore = getFirestore();
+export const storage = getStorage(app);
 export const auth = getAuth(app);
 export default app;
 
