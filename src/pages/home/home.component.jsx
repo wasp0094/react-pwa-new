@@ -1,5 +1,6 @@
 import React from "react";
 import "./home.css";
+import FormPopup from "../../components/form-popup/form-popup.component";
 import ExploreCategoryLink from "../../components/explore-category-link/explore-category-link.component";
 import { Routes, Route } from "react-router-dom";
 import { targets } from "../../excercises/excercises";
@@ -7,7 +8,6 @@ import { Button } from "@mui/material";
 import ExploreCategory from "../../components/explore-category/explore-category.component";
 import { useSetTitle } from "../../hooks/setTitle";
 import { useUserAuth } from "../../context/UserAuthContext";
-import { Link } from "react-router-dom";
 
 function HomePage({ handleModalOpen }) {
   useSetTitle("Home");
@@ -53,4 +53,4 @@ function Home(props) {
   );
 }
 
-export default Home;
+export default FormPopup(Home);
