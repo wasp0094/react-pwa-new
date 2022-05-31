@@ -10,8 +10,8 @@ import {
 import { auth, createUserObject } from "../firebase/firebase";
 import { useLocation, useNavigate } from "react-router-dom";
 import { onSnapshot } from "firebase/firestore";
-
 const userAuthContext = createContext();
+
 export function UserAuthContextProvider({ children }) {
   const [user, setUser] = useState(null);
   const [loadingUser, setLoadingUser] = useState(true);
@@ -45,6 +45,7 @@ export function UserAuthContextProvider({ children }) {
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       if (currentUser) {
         const userRef = await createUserObject(currentUser);
+        console.log(userRef);
         onSnapshot(userRef, (snapshot) => {
           setUser({ id: snapshot.id, ...snapshot.data() });
           setLoadingUser(false);

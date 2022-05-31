@@ -32,7 +32,7 @@
 }
 
 .content-container {
-  padding: 1.6rem 0.5rem;
+  /* padding: 1.6rem 0.5rem; */
   height: 30rem;
   width: 85vw;
   background-color: #8fa7cb;
@@ -42,7 +42,7 @@
 }
 
 .content-container p {
-  font-size: 1.1rem;
+  font-size: 4vw;
   font-weight: 580;
 }
 

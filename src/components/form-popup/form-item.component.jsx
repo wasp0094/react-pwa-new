@@ -8,20 +8,9 @@ import { TextField } from "@mui/material";
 import { Button } from "@mui/material";
 import { Stack } from "@mui/material";
 import Checkbox from "@mui/material/Checkbox";
-// import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
-// import Favorite from "@mui/icons-material/Favorite";
-// import Slider from "@mui/material/Slider";
-
 import FormControlLabel from "@mui/material/FormControlLabel";
 import excercises from "../../excercises/excercises";
-import { firestore } from "../../firebase/firebase";
-import {
-  collection,
-  addDoc,
-  Timestamp,
-  doc,
-  updateDoc,
-} from "firebase/firestore";
+import { setGoalstoDB } from "../../firebase/firebase";
 import { useUserAuth } from "../../context/UserAuthContext";
 
 function FormComponent({ preDefined, excerciseName, handleClose }) {
@@ -51,29 +40,16 @@ function FormComponent({ preDefined, excerciseName, handleClose }) {
   };
 
   const setGoalToDb = async () => {
-    try {
-      const userRef = doc(firestore, `users/${user.id}`);
-      const docRef = await addDoc(collection(firestore, "prescriptions"), {
-        exercise: doc(firestore, `excercises/${exercise}`),
-        type: getType(),
-        days: parseInt(days),
-        sets: parseInt(sets),
-        reps: parseInt(reps),
-        completed: false,
-        user: userRef,
-        routine: Array(parseInt(days)).fill({
-          completed: false,
-          sets: 0,
-          reps: 0,
-          dailyRange: 0,
-        }),
-        created: Timestamp.now(),
-      });
-      const routine = user?.routine || [];
-      await updateDoc(userRef, { routine: [...routine, docRef] });
-    } catch (err) {
-      alert(err);
-    }
+    const goals = {
+      user: user,
+      exercise: exercise,
+      type: getType(),
+      days: parseInt(days),
+      sets: parseInt(sets),
+      reps: parseInt(reps),
+      completed: false,
+    };
+    await setGoalstoDB(goals);
   };
 
   const handleSetGoal = async (e) => {
@@ -91,9 +67,6 @@ function FormComponent({ preDefined, excerciseName, handleClose }) {
     await setGoalToDb();
   };
 
-  // function valuetext(value) {
-  //   return `${value}°C`;
-  // }
   return (
     <Box sx={{ margin: 2 }}>
       <form>

@@ -5,41 +5,19 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 // Dependencies imports
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { doc, getDoc, updateDoc } from "firebase/firestore";
 import "./results.styles.css";
 import { useExcerciseData } from "../../context/ExcerciseDataContext";
 import { INITIAL_DATA } from "../../context/ExcerciseDataContext";
-import { firestore } from "../../firebase/firebase";
+import { updateRoutineDB } from "../../firebase/firebase";
 
 function Results() {
   const navigate = useNavigate();
   const { excerciseVars, setExcerciseVars } = useExcerciseData();
-  const { requiredReps, requiredSets, routine_id, dayRange } = excerciseVars;
+
   const updateRoutine = async () => {
-    const routine_item_ref = doc(firestore, `prescriptions/${routine_id}`);
-    const routine_item = (await getDoc(routine_item_ref)).data();
-    const dayNo = Math.floor(
-      (new Date() - routine_item.created.toDate()) / 86400000
-    );
-    const dayValues = {
-      completed: true,
-      reps: requiredReps,
-      sets: requiredSets,
-      dailyRange: dayRange || 135.0,
-    };
-    const updatedRoutineArray = routine_item.routine.map((item, idx) =>
-      idx === dayNo ? dayValues : item
-    );
-    const updated_routine_item = {
-      ...routine_item,
-      routine: updatedRoutineArray,
-      completed: dayNo === updatedRoutineArray.length ? true : false,
-    };
-    console.log(updated_routine_item);
-    await updateDoc(routine_item_ref, updated_routine_item);
+    await updateRoutineDB(excerciseVars);
   };
   useEffect(() => {
-    console.log(excerciseVars);
     updateRoutine();
     return function cleanup() {
       setExcerciseVars(INITIAL_DATA);
