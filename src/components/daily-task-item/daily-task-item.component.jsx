@@ -23,8 +23,6 @@ function DailyTaskItem({ task, type, task_item }) {
     (new Date() - task_item.created.toDate()) / 86400000
   );
   const doneForToday = task_item.routine[dayNo]?.completed;
-  console.log(dayNo);
-
   return (
     <div className="daily-task-item">
       <Card sx={{ minWidth: 275, borderRadius: "13px" }}>

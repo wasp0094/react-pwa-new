@@ -45,7 +45,6 @@ export function UserAuthContextProvider({ children }) {
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       if (currentUser) {
         const userRef = await createUserObject(currentUser);
-        console.log(userRef);
         onSnapshot(userRef, (snapshot) => {
           setUser({ id: snapshot.id, ...snapshot.data() });
           setLoadingUser(false);
