@@ -47,7 +47,7 @@ function BottomNav() {
             ) : (
               <BottomNavigationAction
                 label="Patients"
-                icon={<ExploreIcon />}
+                icon={<FavoriteIcon />}
                 component={Link}
                 to="/patients"
                 value={"/patients"}
@@ -56,7 +56,7 @@ function BottomNav() {
             {!isDoctor && (
               <BottomNavigationAction
                 label="Routine"
-                icon={<FavoriteIcon />}
+                icon={<ExploreIcon />}
                 component={Link}
                 to="/routine"
                 value={"/routine"}

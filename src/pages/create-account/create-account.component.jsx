@@ -14,6 +14,7 @@ import {
   Face,
   LineWeightOutlined,
   ManOutlined,
+  CakeOutlined,
 } from "@mui/icons-material";
 
 function CreateAccount() {
@@ -68,7 +69,7 @@ function CreateAccount() {
 
   return (
     <>
-      <div className="App">
+      <div className="signup">
         <form onSubmit={handleSubmit}>
           <Box
             sx={{
@@ -109,7 +110,7 @@ function CreateAccount() {
                     style={{ width: "8rem" }}
                   />
                   <LineWeightOutlined
-                    sx={{ color: "action.active", mr: 1, my: 0.5 }}
+                    sx={{ color: "action.active", ml: 1, my: 0.5 }}
                   />
                   <TextField
                     id="input-with-sx"
@@ -117,7 +118,7 @@ function CreateAccount() {
                     variant="standard"
                     onChange={(e) => setWeight(e.target.value)}
                     type="number"
-                    style={{ width: "4rem" }}
+                    style={{ width: "5rem" }}
                   />
                 </Box>
 
@@ -125,21 +126,23 @@ function CreateAccount() {
                   className="input-field"
                   sx={{ display: "flex", alignItems: "flex-end" }}
                 >
-                  <Face sx={{ color: "action.active", mr: 1, my: 0.5 }} />
+                  <CakeOutlined
+                    sx={{ color: "action.active", mr: 1, my: 0.5 }}
+                  />
                   <TextField
                     id="date"
                     label="DOB"
                     type="date"
                     variant="standard"
                     defaultValue="2002-03-19"
-                    sx={{ width: "6.5rem" }}
+                    sx={{ width: "8rem" }}
                     InputLabelProps={{
                       shrink: true,
                     }}
                     onChange={(e) => setDob(e.target.value)}
                   />
                   <ManOutlined
-                    sx={{ color: "action.active", mr: 1, my: 0.5 }}
+                    sx={{ color: "action.active", ml: 1, my: 0.5 }}
                   />
                   <TextField
                     id="input-with-sx"
@@ -259,6 +262,29 @@ function CreateAccount() {
                 <Link className="link" to="/">
                   Login
                 </Link>
+              </p>
+              <p
+                style={{
+                  textAlign: "center",
+                  marginBottom: 0,
+                }}
+              >
+                or
+              </p>
+              <p
+                className="sign-up"
+                style={{
+                  textAlign: "center",
+                  fontSize: "0.9rem",
+                  fontFamily: "Ubuntu",
+                  color: "#4645e3",
+                  textTransform: "uppercase",
+                }}
+              >
+                <Link className="link" to="/">
+                  Signup
+                </Link>{" "}
+                as a doctor
               </p>
             </div>
           </Box>

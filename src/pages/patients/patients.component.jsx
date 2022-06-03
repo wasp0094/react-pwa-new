@@ -30,7 +30,7 @@ function PatientsList() {
     }
   }, [patientsData]);
   return (
-    <Box sx={{ width: "100%" }}>
+    <Box sx={{ width: "100%", paddingBottom: "3rem", paddingTop: "1rem" }}>
       {!loading ? (
         <div className="patients-list">
           {patientsData.map((patient, idx) => (

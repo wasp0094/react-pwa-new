@@ -1,4 +1,4 @@
-import "../explore-item/explore-item.styles.css";
+import "./patient-item.styles.css";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
@@ -9,9 +9,11 @@ import { resolveImage } from "../../excercises/excercises";
 
 function PatientItem({ displayName, age, weight, imgUrl, routine }) {
   const navigate = useNavigate();
+  const colors = ["#FFEBB5", "#afc3ff", "#ffd2d9"];
+  const color = colors[Math.floor(Math.random() * colors.length)];
   return (
     <div className="explore-item card">
-      <Accordion>
+      <Accordion sx={{ background: color, width: "100%" }}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"
@@ -19,8 +21,9 @@ function PatientItem({ displayName, age, weight, imgUrl, routine }) {
           className="card-header"
         >
           <div className="card-content">
-            <h3>{displayName}</h3>
-            <h6>{age}</h6>
+            <h3>Name: {displayName}</h3>
+            <h6>Age: {age}</h6>
+            <h6>Weight: {weight}</h6>
           </div>
           <div className="card-image">
             <img className="img" src={imgUrl} alt={displayName} />

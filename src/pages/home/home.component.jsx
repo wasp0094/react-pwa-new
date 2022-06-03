@@ -25,17 +25,31 @@ function HomePage({ handleModalOpen }) {
         <strong>
           <span>Categories</span>
         </strong>
-        <p>
-          Proctify keeps a track of your daily progress. Head towards the end to
-          get familiar with the interface. Our app currently focuses on the
-          below domains. Explore the categories and get started.
-        </p>
+        {user?.isDoctor ? (
+          <p>
+            Welcome to the Doctor's Portal of Proctify which easily lets you
+            keep track of your patients' daily progress. Head over to the end to
+            view your assigned patients.
+          </p>
+        ) : (
+          <p>
+            Proctify keeps a track of your daily progress. Head towards the end
+            to get familiar with the interface. Our app currently focuses on the
+            below domains. Explore the categories and get started.
+          </p>
+        )}
+
         <div className="category-cards">
           {Object.keys(targets).map((target, idx) => (
             <ExploreCategoryLink key={idx} {...targets[target]} />
           ))}
         </div>
-        <Button onClick={handleModalOpen}>Add Prescription</Button>
+        {user?.isDoctor ? (
+          <Button>Request Custom Exercise</Button>
+        ) : (
+          <Button onClick={handleModalOpen}>Add Prescription</Button>
+        )}
+        {/* <Button onClick={handleModalOpen}>Add Prescription</Button> */}
         {/* <Button component={Link} to="/chat">
           CALL A DOCTOR
         </Button> */}
