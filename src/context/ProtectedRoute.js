@@ -4,7 +4,7 @@ import { useUserAuth } from "./UserAuthContext";
 import AppStart from "../components/app-start/app-start.component";
 
 function ProtectedRoute({ children }) {
-  let { user, loadingUser } = useUserAuth();
+  const { user, loadingUser } = useUserAuth();
   if (loadingUser) {
     return <AppStart />;
   }

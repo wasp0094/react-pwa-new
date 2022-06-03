@@ -8,12 +8,16 @@ import HomeIcon from "@mui/icons-material/Home";
 import ExploreIcon from "@mui/icons-material/Explore";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import PersonIcon from "@mui/icons-material/Person";
+import { useUserAuth } from "../../context/UserAuthContext";
 //import Link from '@mui/material/Link';
 
 function BottomNav() {
   // const [value, setValue] = React.useState(0);
   const pathname = window.location.pathname;
   const [value, setValue] = useState(pathname);
+  const {
+    user: { isDoctor },
+  } = useUserAuth();
   const onChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -32,20 +36,32 @@ function BottomNav() {
               to="/home"
               value={"/home"}
             />
-            <BottomNavigationAction
-              label="Explore"
-              icon={<ExploreIcon />}
-              component={Link}
-              to="/explore"
-              value={"/explore"}
-            />
-            <BottomNavigationAction
-              label="Routine"
-              icon={<FavoriteIcon />}
-              component={Link}
-              to="/routine"
-              value={"/routine"}
-            />
+            {!isDoctor ? (
+              <BottomNavigationAction
+                label="Explore"
+                icon={<ExploreIcon />}
+                component={Link}
+                to="/explore"
+                value={"/explore"}
+              />
+            ) : (
+              <BottomNavigationAction
+                label="Patients"
+                icon={<ExploreIcon />}
+                component={Link}
+                to="/patients"
+                value={"/patients"}
+              />
+            )}
+            {!isDoctor && (
+              <BottomNavigationAction
+                label="Routine"
+                icon={<FavoriteIcon />}
+                component={Link}
+                to="/routine"
+                value={"/routine"}
+              />
+            )}
             <BottomNavigationAction
               label="Profile"
               icon={<PersonIcon />}
