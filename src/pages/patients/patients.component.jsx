@@ -4,6 +4,7 @@ import { getDoc } from "firebase/firestore";
 import { useUserAuth } from "../../context/UserAuthContext";
 import { useEffect } from "react";
 import { Box } from "@material-ui/core";
+import PatientItem from "../../components/patient-item/patient-item.component";
 
 function PatientsList() {
   let patients_data = [];
@@ -24,6 +25,7 @@ function PatientsList() {
   }, []);
   useEffect(() => {
     if (patientsData.length === user.patients?.length) {
+      console.log(patientsData);
       setLoading(false);
     }
   }, [patientsData]);
@@ -32,7 +34,7 @@ function PatientsList() {
       {!loading ? (
         <div className="patients-list">
           {patientsData.map((patient, idx) => (
-            <p key={idx}>{patient.displayName} </p>
+            <PatientItem key={idx} {...patient} />
           ))}
         </div>
       ) : (
