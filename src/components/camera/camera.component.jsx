@@ -21,7 +21,8 @@ function Camera({ excercise, handleEndExcercise, type }) {
   function startCamera() {
     if (
       typeof webcamRef.current !== "undefined" &&
-      webcamRef.current !== null
+      webcamRef.current !== null &&
+      webcamRef.current.video !== null
     ) {
       // eslint-disable-next-line react-hooks/exhaustive-deps
       const camera = new cam.Camera(webcamRef.current.video, {
@@ -35,7 +36,6 @@ function Camera({ excercise, handleEndExcercise, type }) {
   function onResults(results) {
     if (loadingCam) setLoadingCam(false);
     if (!results.poseLandmarks) return;
-    console.log(excercise_id);
     calculate(excercise_id)(
       results.poseLandmarks,
       excerciseVars,

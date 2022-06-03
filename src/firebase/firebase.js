@@ -107,7 +107,6 @@ export const updateRoutineDB = async (excerciseVars) => {
     routine: updatedRoutineArray,
     completed: dayNo === updatedRoutineArray.length ? true : false,
   };
-  console.log(updated_routine_item);
   await updateDoc(routine_item_ref, updated_routine_item);
 };
 
@@ -123,7 +122,6 @@ export const updateRoutineDB = async (excerciseVars) => {
 
 // export const setGoalstoDB = async (goals) => {
 //   if(!goals) return;
-//   console.log(goals);
 //   const res = await axios.post("http://localhost:4000/set-goals", {
 //     goals: goals,
 //   });
