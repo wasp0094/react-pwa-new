@@ -6,8 +6,14 @@ let maxAngle = 15;
 let dayRange = 0;
 let maxAngleSum = 0;
 let caliberationAngle = 0;
-// let flag = 0;
-// let finalReport = 0;
+let t0, t1;
+let tc0, tc1, caliberatedTime; // tc --> time_caliberation stamp
+let flag = 0;
+
+function speak_js(message) {
+  var msg = new SpeechSynthesisUtterance(message);
+  window.speechSynthesis.speak(msg);
+}
 
 export default function leftElbowFlexion(
   points,
@@ -28,8 +34,19 @@ export default function leftElbowFlexion(
   angle = angle > 90 ? 90 : angle;
   maxAngle = Math.max(maxAngle, angle);
 
+  if (flag === 0) {
+    speak_js(
+      "Stretch your arms to the maximum possible as this set helps us to caliberate"
+    );
+    flag = 1;
+  }
+
   if (angle <= 15) {
     down = true;
+    if (up === false && setsCompleted === 0)
+      tc0 = new Date().getSeconds() + new Date().getMinutes() * 60;
+    if (up === false)
+      t0 = new Date().getSeconds() + new Date().getMinutes() * 60;
   } else if (
     angle >= (setsCompleted === 0 ? 25 : caliberationAngle / (2 * requiredReps))
   ) {
@@ -47,6 +64,27 @@ export default function leftElbowFlexion(
     down = false;
 
     if (repsCompleted % 2 === 0) {
+      if (setsCompleted === 0) {
+        tc1 = new Date().getSeconds() + new Date().getMinutes() * 60;
+        caliberatedTime += tc1 - tc0;
+      }
+      t1 = new Date().getSeconds() + new Date().getMinutes() * 60;
+      // console.log(t0 + " " + t1);
+      if (
+        t1 - t0 > (setsCompleted === 0)
+          ? 30
+          : caliberatedTime / (2 * requiredReps)
+      ) {
+        speak_js("Too slow");
+      }
+      window.t0 = t1;
+      speak_js(
+        (repsCompleted / 2).toString() +
+          "reps" +
+          setsCompleted.toString() +
+          "sets"
+      );
+
       maxAngleSum += maxAngle;
       dayRange = (
         maxAngleSum / (repsCompleted / 2 + setsCompleted * requiredReps) +

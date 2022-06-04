@@ -6,6 +6,14 @@ let maxAngle = 10;
 let dayRange = 0;
 let maxAngleSum = 0;
 let caliberationAngle = 0;
+let t0, t1;
+let tc0, tc1, caliberatedTime; // tc --> time_caliberation stamp
+let flag = 0;
+
+function speak_js(message) {
+  var msg = new SpeechSynthesisUtterance(message);
+  window.speechSynthesis.speak(msg);
+}
 
 export default function leftShoulderAbduction(
   points,
@@ -25,8 +33,19 @@ export default function leftShoulderAbduction(
   const angle = ((Math.acos(dot / (mod_a * mod_b)) * 180) / 3.14).toFixed(2);
   maxAngle = Math.max(maxAngle, angle);
 
+  if (flag === 0) {
+    speak_js(
+      "Stretch your arms to the maximum possible as this set helps us to caliberate"
+    );
+    flag = 1;
+  }
+
   if (angle <= 30) {
     down = true;
+    if (up === false && setsCompleted === 0)
+      tc0 = new Date().getSeconds() + new Date().getMinutes() * 60;
+    if (up === false)
+      t0 = new Date().getSeconds() + new Date().getMinutes() * 60;
   } else if (
     angle >= (setsCompleted === 0) ? 40 : caliberationAngle / (2 * requiredReps)
   ) {
@@ -41,7 +60,29 @@ export default function leftShoulderAbduction(
     repsCompleted += 1;
     up = false;
     down = false;
+
     if (repsCompleted % 2 === 0) {
+      if (setsCompleted === 0) {
+        tc1 = new Date().getSeconds() + new Date().getMinutes() * 60;
+        caliberatedTime += tc1 - tc0;
+      }
+      t1 = new Date().getSeconds() + new Date().getMinutes() * 60;
+      // console.log(t0 + " " + t1);
+      if (
+        t1 - t0 > (setsCompleted === 0)
+          ? 30
+          : caliberatedTime / (2 * requiredReps)
+      ) {
+        speak_js("Too slow");
+      }
+      window.t0 = t1;
+      speak_js(
+        (repsCompleted / 2).toString() +
+          "reps" +
+          setsCompleted.toString() +
+          "sets"
+      );
+
       maxAngleSum += maxAngle;
       dayRange = (
         maxAngleSum /
