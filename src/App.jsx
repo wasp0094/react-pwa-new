@@ -14,8 +14,9 @@ function App() {
     <div className="app">
       {user && <TitleBar />}
       <Routes>
-        {user && user?.isDoctor ? DoctorRoutes : PatientRoutes}
         {GeneralRoutes({ loadingUser, user })}
+        {DoctorRoutes}
+        {PatientRoutes}
       </Routes>
       {user && <BottomNav />}
     </div>

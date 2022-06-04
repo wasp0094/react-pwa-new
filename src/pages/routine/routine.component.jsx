@@ -10,10 +10,10 @@ import Excercise from "../../components/start-excercise/excercise.component";
 import { useExcerciseData } from "../../context/ExcerciseDataContext";
 import { useSetTitle } from "../../hooks/setTitle";
 
-import excercises from "../../excercises/excercises";
 import { useEffect, useState } from "react";
 import { useUserAuth } from "../../context/UserAuthContext";
-import { getDoc } from "firebase/firestore";
+
+import getRoutines from "../../utilities/getRoutines";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -41,37 +41,12 @@ function a11yProps(index) {
 function RoutinePage() {
   const [value, setValue] = React.useState(0);
   const { user } = useUserAuth();
-  let tasks_arr = [];
+
   const [tasks, setTasks] = useState([]);
   const [load, setLoad] = useState(true);
-  const getType = (type, id) => {
-    if (type === 0 && excercises[id].types?.full) return ["full"];
-    if (type === 0 && !excercises[id].types?.full) return ["left", "right"];
-    if (type === 1) return ["left"];
-    return ["right"];
-  };
-  const getRoutines = async () => {
-    user.routine?.forEach(async (routinRef, idx) => {
-      const routine_item_snap = await getDoc(routinRef);
-      if (!routine_item_snap.exists()) return;
-      const routine_item = await routine_item_snap.data();
-      const exercise_item = await (await getDoc(routine_item.exercise)).data();
-      const new_tasks_arr = [
-        {
-          ...exercise_item,
-          ...routine_item,
-          routine_item_id: routine_item_snap.id,
-          exercise_type: getType(routine_item.type, exercise_item.id),
-        },
-        ...tasks_arr,
-      ];
-      tasks_arr = new_tasks_arr;
-      setTasks(new_tasks_arr);
-    });
-  };
 
   useEffect(() => {
-    getRoutines();
+    getRoutines(user?.routines, setTasks);
   }, []);
 
   useEffect(() => {

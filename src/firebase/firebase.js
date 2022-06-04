@@ -32,14 +32,15 @@ export default app;
 
 export async function createUserObject(userAuth, data) {
   if (!userAuth) return;
-  const userRef = doc(firestore, `users/${userAuth.uid}`);
+  const uid = userAuth.uid;
+  const userRef = doc(firestore, `users/${uid}`);
   const userSnapshot = await getDoc(userRef);
   if (!userSnapshot.exists()) {
     const { email, displayName } = userAuth;
     const createdAt = new Date(),
       routine = [];
     try {
-      setDoc(userRef, { displayName, email, routine, createdAt, ...data });
+      setDoc(userRef, { displayName, email, routine, createdAt, uid, ...data });
     } catch (err) {
       console.log(err);
     }

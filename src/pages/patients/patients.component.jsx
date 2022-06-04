@@ -4,7 +4,9 @@ import { getDoc } from "firebase/firestore";
 import { useUserAuth } from "../../context/UserAuthContext";
 import { useEffect } from "react";
 import { Box } from "@material-ui/core";
+import { Routes, Route } from "react-router-dom";
 import PatientItem from "../../components/patient-item/patient-item.component";
+import PatientDetails from "../../components/patient-details/patient-details.component";
 
 function PatientsList() {
   let patients_data = [];
@@ -14,7 +16,8 @@ function PatientsList() {
   useSetTitle("Patients List");
   const getPatientDetails = async () => {
     user.patients.forEach(async (patient, idx) => {
-      const patient_data = (await getDoc(patient)).data();
+      let patient_data = (await getDoc(patient)).data();
+      patient_data = { ...patient_data, id: patient.id };
       const new_patients_data = [...patients_data, patient_data];
       patients_data = new_patients_data;
       setPatientData(new_patients_data);
@@ -24,10 +27,7 @@ function PatientsList() {
     getPatientDetails();
   }, []);
   useEffect(() => {
-    if (patientsData.length === user.patients?.length) {
-      console.log(patientsData);
-      setLoading(false);
-    }
+    if (patientsData.length === user.patients?.length) setLoading(false);
   }, [patientsData]);
   return (
     <Box sx={{ width: "100%", paddingBottom: "3rem", paddingTop: "1rem" }}>
@@ -44,4 +44,13 @@ function PatientsList() {
   );
 }
 
-export default PatientsList;
+function PatientsPage() {
+  return (
+    <Routes>
+      <Route exact path="/" element={<PatientsList />} />
+      <Route path="/:patientID" element={<PatientDetails />} />
+    </Routes>
+  );
+}
+
+export default PatientsPage;

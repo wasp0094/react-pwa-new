@@ -2,12 +2,10 @@ import "./patient-item.styles.css";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
-import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { useNavigate } from "react-router-dom";
-import { resolveImage } from "../../excercises/excercises";
 
-function PatientItem({ displayName, age, weight, imgUrl, routine }) {
+function PatientItem({ displayName, id, age, weight, imgUrl }) {
   const navigate = useNavigate();
   const colors = ["#FFEBB5", "#afc3ff", "#ffd2d9"];
   const color = colors[Math.floor(Math.random() * colors.length)];
@@ -30,10 +28,14 @@ function PatientItem({ displayName, age, weight, imgUrl, routine }) {
           </div>
         </AccordionSummary>
         <AccordionDetails>
-          {/* <Typography style={{ color: "rgb(7, 7, 98)", fontSize: "13px" }}>
-            {description.slice(0, 100)}...
-          </Typography> */}
-          <button className="explore-item-button">See Progress</button>
+          <button
+            className="explore-item-button"
+            onClick={() => {
+              navigate(`${id}`);
+            }}
+          >
+            See Progress
+          </button>
         </AccordionDetails>
       </Accordion>
     </div>

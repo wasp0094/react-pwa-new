@@ -5,7 +5,7 @@ import PatientsList from "./pages/patients/patients.component";
 const DoctorRoutes = [
   <Route
     key="patients"
-    path="/patients"
+    path="/patients/*"
     element={
       <ProtectedRoute>
         <PatientsList />
