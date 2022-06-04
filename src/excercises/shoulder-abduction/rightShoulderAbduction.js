@@ -5,6 +5,7 @@ let up = false,
 let maxAngle = 10;
 let maxAngleSum = 0;
 let dayRange = 0;
+let caliberationAngle = 0;
 
 export default function rightShoulderAbduction(
   points,
@@ -24,8 +25,14 @@ export default function rightShoulderAbduction(
 
   if (angle <= 30) {
     down = true;
-  } else if (angle >= 90) {
+  } else if (
+    angle >= (setsCompleted === 0) ? 40 : caliberationAngle / (2 * requiredReps)
+  ) {
     up = true;
+    console.log(
+      "The caliberated angle is = ",
+      setsCompleted === 0 ? 40 : caliberationAngle / requiredReps
+    );
   }
   if (up === true && down === true) {
     repsCompleted += 1;
@@ -37,6 +44,7 @@ export default function rightShoulderAbduction(
         maxAngleSum /
         (repsCompleted / 2 + setsCompleted * requiredReps)
       ).toFixed(2);
+      caliberationAngle += setsCompleted === 0 ? maxAngle : 0;
       maxAngle = 10;
       setExcerciseVars({
         ...excerciseVars,

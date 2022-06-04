@@ -4,8 +4,8 @@ let up = false,
   down = false;
 let maxAngle = 15;
 let dayRange = 0;
-
 let maxAngleSum = 0;
+let caliberationAngle = 0;
 // let flag = 0;
 // let finalReport = 0;
 
@@ -30,8 +30,15 @@ export default function leftElbowFlexion(
 
   if (angle <= 15) {
     down = true;
-  } else if (angle >= 30) {
+  } else if (
+    angle >= (setsCompleted === 0 ? 25 : caliberationAngle / (2 * requiredReps))
+  ) {
     up = true;
+    console.log(
+      setsCompleted === 0
+        ? 25
+        : caliberationAngle / (2 * requiredReps) + " " + angle
+    );
   }
 
   if (up === true && down === true) {
@@ -42,9 +49,10 @@ export default function leftElbowFlexion(
     if (repsCompleted % 2 === 0) {
       maxAngleSum += maxAngle;
       dayRange = (
-        maxAngleSum /
-        (repsCompleted / 2 + setsCompleted * requiredReps)
+        maxAngleSum / (repsCompleted / 2 + setsCompleted * requiredReps) +
+        90
       ).toFixed(2);
+      caliberationAngle += setsCompleted === 0 ? maxAngle : 0;
       maxAngle = 15;
       setExcerciseVars({
         ...excerciseVars,

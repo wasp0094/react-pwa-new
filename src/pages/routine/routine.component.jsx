@@ -46,7 +46,7 @@ function RoutinePage() {
   const [load, setLoad] = useState(true);
 
   useEffect(() => {
-    getRoutines(user?.routines, setTasks);
+    getRoutines(user?.routine, setTasks);
   }, []);
 
   useEffect(() => {

@@ -5,6 +5,7 @@ let up = false,
 let maxAngle = 15;
 let dayRange = 0;
 let maxAngleSum = 0;
+let caliberationAngle = 0;
 
 // let flag = 0;
 // let finalReport = 0;
@@ -43,10 +44,18 @@ export default function rightShoulderFlexion(
   angle = angle > 90 ? 90 : angle;
   maxAngle = Math.max(maxAngle, angle);
 
-  if (angle <= 15) {
+  if (angle <= 80) {
     down = true;
-  } else if (angle >= 30) {
+  } else if (
+    angle >= (setsCompleted === 0)
+      ? 110
+      : caliberationAngle / (2 * requiredReps)
+  ) {
     up = true;
+    console.log(
+      "The caliberated angle is = ",
+      setsCompleted === 0 ? 110 : caliberationAngle / (2 * requiredReps)
+    );
   }
   if (up === true && down === true) {
     repsCompleted += angle < 0 ? 0 : 1;
@@ -58,7 +67,8 @@ export default function rightShoulderFlexion(
         maxAngleSum /
         (repsCompleted / 2 + setsCompleted * requiredReps)
       ).toFixed(2);
-      maxAngle = 15;
+      caliberationAngle += setsCompleted === 0 ? maxAngle : 0;
+      maxAngle = 90;
       setExcerciseVars({
         ...excerciseVars,
         repsCompleted: Math.ceil(repsCompleted / 2),

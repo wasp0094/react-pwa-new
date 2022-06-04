@@ -5,6 +5,8 @@ let up = false,
 let maxAngle = 10;
 let dayRange = 0;
 let maxAngleSum = 0;
+let caliberationAngle = 0;
+
 // function checkForPerp(obj12, obj14, obj16) {
 //   const vector1 = [(obj14.x - obj12.x) , (obj14.y - obj12.y)];
 //   const vector2 = [(obj14.x - obj16.x) , (obj14.y - obj16.y)];
@@ -38,10 +40,18 @@ export default function leftShoulderFlexion(
   const angle = ((Math.acos(dot / (mod_a * mod_b)) * 180) / 3.14).toFixed(2);
   maxAngle = Math.max(maxAngle, angle);
 
-  if (angle <= 95) {
+  if (angle <= 80) {
     down = true;
-  } else if (angle >= 110) {
+  } else if (
+    angle >= (setsCompleted === 0)
+      ? 110
+      : caliberationAngle / (2 * requiredReps)
+  ) {
     up = true;
+    console.log(
+      "The caliberated angle is = ",
+      setsCompleted === 0 ? 110 : caliberationAngle / (2 * requiredReps)
+    );
   }
   if (up === true && down === true) {
     repsCompleted += 1;
@@ -53,7 +63,8 @@ export default function leftShoulderFlexion(
         maxAngleSum /
         (repsCompleted / 2 + setsCompleted * requiredReps)
       ).toFixed(2);
-      maxAngle = 10;
+      caliberationAngle += setsCompleted === 0 ? maxAngle : 0;
+      maxAngle = 90;
       setExcerciseVars({
         ...excerciseVars,
         repsCompleted: Math.ceil(repsCompleted / 2),
