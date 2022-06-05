@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import "./home.css";
 import FormPopup from "../../components/form-popup/form-popup.component";
 import ExploreCategoryLink from "../../components/explore-category-link/explore-category-link.component";
@@ -7,23 +7,31 @@ import { targets } from "../../excercises/excercises";
 import { Button } from "@mui/material";
 import ExploreCategory from "../../components/explore-category/explore-category.component";
 import { useSetTitle } from "../../hooks/setTitle";
+import QRPopup from "../../components/qr-popup/qr-popup.component";
 import { useUserAuth } from "../../context/UserAuthContext";
 
 function HomePage({ handleModalOpen }) {
   useSetTitle("Home");
   const { user } = useUserAuth();
   const { displayName } = user;
+  const [open, setOpen] = React.useState(false);
+  const handleDialogOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
   return (
     <div className="home-content">
       <div className="welcome">
         <h2>
-          Hi, <span>{displayName}</span>
+          Hi, <span className="span-colour">{displayName}</span>
         </h2>
         <h5>Welcome to PROCTIFY!</h5>
       </div>
       <div className="categories">
         <strong>
-          <span>Categories</span>
+          <span className="span-colour">Categories</span>
         </strong>
         {user?.isDoctor ? (
           <p>
@@ -49,7 +57,10 @@ function HomePage({ handleModalOpen }) {
         ) : (
           <Button onClick={handleModalOpen}>Add Prescription</Button>
         )}
-        {/* <Button onClick={handleModalOpen}>Add Prescription</Button> */}
+        {user && !user?.isDoctor && !user?.doctorAllocatted && (
+          <Button onClick={handleDialogOpen}>Get Doctor</Button>
+        )}
+        <QRPopup open={open} onClose={handleClose} />
         {/* <Button component={Link} to="/chat">
           CALL A DOCTOR
         </Button> */}

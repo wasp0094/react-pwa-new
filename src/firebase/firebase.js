@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getStorage } from "firebase/storage";
+import QRCode from "qrcode";
 // import axios from "axios";
 import {
   doc,
@@ -39,8 +40,12 @@ export async function createUserObject(userAuth, data) {
     const { email, displayName } = userAuth;
     const createdAt = new Date(),
       routine = [];
+    console.log("data");
+    if (data && data.isDoctor) {
+      data.qrCode = await QRCode.toDataURL(userAuth.uid);
+    }
     try {
-      setDoc(userRef, { displayName, email, routine, createdAt, uid, ...data });
+      setDoc(userRef, { displayName, uid, email, routine, createdAt, ...data });
     } catch (err) {
       console.log(err);
     }
@@ -109,6 +114,30 @@ export const updateRoutineDB = async (excerciseVars) => {
     completed: dayNo === updatedRoutineArray.length ? true : false,
   };
   await updateDoc(routine_item_ref, updated_routine_item);
+};
+
+export const allocateDoctor = async (doctorId, userId) => {
+  try {
+    let docRef = doc(firestore, `users/${doctorId}`);
+    let userRef = doc(firestore, `users/${userId}`);
+    let user = (await getDoc(userRef)).data();
+    let doctor = (await getDoc(docRef)).data();
+    // console.log(user);
+    const updated_user = {
+      ...user,
+      doctorAllocatted: true,
+      doctorId: docRef,
+    };
+    await updateDoc(userRef, updated_user);
+    const doctor_patients = doctor.patients || [];
+    const updated_doctor = {
+      ...doctor,
+      patients: [...doctor_patients, userRef],
+    };
+    await updateDoc(docRef, updated_doctor);
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 // export async function createUserObject(userAuth, data) {

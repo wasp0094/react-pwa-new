@@ -121,7 +121,7 @@ function Login() {
                 >
                   Sign In
                 </Button>
-                <div className="else">
+                {/* <div className="else">
                   <hr></hr>
                   <p className="text1">or</p>
                   <hr></hr>
@@ -133,7 +133,7 @@ function Login() {
                     onClick={handleGoogleSignIn}
                   />
                   <AiFillTwitterCircle className="twitter" />
-                </div>
+                </div> */}
                 <p
                   className="sign-up"
                   style={{

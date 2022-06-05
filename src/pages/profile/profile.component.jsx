@@ -3,11 +3,6 @@ import React from "react";
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import Avatar from "@mui/material/Avatar";
-import IconButton from "@mui/material/IconButton";
-import EditIcon from "@mui/icons-material/Edit";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemText from "@mui/material/ListItemText";
 import Button from "@mui/material/Button";
 import { useUserAuth } from "../../context/UserAuthContext";
 import { useSetTitle } from "../../hooks/setTitle";
@@ -44,7 +39,7 @@ function Profile() {
           sx={{
             display: "flex",
             flexDirection: "column",
-            margin: "1rem 2rem 2rem 0.9rem",
+            margin: "1rem 2rem 1rem 0.9rem",
             padding: 0,
           }}
           className="profile-list"
@@ -57,15 +52,46 @@ function Profile() {
             <p>EMAIL</p>
             <p>{user && user.email}</p>
           </div>
-          <div className="field">
-            <p>D.O.B</p>
-            <p>{user && user.dob}</p>
-          </div>
-          <div className="field">
-            <p>Weight</p>
-            <p>{user && user.weight}</p>
-          </div>
+          {user && !user.isDoctor && user.dob && (
+            <div className="field">
+              <p>D.O.B</p>
+              <p>{user && user.dob}</p>
+            </div>
+          )}
+          {user && user.weight && (
+            <div className="field">
+              <p>Weight</p>
+              <p>{user && user.weight}</p>
+            </div>
+          )}
+          {user && user.YOE && (
+            <div className="field">
+              <p>Year of experience</p>
+              <p>{user && user.YOE}</p>
+            </div>
+          )}
+          {user && user.speciality && (
+            <div className="field">
+              <p>Speciality</p>
+              <p>{user && user.speciality}</p>
+            </div>
+          )}
         </Box>
+        {user && user.isDoctor && (
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+            className="qr-container"
+          >
+            <a href={user && user.qrCode} download>
+              <img src={user && user.qrCode} alt="" className="qrcode" />
+            </a>
+          </Box>
+        )}
         <Box
           sx={{
             justifyContent: "center",

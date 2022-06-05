@@ -1,0 +1,16 @@
+.qr-reader {
+  width: 70vw;
+  height: 70vw;
+  margin: 10px;
+}
+
+.title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+  margin: 10px;
+}
+
+.qr-code-dialog {
+  padding: 10px;
+}

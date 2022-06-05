@@ -8,6 +8,10 @@
   padding: 0 1.5rem;
 }
 
+.qrcode {
+  margin: 1rem 0;
+}
+
 .field {
   border-bottom: 1px solid #ccc;
   margin: 0.2rem 0.5rem;

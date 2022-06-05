@@ -1,6 +1,15 @@
 import React, { useState } from "react";
 import { useUserAuth } from "../../context/UserAuthContext";
-import { TextField, MenuItem, Box, Button, Stack } from "@mui/material";
+import {
+  TextField,
+  MenuItem,
+  Box,
+  Button,
+  Stack,
+  RadioGroup,
+  FormControlLabel,
+  Radio,
+} from "@mui/material";
 import { Link } from "react-router-dom";
 import blob from "../../assets/blob.svg";
 import "./create-account.css";
@@ -15,16 +24,21 @@ import {
   LineWeightOutlined,
   ManOutlined,
   CakeOutlined,
+  // VaccinesIcon,
 } from "@mui/icons-material";
+import VaccinesIcon from "@mui/icons-material/Vaccines";
 
 function CreateAccount() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [dob, setDob] = useState("");
+  const [YOE, setYOE] = useState("");
+  const [speciality, setSpeciality] = useState("");
   const [gender, setGender] = useState("");
   const [weight, setWeight] = useState("");
   const [error, setError] = useState("");
+  const [user, setUser] = useState("patient");
   const [imgUrl, setImgUrl] = useState(
     "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
   );
@@ -44,6 +58,10 @@ function CreateAccount() {
     }
   };
 
+  const handleUserChange = (e) => {
+    setUser(e.target.value);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -54,13 +72,31 @@ function CreateAccount() {
           setImgUrl(url);
         });
       });
-      const data = {
-        displayName: name,
-        dob: dob,
-        gender: gender,
-        weight: weight,
-        imgUrl: imgUrl,
-      };
+      let data;
+      if (user === "patient") {
+        data = {
+          displayName: name,
+          dob: dob ? dob : "2002-03-19",
+          gender: gender,
+          weight: weight,
+          imgUrl: imgUrl,
+          isDoctor: false,
+          doctorAllocatted: false,
+          doctorId: null,
+          qrCode: null,
+        };
+      } else {
+        data = {
+          displayName: name,
+          dob: dob ? dob : "2002-03-19",
+          YOE: YOE,
+          isDoctor: true,
+          speciality: speciality,
+          imgUrl: imgUrl,
+          qrCode: null,
+          patients: [],
+        };
+      }
       await signUp(email, password, data);
     } catch (error) {
       setError("Failed to create a new account.");
@@ -85,6 +121,31 @@ function CreateAccount() {
               <h2>Create Account</h2>
               <p className="text1">Create a new account</p>
               <Stack className="details" spacing={2}>
+                <Box
+                  className="input-field"
+                  sx={{ display: "flex", alignItems: "flex-end" }}
+                >
+                  <RadioGroup
+                    row
+                    defaultValue="patient"
+                    name="user-button"
+                    onChange={handleUserChange}
+                  >
+                    <FormControlLabel
+                      value="patient"
+                      control={<Radio />}
+                      label="Patient"
+                      style={{ margin: "0 5vw" }}
+                    />
+                    <FormControlLabel
+                      value="doctor"
+                      control={<Radio />}
+                      label="Doctor"
+                      style={{ margin: "0 5vw" }}
+                    />
+                  </RadioGroup>
+                </Box>
+
                 <Box>
                   <img src={imgUrl} className="profile-pic" alt="profile pic" />
                   <input
@@ -96,6 +157,7 @@ function CreateAccount() {
                     onChange={handleChange}
                   />
                 </Box>
+
                 <Box
                   className="input-field"
                   sx={{ display: "flex", alignItems: "flex-end" }}
@@ -112,57 +174,112 @@ function CreateAccount() {
                   <LineWeightOutlined
                     sx={{ color: "action.active", ml: 1, my: 0.5 }}
                   />
-                  <TextField
-                    id="input-with-sx"
-                    label="Weight"
-                    variant="standard"
-                    onChange={(e) => setWeight(e.target.value)}
-                    type="number"
-                    style={{ width: "5rem" }}
-                  />
+                  {user === "patient" ? (
+                    <TextField
+                      id="input-with-sx"
+                      label="Weight"
+                      variant="standard"
+                      onChange={(e) => setWeight(e.target.value)}
+                      type="number"
+                      style={{ width: "5rem" }}
+                    />
+                  ) : (
+                    <TextField
+                      id="input-with-sx"
+                      label="YOE"
+                      variant="standard"
+                      onChange={(e) => setYOE(e.target.value)}
+                      type="number"
+                      style={{ width: "5rem" }}
+                    />
+                  )}
                 </Box>
 
-                <Box
-                  className="input-field"
-                  sx={{ display: "flex", alignItems: "flex-end" }}
-                >
-                  <CakeOutlined
-                    sx={{ color: "action.active", mr: 1, my: 0.5 }}
-                  />
-                  <TextField
-                    id="date"
-                    label="DOB"
-                    type="date"
-                    variant="standard"
-                    defaultValue="2002-03-19"
-                    sx={{ width: "8rem" }}
-                    InputLabelProps={{
-                      shrink: true,
-                    }}
-                    onChange={(e) => setDob(e.target.value)}
-                  />
-                  <ManOutlined
-                    sx={{ color: "action.active", ml: 1, my: 0.5 }}
-                  />
-                  <TextField
-                    id="input-with-sx"
-                    select
-                    label="Gender"
-                    variant="standard"
-                    onChange={(e) => setGender(e.target.value)}
-                    style={{ width: "5rem" }}
+                {user === "patient" ? (
+                  <Box
+                    className="input-field"
+                    sx={{ display: "flex", alignItems: "flex-end" }}
                   >
-                    <MenuItem key="Male" value="Male">
-                      Male
-                    </MenuItem>
-                    <MenuItem key="Female" value="Female">
-                      Female
-                    </MenuItem>
-                    <MenuItem key="Others" value="Others">
-                      Others
-                    </MenuItem>
-                  </TextField>
-                </Box>
+                    <CakeOutlined
+                      sx={{ color: "action.active", mr: 1, my: 0.5 }}
+                    />
+                    <TextField
+                      id="date"
+                      label="DOB"
+                      type="date"
+                      variant="standard"
+                      defaultValue="2002-03-19"
+                      sx={{ width: "8rem" }}
+                      InputLabelProps={{
+                        shrink: true,
+                      }}
+                      onChange={(e) => setDob(e.target.value)}
+                    />
+                    <ManOutlined
+                      sx={{ color: "action.active", ml: 1, my: 0.5 }}
+                    />
+                    <TextField
+                      id="input-with-sx"
+                      select
+                      label="Gender"
+                      variant="standard"
+                      onChange={(e) => setGender(e.target.value)}
+                      style={{ width: "5rem" }}
+                    >
+                      <MenuItem key="Male" value="Male">
+                        Male
+                      </MenuItem>
+                      <MenuItem key="Female" value="Female">
+                        Female
+                      </MenuItem>
+                      <MenuItem key="Others" value="Others">
+                        Others
+                      </MenuItem>
+                    </TextField>
+                  </Box>
+                ) : (
+                  <Box
+                    className="input-field"
+                    sx={{ display: "flex", alignItems: "flex-end" }}
+                  >
+                    <VaccinesIcon
+                      sx={{ color: "action.active", mr: 1, my: 0.5 }}
+                    />
+                    <TextField
+                      id="input-with-sx"
+                      select
+                      label="Speciality"
+                      variant="standard"
+                      onChange={(e) => setSpeciality(e.target.value)}
+                      style={{ width: "6rem" }}
+                    >
+                      <MenuItem key="Shoulder" value="Shoulder">
+                        Shoulder
+                      </MenuItem>
+                      <MenuItem key="Elbow" value="Elbow">
+                        Elbow
+                      </MenuItem>
+                      <MenuItem key="Diabeties" value="Diabeties">
+                        Diabeties
+                      </MenuItem>
+                    </TextField>
+                    <CakeOutlined
+                      sx={{ color: "action.active", mr: 1, my: 0.5 }}
+                    />
+                    <TextField
+                      id="date"
+                      label="DOB"
+                      type="date"
+                      variant="standard"
+                      defaultValue="2002-03-19"
+                      sx={{ width: "7rem" }}
+                      InputLabelProps={{
+                        shrink: true,
+                      }}
+                      onChange={(e) => setDob(e.target.value)}
+                    />
+                  </Box>
+                )}
                 <Box
                   className="input-field"
                   sx={{ display: "flex", alignItems: "flex-end" }}
@@ -262,29 +379,6 @@ function CreateAccount() {
                 <Link className="link" to="/">
                   Login
                 </Link>
-              </p>
-              <p
-                style={{
-                  textAlign: "center",
-                  marginBottom: 0,
-                }}
-              >
-                or
-              </p>
-              <p
-                className="sign-up"
-                style={{
-                  textAlign: "center",
-                  fontSize: "0.9rem",
-                  fontFamily: "Ubuntu",
-                  color: "#4645e3",
-                  textTransform: "uppercase",
-                }}
-              >
-                <Link className="link" to="/">
-                  Signup
-                </Link>{" "}
-                as a doctor
               </p>
             </div>
           </Box>
