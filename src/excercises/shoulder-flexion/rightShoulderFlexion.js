@@ -38,19 +38,19 @@ export default function rightShoulderFlexion(
   setExcerciseVars
 ) {
   const { requiredReps } = excerciseVars;
-  const obj13 = points[13];
+  const obj11 = points[11];
   const obj15 = points[15];
 
-  const vector1 = [obj13.x - obj13.x - 0.2, obj13.y - obj13.y];
-  const vector2 = [obj13.x - obj15.x, obj13.y - obj15.y];
+  const vector1 = [obj11.x - obj11.x, obj11.y - obj11.y - 0.3];
+  const vector2 = [obj11.x - obj15.x, obj11.y - obj15.y];
 
   const dot = vector1[0] * vector2[0] + vector1[1] * vector2[1];
   const mod_a = Math.sqrt(vector1[0] * vector1[0] + vector1[1] * vector1[1]);
   const mod_b = Math.sqrt(vector2[0] * vector2[0] + vector2[1] * vector2[1]);
-  let angle = ((Math.acos(dot / (mod_a * mod_b)) * 180) / 3.14 - 90).toFixed(2);
-
+  let angle = ((Math.acos(dot / (mod_a * mod_b)) * 180) / 3.14).toFixed(2);
   angle = angle > 90 ? 90 : angle;
   maxAngle = Math.max(maxAngle, angle);
+  console.log(angle);
 
   if (flag === 0) {
     speak_js(
@@ -59,7 +59,7 @@ export default function rightShoulderFlexion(
     flag = 1;
   }
 
-  if (angle <= 80) {
+  if (angle >= 60 && angle <= 90) {
     down = true;
     if (up === false && setsCompleted === 0)
       tc0 = new Date().getSeconds() + new Date().getMinutes() * 60;
@@ -67,14 +67,14 @@ export default function rightShoulderFlexion(
       t0 = new Date().getSeconds() + new Date().getMinutes() * 60;
   } else if (
     angle >= (setsCompleted === 0)
-      ? 110
+      ? 100
       : caliberationAngle / (2 * requiredReps)
   ) {
     up = true;
-    console.log(
-      "The caliberated angle is = ",
-      setsCompleted === 0 ? 110 : caliberationAngle / (2 * requiredReps)
-    );
+    // console.log(
+    //   "Caliberated angle = ",
+    //   setsCompleted === 0 ? 110 : caliberationAngle / (2 * requiredReps)
+    // );
   }
   if (up === true && down === true) {
     repsCompleted += angle < 0 ? 0 : 1;

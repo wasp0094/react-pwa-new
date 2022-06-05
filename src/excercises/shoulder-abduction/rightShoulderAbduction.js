@@ -5,9 +5,9 @@ let up = false,
 let maxAngle = 10;
 let maxAngleSum = 0;
 let dayRange = 0;
-let caliberationAngle = 0;
+let calibrationAngle = 0;
 let t0, t1;
-let tc0, tc1, caliberatedTime; // tc --> time_caliberation stamp
+let tc0, tc1, calibratedTime; // tc --> time_calibration stamp
 let flag = 0;
 
 function speak_js(message) {
@@ -33,7 +33,7 @@ export default function rightShoulderAbduction(
 
   if (flag === 0) {
     speak_js(
-      "Stretch your arms to the maximum possible as this set helps us to caliberate"
+      "Stretch your arms to the maximum possible as this set helps us to calibrate"
     );
     flag = 1;
   }
@@ -45,12 +45,18 @@ export default function rightShoulderAbduction(
     if (up === false)
       t0 = new Date().getSeconds() + new Date().getMinutes() * 60;
   } else if (
-    angle >= (setsCompleted === 0) ? 40 : caliberationAngle / (2 * requiredReps)
+    angle >= (setsCompleted === 0 ? 40 : calibrationAngle / requiredReps)
   ) {
     up = true;
+    console.log(
+      "calibrated angle = ",
+      (setsCompleted === 0 ? 40 : calibrationAngle / requiredReps) +
+        " angle " +
+        angle
+    );
     // console.log(
-    //   "The caliberated angle is = ",
-    //   setsCompleted === 0 ? 40 : caliberationAngle / requiredReps
+    //   "The calibrated time is = ",
+    //   calibratedTime + " setsCompleted " + setsCompleted
     // );
   }
   if (up === true && down === true) {
@@ -59,20 +65,6 @@ export default function rightShoulderAbduction(
     down = false;
 
     if (repsCompleted % 2 === 0) {
-      if (setsCompleted === 0) {
-        tc1 = new Date().getSeconds() + new Date().getMinutes() * 60;
-        caliberatedTime += tc1 - tc0;
-      }
-      t1 = new Date().getSeconds() + new Date().getMinutes() * 60;
-      // console.log(t0 + " " + t1);
-      if (
-        t1 - t0 > (setsCompleted === 0)
-          ? 30
-          : caliberatedTime / (2 * requiredReps)
-      ) {
-        speak_js("Too slow");
-      }
-      window.t0 = t1;
       speak_js(
         (repsCompleted / 2).toString() +
           "reps" +
@@ -80,12 +72,28 @@ export default function rightShoulderAbduction(
           "sets"
       );
 
+      if (setsCompleted === 0) {
+        tc1 = new Date().getSeconds() + new Date().getMinutes() * 60;
+        calibratedTime += tc1 - tc0;
+      }
+      t1 = new Date().getSeconds() + new Date().getMinutes() * 60;
+      // console.log(t0 + " " + t1);
+      if (
+        setsCompleted !== 0 &&
+        (t1 - t0 > (setsCompleted === 0)
+          ? 30
+          : calibratedTime / requiredReps + 10)
+      ) {
+        speak_js("Too slow");
+      }
+      window.t0 = t1;
+
       maxAngleSum += maxAngle;
       dayRange = (
         maxAngleSum /
         (repsCompleted / 2 + setsCompleted * requiredReps)
       ).toFixed(2);
-      caliberationAngle += setsCompleted === 0 ? maxAngle : 0;
+      calibrationAngle += setsCompleted === 0 ? maxAngle : 0;
       maxAngle = 10;
       setExcerciseVars({
         ...excerciseVars,
