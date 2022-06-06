@@ -24,6 +24,7 @@ function HomePage({ handleModalOpen }) {
   const handleClose = () => {
     setOpen(false);
   };
+
   return (
     <div className="home-content">
       <div className="welcome">
@@ -57,6 +58,8 @@ function HomePage({ handleModalOpen }) {
         </div>
         {user?.isDoctor ? (
           <Button
+            href="https://forms.gle/MTg8pBaexDxs1CcS9/"
+            target="_blank"
             variant="contained"
             startIcon={<AssignmentIcon />}
             sx={{ marginBottom: "0.5rem" }}
