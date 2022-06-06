@@ -98,7 +98,7 @@ function FormComponent({
     <Box sx={{ margin: 2 }}>
       <form>
         <FormControl fullWidth>
-          {user?.isDoctor && (
+          {!userId && (
             <>
               <InputLabel id="patient-name">Patient</InputLabel>
               <Select

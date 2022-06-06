@@ -34,12 +34,13 @@ function VideoCall() {
     rtc.localVideoTrack = await AgoraRTC.createCameraVideoTrack();
     await rtc.client.publish([rtc.localAudioTrack, rtc.localVideoTrack]);
     const localPlayerContainer = document.createElement("div");
+    const videoCallDiv = document.getElementById("video-call");
+    videoCallDiv.appendChild(localPlayerContainer);
     localPlayerContainer.id = options.uid;
     // localPlayerContainer.textContent = "You ";
     localPlayerContainer.style.width = "320px";
     localPlayerContainer.style.height = "180px";
     localPlayerContainer.style.marginBottom = "5px";
-    document.body.append(localPlayerContainer);
     rtc.localVideoTrack.play(localPlayerContainer);
     console.log("publish success!");
   };
@@ -62,13 +63,14 @@ function VideoCall() {
       if (mediaType === "video") {
         const remoteVideoTrack = user.videoTrack;
         const remotePlayerContainer = document.createElement("div");
+        const videoCallDiv = document.getElementById("video-call");
+        videoCallDiv.appendChild(remotePlayerContainer);
         remotePlayerContainer.id = user.uid.toString();
         // remotePlayerContainer.textContent =
         //   "Remote user " + user.displayName
         remotePlayerContainer.style.width = "320px";
         remotePlayerContainer.style.height = "180px";
         remotePlayerContainer.style.paddingBottom = "5px";
-        document.body.append(remotePlayerContainer);
         remoteVideoTrack.play(remotePlayerContainer);
       }
       if (mediaType === "audio") {
@@ -84,6 +86,7 @@ function VideoCall() {
 
   useEffect(() => {
     temp();
+    return handleLeave;
   }, []);
 
   return (
@@ -91,7 +94,7 @@ function VideoCall() {
       <div style={{ textAlign: "center", marginTop: "5rem" }}>
         <h2>Video Call Room</h2>
         <div className="row">
-          <div>
+          <div id="video-call">
             <button
               style={{
                 margin: "0.5rem",

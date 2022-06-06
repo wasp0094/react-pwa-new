@@ -1,6 +1,5 @@
 import { getDoc } from "firebase/firestore";
 import excercises from "../excercises/excercises";
-let tasks_arr = [];
 const getType = (type, id) => {
   if (type === 0 && excercises[id].types?.full) return ["full"];
   if (type === 0 && !excercises[id].types?.full) return ["left", "right"];
@@ -8,6 +7,7 @@ const getType = (type, id) => {
   return ["right"];
 };
 const getRoutines = async (routine, setTasks) => {
+  let tasks_arr = [];
   if (routine.length === 0) {
     setTasks([]);
     return;
