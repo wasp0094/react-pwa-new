@@ -5,6 +5,7 @@ import Paper from "@mui/material/Paper";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import HomeIcon from "@mui/icons-material/Home";
+import VideoCallIcon from "@mui/icons-material/VideoCall";
 import ExploreIcon from "@mui/icons-material/Explore";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import PersonIcon from "@mui/icons-material/Person";
@@ -35,6 +36,13 @@ function BottomNav() {
               component={Link}
               to="/home"
               value={"/home"}
+            />
+            <BottomNavigationAction
+              label="Chat"
+              icon={<VideoCallIcon />}
+              component={Link}
+              to="/chat"
+              value={"/chat"}
             />
             {!isDoctor ? (
               <BottomNavigationAction

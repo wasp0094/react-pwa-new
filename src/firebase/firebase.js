@@ -56,6 +56,7 @@ export async function createUserObject(userAuth, data) {
 export const setGoalstoDB = async (goals) => {
   try {
     const userRef = doc(firestore, `users/${goals.user}`);
+    const userSnap = (await getDoc(userRef)).data();
     const docRef = await addDoc(collection(firestore, "prescriptions"), {
       exercise: doc(firestore, `excercises/${goals.exercise}`),
       type: goals.type,
@@ -72,7 +73,7 @@ export const setGoalstoDB = async (goals) => {
       }),
       created: Timestamp.now(),
     });
-    const routine = goals.user?.routine || [];
+    const routine = userSnap.routine;
     await updateDoc(userRef, { routine: [...routine, docRef] });
   } catch (err) {
     alert(err);

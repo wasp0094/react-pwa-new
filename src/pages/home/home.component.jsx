@@ -56,7 +56,11 @@ function HomePage({ handleModalOpen }) {
           ))}
         </div>
         {user?.isDoctor ? (
-          <Button variant="contained" startIcon={<AssignmentIcon />}>
+          <Button
+            variant="contained"
+            onClick={handleModalOpen}
+            startIcon={<AssignmentIcon />}
+          >
             Request Custom Exercise
           </Button>
         ) : (
