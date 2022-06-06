@@ -4,6 +4,7 @@ import Chart from "chart.js/auto";
 
 Chart.register(CategoryScale);
 
+
 function DailyRangeChart({ data }) {
   return (
     <div className="daily-range-chart">
