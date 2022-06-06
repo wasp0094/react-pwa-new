@@ -17,10 +17,11 @@ function VideoCall() {
     appId: "666ea125b0b0446f8c418d03e7b62196",
     channel: "test",
     token:
-      "0066327b8a6d2ae4726b109d98d33fcbcc0IAAWdie6N5/kGLtHEX2flqxCzgtT8HqMRKg/js8uZ+itZwx+f9gAAAAAEAAg4mLWoW0/YgEAAQCjbT9i",
+      "0066327b8a6d2ae4726b109d98d33fcbcc0IAA8C3p2ZssQRvOMB3vCivYhtgxsZM4byf59noLRI7m1ZQx+f9gAAAAAEAA9DfJziUafYgEAAQCIRp9i",
     uid: user.id,
   };
 
+  // useSetTitle("Video Chat");
   const handleJoin = async () => {
     console.log(rtc);
     await rtc.client.join(
@@ -53,34 +54,35 @@ function VideoCall() {
     await rtc.client.leave();
   };
 
-  useEffect(() => {
-    const temp = async () => {
-      rtc.client = AgoraRTC.createClient({ mode: "rtc", codec: "vp8" });
-      rtc.client.on("user-published", async (user, mediaType) => {
-        await rtc.client.subscribe(user, mediaType);
-        console.log("subscribe success");
-        if (mediaType === "video") {
-          const remoteVideoTrack = user.videoTrack;
-          const remotePlayerContainer = document.createElement("div");
-          remotePlayerContainer.id = user.uid.toString();
-          // remotePlayerContainer.textContent =
-          //   "Remote user " + user.uid.toString();
-          remotePlayerContainer.style.width = "320px";
-          remotePlayerContainer.style.height = "180px";
-          remotePlayerContainer.style.paddingBottom = "5px";
-          document.body.append(remotePlayerContainer);
-          remoteVideoTrack.play(remotePlayerContainer);
-        }
-        if (mediaType === "audio") {
-          const remoteAudioTrack = user.audioTrack;
-          remoteAudioTrack.play();
-        }
-        rtc.client.on("user-unpublished", (user) => {
-          const remotePlayerContainer = document.getElementById(user.uid);
-          remotePlayerContainer.remove();
-        });
+  const temp = async () => {
+    rtc.client = AgoraRTC.createClient({ mode: "rtc", codec: "vp8" });
+    rtc.client.on("user-published", async (user, mediaType) => {
+      await rtc.client.subscribe(user, mediaType);
+      console.log("subscribe success");
+      if (mediaType === "video") {
+        const remoteVideoTrack = user.videoTrack;
+        const remotePlayerContainer = document.createElement("div");
+        remotePlayerContainer.id = user.uid.toString();
+        // remotePlayerContainer.textContent =
+        //   "Remote user " + user.displayName
+        remotePlayerContainer.style.width = "320px";
+        remotePlayerContainer.style.height = "180px";
+        remotePlayerContainer.style.paddingBottom = "5px";
+        document.body.append(remotePlayerContainer);
+        remoteVideoTrack.play(remotePlayerContainer);
+      }
+      if (mediaType === "audio") {
+        const remoteAudioTrack = user.audioTrack;
+        remoteAudioTrack.play();
+      }
+      rtc.client.on("user-unpublished", (user) => {
+        const remotePlayerContainer = document.getElementById(user.uid);
+        remotePlayerContainer.remove();
       });
-    };
+    });
+  };
+
+  useEffect(() => {
     temp();
   }, []);
 
