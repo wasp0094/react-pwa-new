@@ -56,7 +56,11 @@ function HomePage({ handleModalOpen }) {
           ))}
         </div>
         {user?.isDoctor ? (
-          <Button variant="contained" startIcon={<AssignmentIcon />}>
+          <Button
+            variant="contained"
+            startIcon={<AssignmentIcon />}
+            sx={{ marginBottom: "0.5rem" }}
+          >
             Request Custom Exercise
           </Button>
         ) : (
@@ -64,6 +68,7 @@ function HomePage({ handleModalOpen }) {
             onClick={handleModalOpen}
             variant="contained"
             startIcon={<BorderColorIcon />}
+            sx={{ marginBottom: "0.5rem" }}
           >
             Set Your Prescription
           </Button>
