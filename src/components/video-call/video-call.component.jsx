@@ -38,8 +38,8 @@ function VideoCall() {
     videoCallDiv.appendChild(localPlayerContainer);
     localPlayerContainer.id = options.uid;
     // localPlayerContainer.textContent = "You ";
-    localPlayerContainer.style.width = "320px";
-    localPlayerContainer.style.height = "180px";
+    localPlayerContainer.style.width = "85vw";
+    localPlayerContainer.style.height = "35vh";
     localPlayerContainer.style.marginBottom = "5px";
     rtc.localVideoTrack.play(localPlayerContainer);
     console.log("publish success!");
@@ -48,8 +48,12 @@ function VideoCall() {
   const handleLeave = async () => {
     rtc.localAudioTrack.close();
     rtc.localVideoTrack.close();
-    rtc.client.remoteUsers.forEach((user) => {
-      const playerContainer = document.getElementById(user.uid);
+    const playerContainerr = document.getElementById(user.uid);
+    console.log(playerContainerr);
+    console.log(playerContainerr);
+    playerContainerr && playerContainerr.remove();
+    rtc.client.remoteUsers.forEach((user1) => {
+      const playerContainer = document.getElementById(user1.uid);
       playerContainer && playerContainer.remove();
     });
     await rtc.client.leave();
@@ -68,9 +72,10 @@ function VideoCall() {
         remotePlayerContainer.id = user.uid.toString();
         // remotePlayerContainer.textContent =
         //   "Remote user " + user.displayName
-        remotePlayerContainer.style.width = "320px";
-        remotePlayerContainer.style.height = "180px";
+        remotePlayerContainer.style.width = "85vw";
+        remotePlayerContainer.style.height = "35vh";
         remotePlayerContainer.style.paddingBottom = "5px";
+        remotePlayerContainer.style.padding = "0 auto";
         remoteVideoTrack.play(remotePlayerContainer);
       }
       if (mediaType === "audio") {
@@ -94,7 +99,7 @@ function VideoCall() {
       <div style={{ textAlign: "center", marginTop: "5rem" }}>
         <h2>Video Call Room</h2>
         <div className="row">
-          <div id="video-call">
+          <div className="video-calll">
             <button
               style={{
                 margin: "0.5rem",
@@ -124,6 +129,13 @@ function VideoCall() {
               <CallEndIcon /> LEAVE CALL
             </button>
           </div>
+          <div
+            id="video-call"
+            style={{
+              paddingLeft: "46px",
+              paddingRight: "41px",
+            }}
+          ></div>
         </div>
       </div>
       <BottomNav />

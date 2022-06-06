@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import Avatar from "@mui/material/Avatar";
@@ -7,9 +7,20 @@ import Button from "@mui/material/Button";
 import { useUserAuth } from "../../context/UserAuthContext";
 import { useSetTitle } from "../../hooks/setTitle";
 import "./profile.css";
+import { getDoc } from "@firebase/firestore";
 
 function Profile() {
   const { user, logOut } = useUserAuth();
+  const [doctorDetails, setDoctorDetails] = useState({});
+  useEffect(() => {
+    const getDoctorDetails = async () => {
+      if (user.doctorAllocatted) {
+        const doctorDetail = (await getDoc(user.doctorId)).data();
+        setDoctorDetails(doctorDetail);
+      }
+    };
+    getDoctorDetails();
+  }, []);
   useSetTitle(user.displayName);
   const handleLogOut = async () => {
     try {
@@ -56,6 +67,12 @@ function Profile() {
             <div className="field">
               <p>D.O.B</p>
               <p>{user && user.dob}</p>
+            </div>
+          )}
+          {user && doctorDetails && doctorDetails.displayName && (
+            <div className="field">
+              <p>Doctor Name</p>
+              <p>{doctorDetails.displayName}</p>
             </div>
           )}
           {user && user.weight && (

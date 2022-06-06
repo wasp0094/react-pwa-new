@@ -40,9 +40,13 @@ export async function createUserObject(userAuth, data) {
     const { email, displayName } = userAuth;
     const createdAt = new Date(),
       routine = [];
-    console.log("data");
     if (data && data.isDoctor) {
-      data.qrCode = await QRCode.toDataURL(userAuth.uid);
+      const obj = {
+        id: userAuth.uid,
+        name: data.displayName,
+      };
+      // console.log(JSON.stringify(obj));
+      data.qrCode = await QRCode.toDataURL(JSON.stringify(obj));
     }
     try {
       setDoc(userRef, { displayName, uid, email, routine, createdAt, ...data });
