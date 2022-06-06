@@ -123,18 +123,18 @@ export const allocateDoctor = async (doctorId, userId) => {
     let user = (await getDoc(userRef)).data();
     let doctor = (await getDoc(docRef)).data();
     // console.log(user);
-    const updated_user = {
-      ...user,
-      doctorAllocatted: true,
-      doctorId: docRef,
-    };
-    await updateDoc(userRef, updated_user);
     const doctor_patients = doctor.patients || [];
     const updated_doctor = {
       ...doctor,
       patients: [...doctor_patients, userRef],
     };
     await updateDoc(docRef, updated_doctor);
+    const updated_user = {
+      ...user,
+      doctorAllocatted: true,
+      doctorId: docRef,
+    };
+    await updateDoc(userRef, updated_user);
   } catch (err) {
     console.log(err);
   }

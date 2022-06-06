@@ -47,10 +47,12 @@ function RoutinePage() {
 
   useEffect(() => {
     getRoutines(user?.routine, setTasks);
+    //eslint-disable-next-line
   }, []);
 
   useEffect(() => {
     if (tasks.length === user.routine?.length) setLoad(false);
+    //eslint-disable-next-line
   }, [tasks]);
 
   if (!user?.routine)
