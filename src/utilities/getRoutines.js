@@ -8,6 +8,10 @@ const getType = (type, id) => {
   return ["right"];
 };
 const getRoutines = async (routine, setTasks) => {
+  if (routine.length === 0) {
+    setTasks([]);
+    return;
+  }
   routine.forEach(async (routinRef, idx) => {
     const routine_item_snap = await getDoc(routinRef);
     if (!routine_item_snap.exists()) return;

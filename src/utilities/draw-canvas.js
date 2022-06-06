@@ -1,7 +1,7 @@
 import * as pose from "@mediapipe/pose";
 
 const connect = window.drawConnectors;
-const landMarks = window.drawLandmarks;
+// const landMarks = window.drawLandmarks;
 export default function drawCanvas(webcamRef, canvasRef, results) {
   const videoWidth = webcamRef.current.video.videoWidth;
   const videoHeight = webcamRef.current.video.videoHeight;

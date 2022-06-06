@@ -21,6 +21,7 @@ const FormPopup = (WrappedComponent) => {
   return function FormChild({
     preDefined = false,
     excercise = "ZxgI2YvKjlpCWrIDe2OX",
+    userId,
     ...otherProps
   } = {}) {
     const [open, setOpen] = useState(false);
@@ -54,6 +55,7 @@ const FormPopup = (WrappedComponent) => {
                   preDefined={preDefined}
                   excerciseName={excercise}
                   handleClose={handleClose}
+                  userId={userId}
                 />
               </Box>
             </Box>

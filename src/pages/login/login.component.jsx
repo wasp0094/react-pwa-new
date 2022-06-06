@@ -9,9 +9,9 @@ import "./login.styles.css";
 import TextField from "@mui/material/TextField";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import { FaFacebook } from "react-icons/fa";
-import { FaGooglePlus } from "react-icons/fa";
-import { AiFillTwitterCircle } from "react-icons/ai";
+// import { FaFacebook } from "react-icons/fa";
+// import { FaGooglePlus } from "react-icons/fa";
+// import { AiFillTwitterCircle } from "react-icons/ai";
 
 //import GoogleButton from 'react-google-button';
 
@@ -19,7 +19,8 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const { logIn, signInWithGoogle, setLoadingUser } = useUserAuth();
+  const { logIn, setLoadingUser } = useUserAuth();
+  // const { logIn, signInWithGoogle, setLoadingUser } = useUserAuth();
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -32,16 +33,16 @@ function Login() {
     }
   };
 
-  const handleGoogleSignIn = async (e) => {
-    e.preventDefault();
-    try {
-      await signInWithGoogle();
-      navigate("/profile");
-    } catch (error) {
-      setLoadingUser(false);
-      setError("Couldn't login, please try again");
-    }
-  };
+  // const handleGoogleSignIn = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     await signInWithGoogle();
+  //     navigate("/profile");
+  //   } catch (error) {
+  //     setLoadingUser(false);
+  //     setError("Couldn't login, please try again");
+  //   }
+  // };
 
   return (
     <>
