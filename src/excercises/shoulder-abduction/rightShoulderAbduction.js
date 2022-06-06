@@ -82,14 +82,13 @@ export default function rightShoulderAbduction(
       //   setsCompleted !== 0 &&
       //   (t1 - t0 > (setsCompleted === 0)
       //     ? 30
-      //     : calibratedTime / requiredReps + 10)
+      //     : calibratedTime / requiredReps + 6)
       // ) {
       //   speak_js("Too slow");
       // }
       if (
         setsCompleted !== 0 &&
-        t1 - t0 >
-          (setsCompleted === 0 ? 30 : calibratedTime / requiredReps + 10)
+        t1 - t0 > (setsCompleted === 0 ? 30 : calibratedTime / requiredReps + 6)
       ) {
         speak_js("Too slow");
       }
