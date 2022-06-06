@@ -13,7 +13,7 @@ import excercises from "../../excercises/excercises";
 import { setGoalstoDB } from "../../firebase/firebase";
 import { useUserAuth } from "../../context/UserAuthContext";
 
-function FormComponent({ preDefined, excerciseName, handleClose }) {
+function FormComponent({ preDefined, excerciseName, handleClose, userId }) {
   const [exercise, setExercise] = useState(excerciseName);
   const [days, setDays] = useState(0);
   const [sets, setSets] = useState(0);
@@ -22,7 +22,6 @@ function FormComponent({ preDefined, excerciseName, handleClose }) {
   const [right, setRight] = useState(false);
   const [types, setTypes] = useState(excercises[exercise]["types"]);
   const { user } = useUserAuth();
-
   const handleChange = (event) => {
     setExercise(event.target.value);
   };
@@ -41,7 +40,7 @@ function FormComponent({ preDefined, excerciseName, handleClose }) {
 
   const setGoalToDb = async () => {
     const goals = {
-      user: user,
+      user: userId ? userId : user.id,
       exercise: exercise,
       type: getType(),
       days: parseInt(days),
