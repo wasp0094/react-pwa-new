@@ -176,10 +176,6 @@ const dumbell_bicep_curl = {
       id: "left-dumbell-bicep-curl",
       name: "Dumbell Bicep Curl",
     },
-    // right: {
-    //   id: "right-dumbell-bicep-curl",
-    //   name: "Dumbell Bicep Curl",
-    // },
   },
   instructions: [
     "Perform this exercise while seated.",
@@ -306,17 +302,17 @@ export const targets = {
 const excerciseFuncs = {
   "left-shoulder-abduction": leftShoulderAbduction,
   "right-shoulder-abduction": rightShoulderAbduction,
-  "left-shoulder-flexion": leftShoulderFlexion,
-  "right-shoulder-flexion": rightShoulderFlexion,
-  "full-shoulder-elevation": shoulderElevation,
-  "left-elbow-flexion": leftElbowFlexion,
-  "right-elbow-flexion": rightElbowFlexion,
-  "left-dumbell-bicep-curl": sideCurl,
-  "right-dumbell-bicep-curl": sideCurl,
+  "full-squats": squat,
   "left-side-kicks": leftSideKick,
   "right-side-kicks": rightSideKick,
+  "left-elbow-kicks": leftElbowFlexion,
+  "right-elbow-kicks": rightElbowFlexion,
+  "left-shoulder-flexion": leftShoulderFlexion,
+  "right-shoulder-flexion": rightShoulderFlexion,
   "full-lunges": lunge,
-  "full-squats": squat,
+  "full-shoulder-elevation": shoulderElevation,
+  "right-elbow-flexion": rightElbowFlexion,
+  "left-elbow-flexion": leftElbowFlexion,
 };
 
 export const calculate = (excercise_id) => {

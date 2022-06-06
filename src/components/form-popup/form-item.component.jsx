@@ -8,23 +8,18 @@ import { TextField } from "@mui/material";
 import { Button } from "@mui/material";
 import { Stack } from "@mui/material";
 import Checkbox from "@mui/material/Checkbox";
-// import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
-// import Favorite from "@mui/icons-material/Favorite";
-// import Slider from "@mui/material/Slider";
-
 import FormControlLabel from "@mui/material/FormControlLabel";
 import excercises from "../../excercises/excercises";
-import { firestore } from "../../firebase/firebase";
-import {
-  collection,
-  addDoc,
-  Timestamp,
-  doc,
-  updateDoc,
-} from "firebase/firestore";
+import { setGoalstoDB } from "../../firebase/firebase";
 import { useUserAuth } from "../../context/UserAuthContext";
+import { getDoc } from "firebase/firestore";
 
-function FormComponent({ preDefined, excerciseName, handleClose }) {
+function FormComponent({
+  preDefined,
+  excerciseName,
+  handleClose,
+  userId = "",
+}) {
   const [exercise, setExercise] = useState(excerciseName);
   const [days, setDays] = useState(0);
   const [sets, setSets] = useState(0);
@@ -32,11 +27,32 @@ function FormComponent({ preDefined, excerciseName, handleClose }) {
   const [left, setLeft] = useState(false);
   const [right, setRight] = useState(false);
   const [types, setTypes] = useState(excercises[exercise]["types"]);
+  const [patient, setPatient] = useState(userId);
   const { user } = useUserAuth();
 
   const handleChange = (event) => {
     setExercise(event.target.value);
   };
+
+  const handlePatientChange = (event) => {
+    setPatient(event.target.value);
+  };
+
+  let patients_data = [];
+  const [patientsData, setPatientData] = useState([]);
+  const getPatientDetails = async () => {
+    user.patients.forEach(async (patient, idx) => {
+      let patient_data = (await getDoc(patient)).data();
+      patient_data = { ...patient_data, id: patient.id };
+      const new_patients_data = [...patients_data, patient_data];
+      patients_data = new_patients_data;
+      setPatientData(new_patients_data);
+    });
+  };
+  useEffect(() => {
+    if (user?.isDoctor) getPatientDetails();
+    else setPatient(user.id);
+  }, []);
 
   useEffect(() => {
     setTypes(excercises[exercise]["types"]);
@@ -51,29 +67,16 @@ function FormComponent({ preDefined, excerciseName, handleClose }) {
   };
 
   const setGoalToDb = async () => {
-    try {
-      const userRef = doc(firestore, `users/${user.id}`);
-      const docRef = await addDoc(collection(firestore, "prescriptions"), {
-        exercise: doc(firestore, `excercises/${exercise}`),
-        type: getType(),
-        days: parseInt(days),
-        sets: parseInt(sets),
-        reps: parseInt(reps),
-        completed: false,
-        user: userRef,
-        routine: Array(parseInt(days)).fill({
-          completed: false,
-          sets: 0,
-          reps: 0,
-          dailyRange: 0,
-        }),
-        created: Timestamp.now(),
-      });
-      const routine = user?.routine || [];
-      await updateDoc(userRef, { routine: [...routine, docRef] });
-    } catch (err) {
-      alert(err);
-    }
+    const goals = {
+      user: patient,
+      exercise: exercise,
+      type: getType(),
+      days: parseInt(days),
+      sets: parseInt(sets),
+      reps: parseInt(reps),
+      completed: false,
+    };
+    await setGoalstoDB(goals);
   };
 
   const handleSetGoal = async (e) => {
@@ -91,12 +94,32 @@ function FormComponent({ preDefined, excerciseName, handleClose }) {
     await setGoalToDb();
   };
 
-  // function valuetext(value) {
-  //   return `${value}°C`;
-  // }
   return (
     <Box sx={{ margin: 2 }}>
       <form>
+        <FormControl fullWidth>
+          {!userId && (
+            <>
+              <InputLabel id="patient-name">Patient</InputLabel>
+              <Select
+                disabled={preDefined}
+                labelId="patientId"
+                id="patient"
+                value={patient.displayName}
+                label="Patient"
+                onChange={handlePatientChange}
+                size="small"
+              >
+                {patientsData.map((patient, idx) => (
+                  <MenuItem value={patient.id} key={idx}>
+                    {patient.displayName}
+                  </MenuItem>
+                ))}
+              </Select>
+              <br />
+            </>
+          )}
+        </FormControl>
         <FormControl fullWidth>
           <InputLabel id="exercise-name">Exercise</InputLabel>
           <Select

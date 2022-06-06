@@ -5,6 +5,7 @@
   background-position-y: top;
   background-repeat: no-repeat;
   background-size: cover;
+  padding: 0 1rem;
 }
 
 .categories {
@@ -30,12 +31,7 @@
 /* .explore-cards img {
   width: 20%;
 } */
-
-.home-content {
-  padding: 1.5rem 1rem;
-}
-
-span {
+.span-colour {
   color: #0968f7;
 }
 
@@ -46,10 +42,11 @@ strong {
 .welcome {
   padding-top: calc(50% + 56px);
   text-align: center;
-  padding-bottom: 2rem;
+  padding-bottom: 1rem;
 }
 
 .welcome h2,
 .welcome h5 {
   margin-bottom: 0rem;
+  margin-top: 1rem;
 }

@@ -17,15 +17,16 @@ const style = {
   p: 3,
 };
 
-function FormPopup(WrappedComponent) {
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-  return function ({
+const FormPopup = (WrappedComponent) => {
+  return function FormChild({
     preDefined = false,
     excercise = "ZxgI2YvKjlpCWrIDe2OX",
+    userId,
     ...otherProps
   } = {}) {
+    const [open, setOpen] = useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
     return (
       <>
         <WrappedComponent handleModalOpen={handleOpen} {...otherProps} />
@@ -54,6 +55,7 @@ function FormPopup(WrappedComponent) {
                   preDefined={preDefined}
                   excerciseName={excercise}
                   handleClose={handleClose}
+                  userId={userId}
                 />
               </Box>
             </Box>
@@ -62,6 +64,6 @@ function FormPopup(WrappedComponent) {
       </>
     );
   };
-}
+};
 
 export default FormPopup;

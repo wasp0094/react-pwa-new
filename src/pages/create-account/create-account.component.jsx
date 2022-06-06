@@ -1,8 +1,21 @@
 import React, { useState } from "react";
 import { useUserAuth } from "../../context/UserAuthContext";
-import { TextField, MenuItem, Box, Button, Stack } from "@mui/material";
+import {
+  TextField,
+  MenuItem,
+  Box,
+  Button,
+  Stack,
+  RadioGroup,
+  FormControlLabel,
+  Radio,
+} from "@mui/material";
 import { Link } from "react-router-dom";
 import blob from "../../assets/blob.svg";
+import "./create-account.css";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { v4 } from "uuid";
+import { storage } from "../../firebase/firebase";
 import "../login/login.styles.css";
 import {
   EmailOutlined,
@@ -10,27 +23,80 @@ import {
   Face,
   LineWeightOutlined,
   ManOutlined,
+  CakeOutlined,
+  // VaccinesIcon,
 } from "@mui/icons-material";
+import VaccinesIcon from "@mui/icons-material/Vaccines";
 
 function CreateAccount() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [dob, setDob] = useState("");
+  const [YOE, setYOE] = useState("");
+  const [speciality, setSpeciality] = useState("");
   const [gender, setGender] = useState("");
   const [weight, setWeight] = useState("");
   const [error, setError] = useState("");
+  const [user, setUser] = useState("patient");
+  const [imgUrl, setImgUrl] = useState(
+    "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+  );
+  const [image, setImage] = useState(null);
   const { signUp } = useUserAuth();
+
+  const handleChange = (e) => {
+    if (e.target.files[0]) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        if (reader.readyState === 2) {
+          setImgUrl(reader.result);
+        }
+      };
+      reader.readAsDataURL(e.target.files[0]);
+      setImage(e.target.files[0]);
+    }
+  };
+
+  const handleUserChange = (e) => {
+    setUser(e.target.value);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const data = {
-        displayName: name,
-        dob: dob,
-        gender: gender,
-        weight: weight,
-      };
+      if (image == null) return;
+      const imageRef = ref(storage, `images/${image.name + v4()}`);
+      uploadBytes(imageRef, image).then((snapshot) => {
+        getDownloadURL(snapshot.ref).then((url) => {
+          setImgUrl(url);
+        });
+      });
+      let data;
+      if (user === "patient") {
+        data = {
+          displayName: name,
+          dob: dob ? dob : "2002-03-19",
+          gender: gender,
+          weight: weight,
+          imgUrl: imgUrl,
+          isDoctor: false,
+          doctorAllocatted: false,
+          doctorId: null,
+          qrCode: null,
+        };
+      } else {
+        data = {
+          displayName: name,
+          dob: dob ? dob : "2002-03-19",
+          YOE: YOE,
+          isDoctor: true,
+          speciality: speciality,
+          imgUrl: imgUrl,
+          qrCode: null,
+          patients: [],
+        };
+      }
       await signUp(email, password, data);
     } catch (error) {
       setError("Failed to create a new account.");
@@ -39,7 +105,7 @@ function CreateAccount() {
 
   return (
     <>
-      <div className="App">
+      <div className="signup">
         <form onSubmit={handleSubmit}>
           <Box
             sx={{
@@ -59,6 +125,43 @@ function CreateAccount() {
                   className="input-field"
                   sx={{ display: "flex", alignItems: "flex-end" }}
                 >
+                  <RadioGroup
+                    row
+                    defaultValue="patient"
+                    name="user-button"
+                    onChange={handleUserChange}
+                  >
+                    <FormControlLabel
+                      value="patient"
+                      control={<Radio />}
+                      label="Patient"
+                      style={{ margin: "0 5vw" }}
+                    />
+                    <FormControlLabel
+                      value="doctor"
+                      control={<Radio />}
+                      label="Doctor"
+                      style={{ margin: "0 5vw" }}
+                    />
+                  </RadioGroup>
+                </Box>
+
+                <Box>
+                  <img src={imgUrl} className="profile-pic" alt="profile pic" />
+                  <input
+                    type="file"
+                    style={{
+                      fontSize: "15px",
+                      marginLeft: "4vw",
+                    }}
+                    onChange={handleChange}
+                  />
+                </Box>
+
+                <Box
+                  className="input-field"
+                  sx={{ display: "flex", alignItems: "flex-end" }}
+                >
                   <Face sx={{ color: "action.active", mr: 1, my: 0.5 }} />
                   <TextField
                     id="input-with-sx"
@@ -69,57 +172,114 @@ function CreateAccount() {
                     style={{ width: "8rem" }}
                   />
                   <LineWeightOutlined
-                    sx={{ color: "action.active", mr: 1, my: 0.5 }}
+                    sx={{ color: "action.active", ml: 1, my: 0.5 }}
                   />
-                  <TextField
-                    id="input-with-sx"
-                    label="Weight"
-                    variant="standard"
-                    onChange={(e) => setWeight(e.target.value)}
-                    type="number"
-                    style={{ width: "4rem" }}
-                  />
+                  {user === "patient" ? (
+                    <TextField
+                      id="input-with-sx"
+                      label="Weight"
+                      variant="standard"
+                      onChange={(e) => setWeight(e.target.value)}
+                      type="number"
+                      style={{ width: "5rem" }}
+                    />
+                  ) : (
+                    <TextField
+                      id="input-with-sx"
+                      label="YOE"
+                      variant="standard"
+                      onChange={(e) => setYOE(e.target.value)}
+                      type="number"
+                      style={{ width: "5rem" }}
+                    />
+                  )}
                 </Box>
 
-                <Box
-                  className="input-field"
-                  sx={{ display: "flex", alignItems: "flex-end" }}
-                >
-                  <Face sx={{ color: "action.active", mr: 1, my: 0.5 }} />
-                  <TextField
-                    id="date"
-                    label="DOB"
-                    type="date"
-                    variant="standard"
-                    defaultValue="2002-03-19"
-                    sx={{ width: "6.5rem" }}
-                    InputLabelProps={{
-                      shrink: true,
-                    }}
-                    onChange={(e) => setDob(e.target.value)}
-                  />
-                  <ManOutlined
-                    sx={{ color: "action.active", mr: 1, my: 0.5 }}
-                  />
-                  <TextField
-                    id="input-with-sx"
-                    select
-                    label="Gender"
-                    variant="standard"
-                    onChange={(e) => setGender(e.target.value)}
-                    style={{ width: "5rem" }}
+                {user === "patient" ? (
+                  <Box
+                    className="input-field"
+                    sx={{ display: "flex", alignItems: "flex-end" }}
                   >
-                    <MenuItem key="Male" value="Male">
-                      Male
-                    </MenuItem>
-                    <MenuItem key="Female" value="Female">
-                      Female
-                    </MenuItem>
-                    <MenuItem key="Others" value="Others">
-                      Others
-                    </MenuItem>
-                  </TextField>
-                </Box>
+                    <CakeOutlined
+                      sx={{ color: "action.active", mr: 1, my: 0.5 }}
+                    />
+                    <TextField
+                      id="date"
+                      label="DOB"
+                      type="date"
+                      variant="standard"
+                      defaultValue="2002-03-19"
+                      sx={{ width: "8rem" }}
+                      InputLabelProps={{
+                        shrink: true,
+                      }}
+                      onChange={(e) => setDob(e.target.value)}
+                    />
+                    <ManOutlined
+                      sx={{ color: "action.active", ml: 1, my: 0.5 }}
+                    />
+                    <TextField
+                      id="input-with-sx"
+                      select
+                      label="Gender"
+                      variant="standard"
+                      onChange={(e) => setGender(e.target.value)}
+                      style={{ width: "5rem" }}
+                    >
+                      <MenuItem key="Male" value="Male">
+                        Male
+                      </MenuItem>
+                      <MenuItem key="Female" value="Female">
+                        Female
+                      </MenuItem>
+                      <MenuItem key="Others" value="Others">
+                        Others
+                      </MenuItem>
+                    </TextField>
+                  </Box>
+                ) : (
+                  <Box
+                    className="input-field"
+                    sx={{ display: "flex", alignItems: "flex-end" }}
+                  >
+                    <VaccinesIcon
+                      sx={{ color: "action.active", mr: 1, my: 0.5 }}
+                    />
+                    <TextField
+                      id="input-with-sx"
+                      select
+                      label="Speciality"
+                      variant="standard"
+                      onChange={(e) => setSpeciality(e.target.value)}
+                      style={{ width: "6rem" }}
+                    >
+                      <MenuItem key="Shoulder" value="Shoulder">
+                        Shoulder
+                      </MenuItem>
+                      <MenuItem key="Elbow" value="Elbow">
+                        Elbow
+                      </MenuItem>
+                      <MenuItem key="Diabeties" value="Diabeties">
+                        Diabeties
+                      </MenuItem>
+                    </TextField>
+                    <CakeOutlined
+                      sx={{ color: "action.active", mr: 1, my: 0.5 }}
+                    />
+                    <TextField
+                      id="date"
+                      label="DOB"
+                      type="date"
+                      variant="standard"
+                      defaultValue="2002-03-19"
+                      sx={{ width: "7rem" }}
+                      InputLabelProps={{
+                        shrink: true,
+                      }}
+                      onChange={(e) => setDob(e.target.value)}
+                    />
+                  </Box>
+                )}
                 <Box
                   className="input-field"
                   sx={{ display: "flex", alignItems: "flex-end" }}
