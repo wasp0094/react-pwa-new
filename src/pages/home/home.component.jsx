@@ -9,6 +9,9 @@ import ExploreCategory from "../../components/explore-category/explore-category.
 import { useSetTitle } from "../../hooks/setTitle";
 import QRPopup from "../../components/qr-popup/qr-popup.component";
 import { useUserAuth } from "../../context/UserAuthContext";
+import BorderColorIcon from "@mui/icons-material/BorderColor";
+import QrCode2Icon from "@mui/icons-material/QrCode2";
+import AssignmentIcon from "@mui/icons-material/Assignment";
 
 function HomePage({ handleModalOpen }) {
   useSetTitle("Home");
@@ -53,12 +56,31 @@ function HomePage({ handleModalOpen }) {
           ))}
         </div>
         {user?.isDoctor ? (
-          <Button>Request Custom Exercise</Button>
+          <Button variant="contained" startIcon={<AssignmentIcon />}>
+            Request Custom Exercise
+          </Button>
         ) : (
-          <Button onClick={handleModalOpen}>Add Prescription</Button>
+          <Button
+            onClick={handleModalOpen}
+            variant="contained"
+            startIcon={<BorderColorIcon />}
+          >
+            Set Your Prescription
+          </Button>
         )}
         {user && !user?.isDoctor && !user?.doctorAllocatted && (
-          <Button onClick={handleDialogOpen}>Get Doctor</Button>
+          <>
+            <br />
+            <br />
+            {/* <hr style={{ width: '80vw' }} /> */}
+            <Button
+              onClick={handleDialogOpen}
+              variant="outlined"
+              startIcon={<QrCode2Icon />}
+            >
+              Get Doctor
+            </Button>
+          </>
         )}
         <QRPopup open={open} onClose={handleClose} />
         {/* <Button component={Link} to="/chat">
