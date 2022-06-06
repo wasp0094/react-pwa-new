@@ -24,6 +24,7 @@ function HomePage({ handleModalOpen }) {
   const handleClose = () => {
     setOpen(false);
   };
+
   return (
     <div className="home-content">
       <div className="welcome">
@@ -57,9 +58,11 @@ function HomePage({ handleModalOpen }) {
         </div>
         {user?.isDoctor ? (
           <Button
+            href="https://forms.gle/MTg8pBaexDxs1CcS9/"
+            target="_blank"
             variant="contained"
-            onClick={handleModalOpen}
             startIcon={<AssignmentIcon />}
+            sx={{ marginBottom: "0.5rem" }}
           >
             Request Custom Exercise
           </Button>
@@ -68,6 +71,7 @@ function HomePage({ handleModalOpen }) {
             onClick={handleModalOpen}
             variant="contained"
             startIcon={<BorderColorIcon />}
+            sx={{ marginBottom: "0.5rem" }}
           >
             Set Your Prescription
           </Button>
