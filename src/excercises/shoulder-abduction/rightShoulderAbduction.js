@@ -78,11 +78,18 @@ export default function rightShoulderAbduction(
       }
       t1 = new Date().getSeconds() + new Date().getMinutes() * 60;
       // console.log(t0 + " " + t1);
+      // if (
+      //   setsCompleted !== 0 &&
+      //   (t1 - t0 > (setsCompleted === 0)
+      //     ? 30
+      //     : calibratedTime / requiredReps + 10)
+      // ) {
+      //   speak_js("Too slow");
+      // }
       if (
         setsCompleted !== 0 &&
-        (t1 - t0 > (setsCompleted === 0)
-          ? 30
-          : calibratedTime / requiredReps + 10)
+        t1 - t0 >
+          (setsCompleted === 0 ? 30 : calibratedTime / requiredReps + 10)
       ) {
         speak_js("Too slow");
       }

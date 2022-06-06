@@ -45,7 +45,7 @@ export default function drawCanvas(webcamRef, canvasRef, results) {
     color: "#fff",
     lineWidth: 4,
   });
-  console.log(results.poseLandmarks);
+  // console.log(results.poseLandmarks);
   // landMarks(canvasCtx, results.poseLandmarks, {
   //   color: "#fff",
   //   lineWidth: 2,
