@@ -1,3 +1,11 @@
+# PROCTIFY - Movement as Cure
+
+<b>Procify</b> is a progressive web app made for <b>Google Solution Challenge 2022</b>
+
+The United Nations’ Sustainable Development goal that we are trying to solve is: “Good Health and Wellbeing”.
+	
+The Healthcare sector is one of the world's largest sectors, both in terms of employment and revenue generated. Although recent advancements in healthcare have propelled this sector to new heights, there are still big loopholes to fill when it comes to niche industries like physiotherapy.
+
 # Index
 - <a href="#overview"> Overview <a>
 - <a href="#ps"> Problem Statement <a>
@@ -8,14 +16,7 @@
 - <a href="#techStack"> Tech Stack <a>
 - <a href="#libraries"> Libraries Used <a>
 - <a href="#setup"> Setup and Installation <a>
-- <a href="#future"> Future Scope <a>
-# PROCTIFY - Movement as Cure
-
-<b>Procify</b> is a progressive web app made for <b>Google Solution Challenge 2022</b>
-
-The United Nations’ Sustainable Development goal that we are trying to solve is: “Good Health and Wellbeing”.
-	
-The Healthcare sector is one of the world's largest sectors, both in terms of employment and revenue generated. Although recent advancements in healthcare have propelled this sector to new heights, there are still big loopholes to fill when it comes to niche industries like physiotherapy. 
+- <a href="#future"> Future Scope <a> 
 
 <p id="overview"><p>
 
@@ -136,42 +137,36 @@ These are the ideas we came up with while working on the solution:
 
 ## Clone the Proctify repository
 
-
 ### Execute the given command in your terminal/command prompt to clone the project :\
-<br>
 
-### If you use SSH links : 
+#### If you use SSH links : 
 
 ```bash
 git clone  git@github.com:wasp0094/react-pwa-new.git
 ```
 
-### If you use HTTPS links :
+#### If you use HTTPS links :
 
 ```bash
 git clone  https://github.com/wasp0094/react-pwa-new.git
 ```
-
-## Install Dependencies
+<br>
+  
+## Start the app
 
 ### Execute the given command to install project dependencies 
-<br>
 
 ```bash
 npm i
 ```
 
-## Start the app
-
-
-### The following command will compile the codebase and start the Web App in your
-### localhost.
-<br>
+### The following command will compile the codebase and start the Web App in your localhost. It may take 2-3 min to start first time
 
 ```bash
 npm start
 ```
-<br>
+  
+**Inportant :** For users using our app on a desktop / laptop, we suggest you view the app in dimensionally responsive mode or  406 X 860 for the best user experience.
 
 <p id="future"><p>
 
