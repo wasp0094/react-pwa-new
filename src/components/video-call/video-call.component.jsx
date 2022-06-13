@@ -46,8 +46,8 @@ function VideoCall() {
   };
 
   const handleLeave = async () => {
-    rtc.localAudioTrack.close();
-    rtc.localVideoTrack.close();
+    rtc?.localAudioTrack?.close();
+    rtc?.localVideoTrack?.close();
     const playerContainerr = document.getElementById(user.uid);
     console.log(playerContainerr);
     console.log(playerContainerr);

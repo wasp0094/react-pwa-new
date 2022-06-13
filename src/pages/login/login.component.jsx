@@ -143,12 +143,12 @@ function Login() {
                     fontSize: "0.9rem",
                     fontFamily: "Ubuntu",
                     color: " #4645e3",
-                    textTransform: "uppercase",
                   }}
                 >
                   Don't have an account?{" "}
-                  <Link className="link" to="/signup">
-                    Sign up
+                  <Link className="link" style={{
+                    textTransform: "uppercase",
+                  }} to="/signup"><u>Sign up</u>
                   </Link>
                 </p>
               </Stack>

@@ -46,7 +46,8 @@ function CreateAccount() {
   const { signUp } = useUserAuth();
 
   const handleChange = (e) => {
-    if (e.target.files[0]) {
+    if (e.target.files[0].name()) {
+      console.log(e.target.files[0]);
       const reader = new FileReader();
       reader.onload = () => {
         if (reader.readyState === 2) {
@@ -54,6 +55,7 @@ function CreateAccount() {
         }
       };
       reader.readAsDataURL(e.target.files[0]);
+      console.log(e.target.files[0].name);
       setImage(e.target.files[0]);
     }
   };
@@ -150,6 +152,7 @@ function CreateAccount() {
                   <img src={imgUrl} className="profile-pic" alt="profile pic" />
                   <input
                     type="file"
+                    accept="image/png, image/jpeg, image/jpg"
                     style={{
                       fontSize: "15px",
                       marginLeft: "4vw",
@@ -374,12 +377,14 @@ function CreateAccount() {
                   fontSize: "0.9rem",
                   fontFamily: "Ubuntu",
                   color: "#4645e3",
-                  textTransform: "uppercase",
                 }}
               >
                 Already have an account?{" "}
-                <Link className="link" to="/">
+                <Link className="link" style={{
+                  textTransform: "uppercase",
+                }} to="/"><u>
                   Login
+                </u>
                 </Link>
               </p>
             </div>
