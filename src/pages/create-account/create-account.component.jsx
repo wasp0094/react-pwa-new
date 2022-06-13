@@ -46,8 +46,7 @@ function CreateAccount() {
   const { signUp } = useUserAuth();
 
   const handleChange = (e) => {
-    if (e.target.files[0].name()) {
-      console.log(e.target.files[0]);
+    if (e.target.files[0]) {
       const reader = new FileReader();
       reader.onload = () => {
         if (reader.readyState === 2) {
@@ -55,7 +54,6 @@ function CreateAccount() {
         }
       };
       reader.readAsDataURL(e.target.files[0]);
-      console.log(e.target.files[0].name);
       setImage(e.target.files[0]);
     }
   };
