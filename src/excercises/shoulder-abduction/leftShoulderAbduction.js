@@ -35,7 +35,6 @@ export default function leftShoulderAbduction(
 
   if (flag === 0) {
     speak_js(
-      // "Stretch your arms to the maximum possible as this set helps us to calibrate"
       "StretchYourArmsToTheMaximumPossibleAsThisSetHelpsUsToCalibrate"
     );
     flag = 1;
@@ -57,6 +56,7 @@ export default function leftShoulderAbduction(
 
   } else if ( Number(angle) >= Number(finalCalibrationAngle) ) {
     up = true;
+ 
     // console.log( angle + "  "+ finalCalibrationAngle );
     // console.log( calibratedTime );
   }
@@ -68,7 +68,6 @@ export default function leftShoulderAbduction(
     down = false;
 
     if (repsCompleted % 2 === 0) {
-
       if (setsCompleted === 0) {
         tc1 = Number(new Date().getSeconds() + new Date().getMinutes() * 60);
         calibratedTime = Number(calibratedTime + tc1 - tc0);
@@ -78,20 +77,20 @@ export default function leftShoulderAbduction(
       if(setsCompleted === 0) {
         finalCalibrationTime = 30;
       } else {
-        finalCalibrationTime = (calibratedTime / requiredReps);
+        finalCalibrationTime = (calibratedTime / requiredReps) + 5;
       }
 
       // console.log(maxAngle + "   " + finalCalibrationAngle);
       // console.log((t1 - t0) + "   " + finalCalibrationTime);
 
       const reps = (repsCompleted / 2).toString();
-      const sets = setsCompleted.toString();
-      speak_js(
-        reps +
-          "reps" +
-          sets +
-          "sets"
-      );
+      
+      if(Number(repsCompleted / 2) === 1) {
+        const sets = setsCompleted.toString();
+        speak_js(sets + "sets" +  reps +"reps");
+      } else {
+        speak_js( reps + "reps" );
+      }
 
       if((setsCompleted !== 0) && ((t1 - t0) > finalCalibrationTime)) {
         speak_js("TooSlow");
@@ -108,6 +107,7 @@ export default function leftShoulderAbduction(
       } else {
         calibrationAngle += 0;
       }
+
       maxAngle = 30;
       setExcerciseVars({
         ...excerciseVars,
@@ -116,7 +116,10 @@ export default function leftShoulderAbduction(
         dayRange,
       });
     }
+    
   }
+
+  
 
   if (repsCompleted / 2 === requiredReps) {
     setsCompleted += 1;
