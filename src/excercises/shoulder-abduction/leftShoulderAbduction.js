@@ -56,9 +56,6 @@ export default function leftShoulderAbduction(
 
   } else if ( Number(angle) >= Number(finalCalibrationAngle) ) {
     up = true;
- 
-    // console.log( angle + "  "+ finalCalibrationAngle );
-    // console.log( calibratedTime );
   }
 
   if (up === true && down === true) {
@@ -68,6 +65,7 @@ export default function leftShoulderAbduction(
     down = false;
 
     if (repsCompleted % 2 === 0) {
+
       if (setsCompleted === 0) {
         tc1 = Number(new Date().getSeconds() + new Date().getMinutes() * 60);
         calibratedTime = Number(calibratedTime + tc1 - tc0);
@@ -79,9 +77,6 @@ export default function leftShoulderAbduction(
       } else {
         finalCalibrationTime = (calibratedTime / requiredReps) + 5;
       }
-
-      // console.log(maxAngle + "   " + finalCalibrationAngle);
-      // console.log((t1 - t0) + "   " + finalCalibrationTime);
 
       const reps = (repsCompleted / 2).toString();
       
@@ -101,7 +96,6 @@ export default function leftShoulderAbduction(
       maxAngleSum += maxAngle;
       dayRange = (maxAngleSum / (repsCompleted / 2 + (setsCompleted * requiredReps))).toFixed(2);
 
-      // calibrationAngle += (setsCompleted === 0 && dayRange) ? dayRange : 0;
       if(dayRange && setsCompleted === 0) {
         calibrationAngle = Number(calibrationAngle) + Number(dayRange);
       } else {

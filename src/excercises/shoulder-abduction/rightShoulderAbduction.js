@@ -57,14 +57,15 @@ export default function rightShoulderAbduction(
   } else if (Number(angle) >= Number(finalCalibrationAngle)) {
     up = true;
   }
+  
   if (up === true && down === true) {
+
     repsCompleted += 1;
     up = false;
     down = false;
 
     if (repsCompleted % 2 === 0) {
 
-      
       if (setsCompleted === 0) {
         tc1 = Number(new Date().getSeconds() + new Date().getMinutes() * 60);
         calibratedTime = Number(calibratedTime + tc1 - tc0);
