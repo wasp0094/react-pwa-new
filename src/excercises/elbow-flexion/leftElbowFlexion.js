@@ -57,9 +57,7 @@ export default function leftElbowFlexion(
 
   } else if ( Number(angle) >= Number(finalCalibrationAngle) ) {
     up = true;
-    // console.log( calibratedTime );
   }
-  // console.log( angle + "  "+ finalCalibrationAngle);
 
   if (up === true && down === true) {
     
@@ -98,8 +96,7 @@ export default function leftElbowFlexion(
 
       maxAngleSum += (maxAngle + 90);
       dayRange = (maxAngleSum / (repsCompleted / 2 + (setsCompleted * requiredReps))).toFixed(2);
-      // console.log(dayRange);
-      // calibrationAngle += setsCompleted === 0 ? maxAngle : 0;
+
       if(dayRange && setsCompleted === 0) {
         calibrationAngle = Number(calibrationAngle) + Number(dayRange - 90);
       } else {
@@ -126,5 +123,4 @@ export default function leftElbowFlexion(
       setsCompleted,
     });
   }
-
 }
