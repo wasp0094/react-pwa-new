@@ -119,8 +119,6 @@ export default function leftShoulderAbduction(
     
   }
 
-  
-
   if (repsCompleted / 2 === requiredReps) {
     setsCompleted += 1;
     repsCompleted = 0;

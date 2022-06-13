@@ -32,7 +32,7 @@ export default function rightShoulderAbduction(
 
   const angle = ((Math.acos(dot / (mod_a * mod_b)) * 180) / 3.14).toFixed(2);
   maxAngle = Math.max(maxAngle, angle);
-
+  console.log(maxAngle);
   if (flag === 0) {
     speak_js(
       "StretchYourArmsToTheMaximumPossibleAsThisSetHelpsUsToCalibrate"
@@ -54,7 +54,7 @@ export default function rightShoulderAbduction(
     if (up === false)
       t0 = Number(new Date().getSeconds() + new Date().getMinutes() * 60);
       
-  } else if (angle >= Number(angle) >= Number(finalCalibrationAngle)) {
+  } else if (Number(angle) >= Number(finalCalibrationAngle)) {
     up = true;
   }
   if (up === true && down === true) {
@@ -78,19 +78,13 @@ export default function rightShoulderAbduction(
       }
 
       const reps = (repsCompleted / 2).toString();
-      const sets = setsCompleted.toString();
-
-      if(repsCompleted === 0) {
-        speak_js(
-          sets +
-            "sets"
-        );
+      
+      if(Number(repsCompleted / 2) === 1) {
+        const sets = setsCompleted.toString();
+        speak_js(sets + "sets" +  reps +"reps");
+      } else {
+        speak_js( reps + "reps" );
       }
-
-      speak_js(
-        reps +
-          "reps"
-      );
 
       if((setsCompleted !== 0) && ((t1 - t0) > finalCalibrationTime)) {
         speak_js("TooSlow");
