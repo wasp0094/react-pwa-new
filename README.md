@@ -182,3 +182,8 @@ npm start
 
 - <b>In-App Doctor Appointment :</b>  Our aim is to make this app a one stop solution for physiotherapy treatment and thus provide a feature related to booking of appointments  
   using our app only. 
+
+# Snapshots of the interface
+	
+![proctify-collage](https://user-images.githubusercontent.com/90551491/174430971-e44b64bd-3bd6-42b5-b8e9-958bed157002.png)
+	
