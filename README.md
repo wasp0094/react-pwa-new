@@ -62,15 +62,12 @@ These are the ideas we came up with while working on the solution:
 - Doctor's can check on their patient's progress by viewing their dashboards.
 - New exercises can be added seamlessly by the physiotherapists by just filling a form.
 - Patients can directly interact with physiotherapists using our Video Calling feature
-# DFD 
 
 <p id="usecase"><p>
 
 # Use-Case Diagram
 
 <img width = 600px src = https://github.com/topguns837/proctify_readme/blob/master/assets/use_case.jpeg>
-
-# SS
 
 <p id="features"><p>
 
@@ -187,3 +184,4 @@ npm start
 	
 ![proctify-collage](https://user-images.githubusercontent.com/90551491/174430971-e44b64bd-3bd6-42b5-b8e9-958bed157002.png)
 	
+## Demo Video  : https://www.youtube.com/watch?v=1h4rIkbJW5U
