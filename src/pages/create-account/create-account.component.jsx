@@ -34,8 +34,8 @@ function CreateAccount() {
   const [name, setName] = useState("");
   const [dob, setDob] = useState("");
   const [YOE, setYOE] = useState("");
-  const [speciality, setSpeciality] = useState("");
-  const [gender, setGender] = useState("");
+  const [speciality, setSpeciality] = useState("shoulder");
+  const [gender, setGender] = useState("male");
   const [weight, setWeight] = useState("");
   const [error, setError] = useState("");
   const [user, setUser] = useState("patient");
@@ -150,6 +150,7 @@ function CreateAccount() {
                   <img src={imgUrl} className="profile-pic" alt="profile pic" />
                   <input
                     type="file"
+                    accept="image/png, image/jpeg, image/jpg"
                     style={{
                       fontSize: "15px",
                       marginLeft: "4vw",
@@ -223,6 +224,7 @@ function CreateAccount() {
                       select
                       label="Gender"
                       variant="standard"
+                      defaultValue=""
                       onChange={(e) => setGender(e.target.value)}
                       style={{ width: "5rem" }}
                     >
@@ -250,6 +252,7 @@ function CreateAccount() {
                       select
                       label="Speciality"
                       variant="standard"
+                      defaultValue=""
                       onChange={(e) => setSpeciality(e.target.value)}
                       style={{ width: "6rem" }}
                     >
@@ -372,12 +375,14 @@ function CreateAccount() {
                   fontSize: "0.9rem",
                   fontFamily: "Ubuntu",
                   color: "#4645e3",
-                  textTransform: "uppercase",
                 }}
               >
                 Already have an account?{" "}
-                <Link className="link" to="/">
+                <Link className="link" style={{
+                  textTransform: "uppercase",
+                }} to="/"><u>
                   Login
+                </u>
                 </Link>
               </p>
             </div>
