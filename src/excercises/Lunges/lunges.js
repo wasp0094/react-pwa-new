@@ -1,5 +1,3 @@
-// Yahn repsCompleted, Ki jagha (leftCounter+rightCounter) use hoo rakha hai
-// maxAngle, dayRange, maxAngleSum ka dekh lio
 let setsCompleted = 0;
 let repsCompleted = 0;
 let leftUp = false,
@@ -23,6 +21,7 @@ export default function lunge(points, excerciseVars, setExcerciseVars) {
   const obj23 = points[23];
   const obj25 = points[25];
   const obj27 = points[27];
+
 
   const leftVector1 = [obj26.x - obj24.x, obj26.y - obj24.y];
   const leftVector2 = [obj26.x - obj28.x, obj26.y - obj28.y];
